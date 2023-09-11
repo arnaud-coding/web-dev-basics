@@ -5,6 +5,10 @@ Learn the basics of web development with only vanilla HTML/CSS/JS
 
 :relaxed: ***TODO*** learn...
 
+[HTML help](https://developer.mozilla.org/fr/docs/Web/HTML)
+
+[tuto grafikart](https://developer.mozilla.org/fr/docs/Web/HTML)
+
 ## JavaScript
 
 :relaxed: ***TODO*** learn...
