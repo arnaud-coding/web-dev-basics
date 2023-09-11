@@ -1,0 +1,22 @@
+{
+  "name": "web-dev-basics",
+  "version": "1.0.0",
+  "description": "mon aprentissage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arnaud-coding/web-dev-basics.git"
+  },
+  "keywords": [
+    "web"
+  ],
+  "author": "arnaud",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arnaud-coding/web-dev-basics/issues"
+  },
+  "homepage": "https://github.com/arnaud-coding/web-dev-basics#readme"
+}
