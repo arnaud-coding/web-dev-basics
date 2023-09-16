@@ -1,0 +1,35 @@
+/* modifie le style de toute la page (body) */
+body {
+    text-align: center;
+    background-color: bisque;
+}
+
+/* modifie le style de TOUS les titres de niveau 1 */
+h1 {
+    color: blueviolet;
+    font-family: 'Segoe Script', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* modifie le style de TOUS les paragraphes */
+p {
+    color: brown;
+    font-style: italic;
+}
+
+/* modifie le style de l'élement html dont "id = description".
+Le caractère " # " représente le sélecteur de " id"
+L'identifiant doit être unique. */
+#description {
+    color: rgb(45, 94, 231);
+}
+
+/* modfie le style de l'élement html dont "id = textes" */
+#textes {
+    background-color: antiquewhite;
+
+}
+
+/* modfie le style de l'élement html dont "class = texte-bords */
+.texte-bords {
+    font-weight: bold;
+}
