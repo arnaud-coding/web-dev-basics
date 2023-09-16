@@ -23,13 +23,21 @@ L'identifiant doit être unique. */
     color: rgb(45, 94, 231);
 }
 
-/* modfie le style de l'élement html dont "id = textes" */
+/* Sélecteur de id: Modifie le style du SEUL élement html dont "id = textes" */
 #textes {
     background-color: antiquewhite;
-
 }
 
-/* modfie le style de l'élement html dont "class = texte-bords */
+/* Sélecteur de classe: Modifie le style de TOUS les élements html dont "class = texte-bords */
 .texte-bords {
     font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* Sélecteur de classe: 
+   - Modifie le style de TOUS les élements html DE TYPE 'div' dont "class = texte-bords.
+   - Permet d'appliquer TOUS les styles de 'texte-bords' + des nouveaux styles
+     MAIS juste dans ce cas (div + class) */
+div.texte-bords {
+    color: chocolate;
 }
