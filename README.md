@@ -14,6 +14,12 @@ Learn the basics of web development with only vanilla HTML/CSS/JS
 
 ### Git
 
+### Markdown (md)
+
+langage pour décrire des pages d'aide dans VScode et dans Github.
+
+[syntaxe du langage MD](https://docs.github.com/fr/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+
 #### Web sites
 
 * github
