@@ -18,4 +18,4 @@ Copie écran: Shift + logo windows + s
 * Effacer le mot précedent/suivant : CTRL + Backspace/Delete (*effacer/supr*)
 
 ## Marche uniquement dans VS Code:
-Etendre la sélection (expand selection): 
+* Etendre la sélection (expand selection): Shift + Alt + fléche droite/gauche
