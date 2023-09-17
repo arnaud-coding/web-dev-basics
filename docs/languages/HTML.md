@@ -14,6 +14,4 @@ Help pages:
 
 ## Reminders
 
-* [HTML element](https://www.w3schools.com/html/html_elements.asp) An HTML element is defined by a start tag, some content, and an end tag:
-
-<tagname> Content goes here... </tagname>
+* [HTML element](https://www.w3schools.com/html/html_elements.asp) An HTML element is defined by a start tag, some content, and an end tag.
