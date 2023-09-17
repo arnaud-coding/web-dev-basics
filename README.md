@@ -22,9 +22,9 @@ langage pour décrire des pages d'aide dans VScode et dans Github.
 
 #### Web sites
 
-* github
+* Github
 * [MDN](https://developer.mozilla.org/fr/)
-* W3C
+* [W3Schools](https://www.w3schools.com/)
 
 ## [Keyboard shortcuts](docs/shortcuts.md)
 
