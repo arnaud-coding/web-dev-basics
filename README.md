@@ -38,7 +38,7 @@ langage pour décrire des pages d'aide dans VScode et dans Github.
   * Le web définit comment on s'échange les messages: Ce sont les protocoles HTTP et TCP/IP qui définissent comment on s'échange des messages.
   * Le web ne définit **PAS** le contenu des messages **NI** ce qu'on en fait: Ce sont les sites web qui décident de ce qu'ils font des messages. Par exemple, 'Google.com' utilise les messages pour faire de la recherche sur Internet, 'GMAIL' utilise les messages pour échanger des Mails, ...)
   
-* *c'est quoi un serveur ?
+* c'est quoi un serveur ?
   * Un ordinateur sans écran, qui appartient à une compagnie et qui est connecté au web pour y stocker des sites web. Ex.: Microsoft utilisent des milliers de serveur pour héberger 'Outlook'
 
 * c'est quoi un site web ?
