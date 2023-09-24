@@ -35,14 +35,25 @@ Goal:
 * c'est quoi un élément HTML ?
   * balise ouvrante + un contenu + une balise fermante
   * il n'y a pas toujours du contenu
-  * le contenu peut-être un ou plusieurs autres élément HTML
+  * le contenu peut imbriqué un ou plusieurs autres élément HTML
 
 * donne moi des exemples d'éléments HTML
   * input, button, label, checkbox, ul + li, a, div
   
 * c'est quoi un attribut d'élément HTML ?
+  * forme...
+  * but...
+
 * c'est quoi un élément HTML sémantique ?
-  * nav, header, section, div, span
+  * but...
+  * Exemples: nav,  section, header,article, aside, div, span
+
 * donne moi des exemples d'attributs pour un élément HTML de type "button"
-* donne moi des exemples d'attributs pour un élément HTML de type "iInput"
+  * ...
+
+* donne moi des exemples d'attributs pour un élément HTML de type "input"
+  * ...
+
 * c'est quoi des attributs génériques ?
+  * des attributs qui peuvent s'appliquer à TOUS les éléments HTML existant
+  * Exemples: ...
