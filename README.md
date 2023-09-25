@@ -44,11 +44,11 @@ langage pour décrire des pages d'aide dans VScode et dans Github.
 * c'est quoi un site web ?
   * Ensemble de pages Web reliées entre elles et avec un but commun: gérer une messagerie (Outlook, GMail, ...), diffuser des vidéos (Youtube), ...
 
-* c'est quoi un développeur web ?
-  * conçoit des sites web à l'aide d'outils de dévelopement (VSCode).
-
 * c'est quoi une page web ?
   * Une partie du site qui effectue 1 tache précise: login, page d'accueil, voir mes comptes, ...
+
+* c'est quoi un développeur web ?
+  * conçoit des sites web à l'aide d'outils de dévelopement (VSCode).
 
 * c'est quoi le rapport entre Chrome et une page web ?
   * Chrome est un navigateur Internet:
@@ -66,7 +66,7 @@ langage pour décrire des pages d'aide dans VScode et dans Github.
 * C'est quoi 'Bing' ou 'Google'
   * ce sont des sites web spécialisés dans la recherche d'autres pages
   
-* De quoi est contitué une page web ?
+* De quoi est constitué une page web ?
   * de 1 fichier HTML (obligatoire)
   * de 1 fichier CSS (optionel, mais toujours utilisé sinon la page est trop moche)
   * de 1 fichier JavaScript (optionel, mais sans lui, la page web ne peut pas interagir avec l'utilisateur, elle ne peut que afficher des données)
