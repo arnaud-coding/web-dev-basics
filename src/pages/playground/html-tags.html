@@ -21,6 +21,25 @@
     <input type="text" placeholder="write here...">
     <button>1er bouton</button>
     <button>2eme bouton</button>
+    <!-- exo: ajouter une listbox -->
+    <!-- exo: ajouter une checkbox: choisir un ou plusieurs monstre parmi 3 choix -->
+    <!-- exo: ajouter des boutons radio: "choisir un monstre" parmi 3 choix  -->
+    <p>
+        <!--le "input" est un élement html qui sert à ce que l'utilisateur entre une donnée.
+                - "type" affiche le "input" comme un bouton radio (un cercle ou on peut cliquer).  
+                - "id" identifie le contrôle pour que le label puisse lui être associé.
+                - "name" permet de regrouper tous les boutons radios et fait en sorte que l'on ne puisse en sélectionner qu'un seul.
+
+            le "label" affiche le texte correspondant à son bouton radio. L'attribut "for" doit correspondre à l'attribut "id" du "input".
+         -->
+        <input type="radio" id="kraken" name="monster" value="K" />
+        <label for="kraken">Kraken</label><br />
+
+        <input type="radio" id="sasquatch" name="monster" value="S" />
+        <label for="sasquatch">Sasquatch</label><br />
+
+    </p>
+
     <p>un paragraphe</p>
     <p>un <strong>autre</strong> paragraphe</p>
     <blockquote>une citation &lt; &gt; &amp; de mon auteur préféré...</blockquote>
