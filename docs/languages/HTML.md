@@ -29,8 +29,8 @@ Goal:
 
 * c'est quoi une balise ?
   * un texte entouré par des crochets: ce texte correspondant à des élément html existant: button, input, body...
-  * balise ouvrante: Pour démarrer un élément HTML. Ex. <button>
-  * balise fermante: Pour terminer un élément HTML. Un '/' + Le texte de la balise ouvrante. Ex.: </button>
+  * balise ouvrante: Pour démarrer un élément HTML. Ex. `<button>`
+  * balise fermante: Pour terminer un élément HTML. Un '/' + Le texte de la balise ouvrante. Ex.: ``</button>``
 
 * c'est quoi un élément HTML ?
   * balise ouvrante + un contenu + une balise fermante
@@ -41,19 +41,42 @@ Goal:
   * input, button, label, checkbox, ul + li, a, div
   
 * c'est quoi un attribut d'élément HTML ?
-  * forme...
-  * but...
+  * fait suite à l'élément html à l'intérieur de la balise. ex: `<button type="button">Click Me!</button>`
+  * configure l'élement html ou ajuste son comportement de différentes manières pour répondre aux critères souhaités par les utilisateurs.
 
 * c'est quoi un élément HTML sémantique ?
-  * but...
+  * Des balises qui définissent la signification du contenu qu'elles renferment. Par exemple, des balises comme "header", "article", et "footer" sont des balises sémantiques HTML. Elles indiquent clairement le rôle du contenu qu'elles renferment.
   * Exemples: nav,  section, header,article, aside, div, span
 
 * donne moi des exemples d'attributs pour un élément HTML de type "button"
+  * disabled
+  * autofocus
+  * type
+  * value
+  * name
+  * color
+  * border
   * ...
 
 * donne moi des exemples d'attributs pour un élément HTML de type "input"
-  * ...
+  * `<input type="button">`
+  * `<input type="checkbox">`
+  * `<input type="radio">`
+  * `<input type="email">`
+  * `<input type="search">`
+  * `<input type="text">` (default value)
+  * `<input type="file">`
+  * `<input type="password">`
+
 
 * c'est quoi des attributs génériques ?
-  * des attributs qui peuvent s'appliquer à TOUS les éléments HTML existant
-  * Exemples: ...
+  * des attributs qui peuvent s'appliquer à TOUS les éléments HTML existants.
+  * Exemples: 
+    * accesskey
+    * class
+    * dir (spécifie la direction du texte pour le contenu dans un élément).
+    * hidden (spécifie qu'élément n'est pas encore, ou n'est plus visible).
+    * id (spécifie un identitifiant unique pour un élément).
+    * lang
+    * spellcheck
+    * style (specifies an inline CSS style for an element)
