@@ -1,0 +1,51 @@
+body {
+    background-color: lemonchiffon;
+}
+
+h1 {
+    color: #feff;
+    font-family: fantasy;
+    font-weight: lighter;
+    letter-spacing: 0.06em;
+    word-spacing: 0.5em;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-shadow: 1px 1px 2px #f01c,
+        1px -1px 2px #f0cc,
+        -1px 1px 2px #f0fc,
+        -1px -1px 2px #f0fc,
+        0 0 16px #f0fa,
+        0 0 64px #f0fd;
+}
+
+main {
+    background-color: bisque;
+}
+
+
+h3 {
+    border: 5px solid rgb(238, 104, 104);
+    /* marge: top, right, bottom, left */
+    margin: 0.5em 3em 0.1em 0;
+    padding: 0.4em;
+    background: linear-gradient(to left, white, rgb(238, 104, 104));
+}
+
+h4 {
+    color: green;
+    font-weight: bolder;
+}
+
+p {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: small;
+    line-height: 1;
+    text-indent: 3em;
+    text-align: justify;
+
+}
+
+p::first-letter {
+    font-weight: bolder;
+    color: rgb(21, 4, 170);
+}
