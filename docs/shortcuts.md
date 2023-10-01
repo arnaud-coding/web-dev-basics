@@ -6,7 +6,7 @@ Copie écran: Shift + logo windows + s
 
 ### Déplacements
 
-* Aller au début de la ligne courante (la ligne ou est le curseur): HOME: 
+* Aller au début de la ligne courante (la ligne ou est le curseur): HOME:
 * Aller en fin de la ligne courante. END
 * Avancer/Reculer mot par mot: CTRL + flèche droite/gauche
 * Monter/Descendre d'une ligne CTRL + flèche haute/basse.
@@ -17,5 +17,6 @@ Copie écran: Shift + logo windows + s
 * Toutes les actions précédentes MAIS en sélectionnant: toutes les touches de déplacement + SHIFT
 * Effacer le mot précedent/suivant : CTRL + Backspace/Delete (*effacer/supr*)
 
-## Marche uniquement dans VS Code:
+## Marche uniquement dans VS Code
+
 * Etendre la sélection (expand selection): Shift + Alt + fléche droite/gauche

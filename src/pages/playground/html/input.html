@@ -13,13 +13,23 @@
     <h1>contenu - Input</h1>
     <h2>un input pour les choisir tous...</h2>
     <h3>et dans les navigateurs les lier</h3>
-    <p>Pour essayer les différents types de input</p>
+    <p>Cette page montre les différents types possibles pour l'élément "input":
+        text, number, checkbox, radio, color, date, time, email, file, password, range, tel, URL, reset</p>
+    <hr>
 
     <form>
         <!-- un input de type "zone de texte" pour rentrer une valeur -->
         <div>
             <label for="input-text">Prénom</label>
             <input id="input-text" type="text" placeholder="write here !" value="Arnaud">
+        </div>
+
+        <!-- un input de type "number" pour choisir un nombre -->
+        <!-- https://developer.mozilla.org/fr/docs/Web/HTML/Element/input/number -->
+        <div>
+            <label for="input-number">entrez votre poids</label>
+            <input type="number" id="input-number" value="70" min="40" max="300">
+            <label for="input-number">kg</label>
         </div>
 
         <!-- un input de type "case à cocher" pour choisir UNE ou PLUSIEURS valeurs  -->
@@ -76,14 +86,6 @@
             <input type="file" id="input-file" accept="image/png, image/jpeg">
         </div>
 
-        <!-- un input de type "number" pour choisir un nombre -->
-        <!-- https://developer.mozilla.org/fr/docs/Web/HTML/Element/input/number -->
-        <div>
-            <label for="input-number">entrez votre poids</label>
-            <input type="number" id="input-number" value="70" min="40" max="300">
-            <label for="input-number">kg</label>
-        </div>
-
         <!-- un input de type "password" pour choisir un texte caché -->
         <!-- https://developer.mozilla.org/fr/docs/Web/HTML/Element/input/password -->
         <div>
@@ -113,6 +115,8 @@
             <input type="url" id="input-url" value="http://www.google.com" required>
         </div>
 
+        <!-- un input de type "reset" pour remettre tous les controle dans la "form" à leur valeur par défaut -->
+        <!-- https://developer.mozilla.org/fr/docs/Web/HTML/Element/input/reset -->
         <div>
             <input type="reset">
         </div>

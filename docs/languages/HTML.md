@@ -8,12 +8,32 @@ Goal:
 
 ## Help pages
 
+### Sites
+
+#### Generic
+
 * [MDN - HTML reference](https://developer.mozilla.org/fr/docs/Web/HTML)
 * [W3Schools - HTML tutorial](https://www.w3schools.com/html/default.asp)
 * [W3Schools - HTML examples](https://www.w3schools.com/html/html_examples.asp)
-* [web.dev](https://web.dev/learn/)
-* [web.dev - HTML](https://web.dev/learn/html)
-* [tutorial grafikart](https://www.youtube.com/playlist?list=PLjwdMgw5TTLUeixVGPNl1uZNeJy4UY6qX)
+* [web.dev - HTML](https://web.dev/learn/html/)
+* [WHATWG community - HTML: The Living Standard](https://html.spec.whatwg.org/dev/)
+
+#### Video
+
+* [Grafikart - Apprendre l'HTML](https://www.youtube.com/playlist?list=PLjwdMgw5TTLUeixVGPNl1uZNeJy4UY6qX)
+
+### Topics
+
+* [WhatWG - Kinds of Content](https://html.spec.whatwg.org/dev/dom.html#documents)
+  * [WhatWG - Metadata](https://html.spec.whatwg.org/dev/dom.html#metadata-content-2)
+  * [WhatWG - Flow](https://html.spec.whatwg.org/dev/dom.html#flow-content-2)
+  * [WhatWG - Sectioning](https://html.spec.whatwg.org/dev/dom.html#sectioning-content-2)
+  * [WhatWG - Heading](https://html.spec.whatwg.org/dev/dom.html#heading-content-2)
+  * [WhatWG - Phrasing](https://html.spec.whatwg.org/dev/dom.html#phrasing-content-2)
+  * [WhatWG - Embedded content](https://html.spec.whatwg.org/dev/dom.html#embedded-content-category)
+  * [WhatWG - Interactive](https://html.spec.whatwg.org/dev/dom.html#interactive-content-2) (a, audio, button, details, img, input, label, select, textarea, video)
+* [MDN - Référence des éléments HTML](https://developer.mozilla.org/fr/docs/Web/HTML/Element)
+  * [Input](https://developer.mozilla.org/fr/docs/Web/HTML/Element/input)
 
 ## Reminders
 
@@ -68,10 +88,9 @@ Goal:
   * `<input type="file">`
   * `<input type="password">`
 
-
 * c'est quoi des attributs génériques ?
   * des attributs qui peuvent s'appliquer à TOUS les éléments HTML existants.
-  * Exemples: 
+  * Exemples:
     * accesskey
     * class
     * dir (spécifie la direction du texte pour le contenu dans un élément).

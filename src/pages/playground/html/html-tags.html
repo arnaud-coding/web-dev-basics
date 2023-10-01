@@ -16,19 +16,31 @@
     <h2>titre niveau 2</h2>
     <h3>titre niveau 3</h3>
 
-    <!-- les plus célèbres... -->
-    <label>ceci est un label</label>
+    <!-- les 4 plus célèbres... -->
+    <label>ceci est un label (un texte que l'utilisateur ne peut modifier)</label>
     <input type="text" placeholder="write here...">
     <button>1er bouton</button>
     <button>2eme bouton</button>
 
+    <!-- du paragraphe, avec du texte en gras -->
+    <p>et voici un paragraphe...</p>
+    <p>suivi par un <strong>autre</strong> paragraphe !</p>
+    <blockquote>puis, une citation &lt; &gt; &amp; de mon auteur préféré...</blockquote>
+    <label>Et pour finir les textes, un lien vers un site bien connu :</label>
+    <a href="https://www.youtube.com/">youtube</a>
+
+    <!-- une ligne de séparation... -->
+    <hr>
+
+    <!-- le fieldset pour encadrer des choses qui vont ensemble visuellement (ici, choix du monstre) -->
     <fieldset>
+        <!-- le titre du cadre -->
         <legend>choisir un monstre</legend>
 
-        <!--le "input" est un élement html qui sert à ce que l'utilisateur entre une donnée.
-                   - "type" affiche le "input" comme un bouton radio (un cercle ou on peut cliquer).  
-                   - "id" identifie le contrôle pour que le label puisse lui être associé.
-                   - "name" permet de regrouper tous les boutons radios et fait en sorte que l'on ne puisse en sélectionner qu'un seul.
+        <!--"input" est un élement html qui sert à ce que l'utilisateur entre une donnée :
+                - type="radio" affiche le "input" comme un bouton radio (un cercle ou on peut cliquer).  
+                - "id" identifie le contrôle pour que le label puisse lui être associé.
+                - "name" permet de regrouper des boutons radios pour qu'on ne puisse en sélectionner UN SEUL.
    
                le "label" affiche le texte correspondant à son bouton radio. L'attribut "for" doit correspondre à l'attribut "id" du "input".
             -->
@@ -37,13 +49,7 @@
 
         <input type="radio" id="sasquatch" name="monster" value="S" />
         <label for="sasquatch">Sasquatch</label><br />
-
     </fieldset>
-
-    <p>un paragraphe</p>
-    <p>un <strong>autre</strong> paragraphe</p>
-    <blockquote>une citation &lt; &gt; &amp; de mon auteur préféré...</blockquote>
-    <a href="https://www.youtube.com/">youtube</a>
 
 
     <!-- les listes  -->
@@ -51,16 +57,17 @@
         <li>ligne 1 de la liste numérotée</li>
         <li>ligne 2... </li>
     </ol>
+
     <ul>
         <li>ligne 1 de la liste à puces</li>
         <li>ligne 2...</li>
         <ul>
-            <li>une sous ligne</li>
+            <li>une sous ligne (on appelle souvent cela une liste imbriquée)</li>
             <li>une sous ligne</li>
         </ul>
     </ul>
 
-    <!-- Drop-down list -->
+    <!-- Drop-down list : pour faire un choix entre plusieurs valeurs -->
     <label for="teams">choisissez une équipe</label>
     <select id="teams">
         <option value="ol">Olympique Lyonnais</option>
@@ -76,7 +83,8 @@
         <caption>
             titre du tableau
         </caption>
-        <!-- entete du tableau -->
+
+        <!-- en-tete du tableau -->
         <thead>
             <!-- 1ere ligne de l'en-tête -->
             <tr>
@@ -87,26 +95,34 @@
                 <th>age</th>
             </tr>
         </thead>
+
         <!-- contenu du tableau -->
         <tbody>
+            <!-- 1ere ligne du tableau -->
             <tr>
                 <td>Berthollet</td>
                 <td>Arnaud</td>
                 <td>masculin</td>
                 <td>28</td>
             </tr>
+
+            <!-- 2eme ligne du tableau -->
             <tr>
                 <td>Berthollet</td>
                 <td>Thomas</td>
                 <td>masculin</td>
                 <td>29</td>
             </tr>
+
+            <!-- 3eme ligne du tableau -->
             <tr>
                 <td>Berthollet</td>
                 <td>Agnès</td>
                 <td>féminin</td>
                 <td>57</td>
             </tr>
+
+            <!-- 4eme ligne du tableau -->
             <tr>
                 <td>Berthollet</td>
                 <td>Loïc</td>
@@ -117,39 +133,6 @@
         </tbody>
         <tfoot></tfoot>
     </table>
-
-    <!-- les éléments sémantiques -->
-    <main>
-        <header>titre principal</header>
-        <section>
-            <h2>titre section</h2>
-            <aside>un élément à part (ex: navigation, pubs, liste...)</aside>
-            <article>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi tenetur iusto debitis molestias quos
-                quia, itaque officia labore expedita vitae reprehenderit unde quod velit quisquam assumenda sit
-                repellendus, accusamus vero!
-                Numquam quisquam, in quaerat at asperiores ullam dolorem repellat quo autem, alias repellendus, debitis
-                aliquam atque. Magni quas, dolor facere adipisci eum neque odit sit facilis temporibus consectetur harum
-                molestiae.</article>
-            <article>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut ipsam dolorem laboriosam aut at
-                officia provident, ea velit odit corporis aliquam dolore esse tempore, quas iure non quisquam totam et!
-                Excepturi harum quasi maxime asperiores quis quisquam quia, libero, quo illo facere minus ad. Magnam
-                quod corrupti suscipit architecto excepturi sit. Nostrum, asperiores! Assumenda consectetur incidunt
-                nemo vero eius nesciunt.
-                Corrupti aspernatur, temporibus modi, soluta, animi molestias obcaecati ducimus illum labore nulla
-                maxime. Officia illum eveniet nulla rerum commodi porro, rem unde laudantium odio adipisci eos nisi,
-                magnam nobis iste.</article>
-            <article>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem, ex. Deleniti nostrum,
-                consequuntur recusandae odio corrupti perferendis, blanditiis veritatis, sapiente laborum assumenda enim
-                inventore sed dignissimos quasi molestiae quis vero!
-                Odit veniam maxime quisquam aliquid, obcaecati praesentium accusantium architecto blanditiis
-                consequatur, amet aperiam, nostrum dignissimos illum nobis adipisci! Ut perspiciatis accusamus beatae
-                magni nulla aspernatur culpa, facilis vitae fuga repellendus.</article>
-        </section>
-    </main>
-    <div>
-        <p>un</p>
-        <p>deux</p>
-    </div>
 </body>
 
 </html>
