@@ -1,0 +1,58 @@
+body {
+    background-color: rgb(204, 238, 204);
+    margin: 20px;
+}
+
+.card {
+    /* border: 1px solid brown; */
+    background-color: rgb(253, 253, 252);
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.grille {
+    /* border: 2px dashed grey; */
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 130px 1fr 1fr 1fr;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-rows: minmax(200px, auto);
+}
+
+.search {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 80px;
+    padding: 0;
+    border-radius: 20px;
+}
+
+.right-radius {
+    border-radius: 0 15px 15px 0;
+}
+
+input {
+    border-radius: 15px 0 0 15px;
+    padding: 3px 8px;
+}
+
+.nav {
+    grid-row: span 3;
+    display: grid;
+    grid-gap: 10px;
+    grid-auto-rows: 50px;
+}
+
+.suggestions {
+    grid-column: span 3;
+}
+
+.nav-button {
+    border: 0;
+    background-color: inherit;
+}
+
+.nav-button:hover {
+    background-color: rgb(245, 244, 244);
+    border-radius: 8px;
+}
