@@ -1,0 +1,60 @@
+body {
+    background-color: rgb(204, 238, 204);
+    margin: 20px;
+}
+
+.card {
+    background-color: rgb(247, 236, 220);
+    border: 1px solid rgb(200, 200, 252);
+    padding: 6px;
+    border-radius: 9px;
+}
+
+/* sélectionne l'élément qu'on veut transformer en grille. 
+     note 1: les élément enfants de la grille seront automatiquement répartis dans la grille par le navigateur
+     note 2: le navigateur créera des lignes supplémentaires si besoin*/
+.grille {
+    border: 1px dashed red;
+    /* transforme en grille */
+    display: grid;
+    /* espace entre les cellulles */
+    grid-gap: 10px;
+
+    /* définit explicitement le nombre de colonnes et leur largeur.
+         note:   fr= fraction de l'espace disponible */
+    grid-template-columns: repeat(4, minmax(175px, 1fr));
+
+    /* définit explicitement la hauteur des 2 premières lignes */
+    grid-template-rows: repeat(2, 125px);
+
+    /* définit le mde de remplissage implicite en ligne.
+       (comment seront ajoutés les éléments qui ne rentrent pas dans les cellules explicites   */
+    grid-auto-flow: row;
+
+    /* définit la hauteur des lignes qui seront ajoutées implicitement */
+    grid-auto-rows: minmax(50px, auto);
+}
+
+/* sélectionne le 5e élément de classe "card" */
+.card:nth-child(5) {
+    background-color: aqua;
+    /* commence à la colonne 1 */
+    grid-column-start: 1;
+    /* termine à la colonne 3.
+       note: l'élément occupera 2 cellules (de col. 1 à col. 3) */
+    grid-column-end: 3;
+    /* s'étend sur 2 lignes */
+    grid-row: span 2;
+}
+
+/* sélectionne le 6e élément de classe "card" */
+.card:nth-child(6) {
+    background-color: rgb(115, 236, 145);
+    /* commence à la colonne 3 et s'étend sur 2 colonnes */
+    grid-column: 3 / span 2;
+}
+
+/* sélectionne le denier élément de classe "card" */
+.card:nth-last-child(1) {
+    background-color: rgb(241, 197, 140);
+}
