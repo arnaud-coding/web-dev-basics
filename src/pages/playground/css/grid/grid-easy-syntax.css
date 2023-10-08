@@ -1,0 +1,49 @@
+body {
+    background-color: rgb(204, 238, 204);
+    margin: 20px;
+}
+
+.card {
+    background-color: rgb(247, 236, 220);
+    border: 1px solid rgb(200, 200, 252);
+    padding: 6px;
+    border-radius: 9px;
+}
+
+.grille {
+    /* comme sur la page originale... */
+    border: 1px dashed red;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(4, minmax(175px, 1fr));
+    grid-template-rows: repeat(2, 125px);
+    grid-auto-flow: row;
+    grid-auto-rows: minmax(50px, auto);
+
+    /* ------------------------------------------------------------------
+    Forme simplfiée: dessin de la grille
+    ------------------------------------------------------------------  */
+    grid-template-areas: 
+        "item1  item2  item3  item4"
+        "blue   blue   green  green"
+        "blue   blue   item7  item8"
+        "item9  pink   x      x";
+}
+
+.card:nth-child(5) {
+    background-color: aqua;
+    /* ------------------------------------------------------------------ 
+    place la cellule dans les zones "blue", telle que définies dans le dessin de la grille
+    ------------------------------------------------------------------ */
+    grid-area: blue;    
+}
+
+.card:nth-child(6) {
+    background-color: rgb(115, 236, 145);
+    grid-area: green;    
+}
+
+.card:nth-last-child(1) {
+    background-color: rgb(241, 197, 140);
+    grid-area: pink;
+}
