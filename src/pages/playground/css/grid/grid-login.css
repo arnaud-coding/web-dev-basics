@@ -42,12 +42,20 @@ h1 {
     background-color: rgb(2, 197, 2); 
     border: 0; 
 }
+
+.green:hover {
+    background-color: rgb(3, 145, 3);
+}
+
 .blue {
     color: #fff;
     background-color: #1877f2; 
     border: 0; 
 }
 
+.blue:hover {
+    background-color: #0458c7;
+}
 
 .grille-buttons {
     display: grid;
