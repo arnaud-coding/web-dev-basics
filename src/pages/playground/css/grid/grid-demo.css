@@ -13,14 +13,25 @@ body {
 .grille {
     /* border: 2px dashed grey; */
     display: grid;
+
     grid-gap: 10px;
-    grid-template-columns: 130px 1fr 1fr 1fr;
+
+    /* définit 4 colonnes: 
+       - la première à une taille de fixe de 130px
+       - la deuxieme et la troisième reçoivent 5 fractions de l'espace disponible 
+       - la dernière reçoit 2 fractions de l'espace disponible 
+       - nombre total de fractions = 5+5+3=13 */
+    grid-template-columns: 130px 5fr 5fr 3fr;
+
     grid-template-rows: repeat(2, auto);
     grid-auto-rows: minmax(200px, auto);
 }
 
 .search {
+    /* étendre la cellule sur 2 colonnes de large */
     grid-column: span 2;
+
+    /* on transforme la cellule "search" en grille, (une grille dans une grille) */
     display: grid;
     grid-template-columns: 1fr 80px;
     padding: 0;
@@ -37,7 +48,10 @@ input {
 }
 
 .nav {
+    /* étendre la cellule sur 3 lignes de haut */
     grid-row: span 3;
+
+    /* on transforme la cellule "nav" en grille, (une grille dans une grille) */
     display: grid;
     grid-gap: 10px;
     grid-auto-rows: 50px;

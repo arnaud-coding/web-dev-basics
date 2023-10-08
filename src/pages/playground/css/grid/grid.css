@@ -15,9 +15,9 @@ body {
      note 2: le navigateur créera des lignes supplémentaires si besoin*/
 .grille {
     border: 1px dashed red;
-    /* transforme en grille */
+    /* transforme l'élément sélectionné en grille */
     display: grid;
-    /* espace entre les cellulles */
+    /* définit l'espace entre les cellulles */
     grid-gap: 10px;
 
     /* définit explicitement le nombre de colonnes et leur largeur.
