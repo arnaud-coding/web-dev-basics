@@ -1,61 +1,85 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Terrains de jeux</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- barre de navigation générale -->
     <a href="/src/restaurant/index.html">Retour au restaurant</a>
 
     <!-- présentation de la page -->
     <h1>Terrains de jeux</h1>
-    <p>Point de départ vers les différents terrains de jeux qui permettent de s'entrainer librement.<br>Clic sur un lien
-        pour jouer...</p>
+    <p>
+      Point de départ vers les différents terrains de jeux qui permettent de
+      s'entrainer librement.<br />Clic sur un lien pour jouer...
+    </p>
 
     <!-- navigation vers les différents terrains -->
     <p>Liste des terrains :</p>
     <ul>
-        <!-- liste à puces de premier niveau (niveau "titre") : "HTML" -->
-        <li>HTML</li>
+      <!-- liste à puces de premier niveau (niveau "titre") : "HTML" -->
+      <li>HTML</li>
+      <ul>
+        <!-- liste à puces second niveau (niveau détails pour différents élément HTML) -->
+        <li>
+          <a href="./html/html-tags.html">Tags</a><br />
+          <i
+            >(pleins d'exemples sur les éléments les plus classiques: bouton,
+            labels, input...)</i
+          >
+        </li>
+        <li>
+          <a href="./html/input.html">Content - Input</a><br />
+          <i
+            >tous les types de input (textes, cases à cocher, radio, number,
+            date, ...)</i
+          >
+        </li>
+      </ul>
+
+      <!-- liste à puces premier niveau (niveau "titre") : "CSS" -->
+      <li>CSS</li>
+      <ul>
+        <!-- liste à puces second niveau (niveau détails pour différents élément CSS -->
+        <li><a href="./css/trailer.html">Trailer</a></li>
+        <li>
+          <a href="./css/intro.html">Introduction</a><br />
+          <i
+            >pleins d'exemples simples: couleurs, bordures, marges, polices,
+            ...</i
+          >
+        </li>
+
+        <!-- Grid area -->
+        <li>Grid layout</li>
         <ul>
-            <!-- liste à puces second niveau (niveau détails pour différents élément HTML) -->
-            <li>
-                <a href="./html/html-tags.html">Tags</a><br>
-                <i>(pleins d'exemples sur les éléments les plus classiques: bouton, labels, input...)</i>
-            </li>
-            <li>
-                <a href="./html/input.html">Content - Input</a><br>
-                <i>tous les types de input (textes, cases à cocher, radio, number, date, ...)</i>
-            </li>
+          <li>
+            <a href="./css/grid/grid.html">Grid - Span - Classic syntax</a>
+          </li>
+          <li>
+            <a href="./css/grid/grid-easy-syntax.html"
+              >Grid - Span - Easy syntax</a
+            >
+          </li>
+          <li><a href="./css/grid/grid-demo.html">Grid - Full page</a></li>
+          <li><a href="./css/grid/grid-login.html">Grid - Login</a></li>
         </ul>
 
-        <!-- liste à puces premier niveau (niveau "titre") : "CSS" -->
-        <li>CSS</li>
+        <!-- Flexbox area -->
+        <li>Flexbox layout</li>
         <ul>
-            <!-- liste à puces second niveau (niveau détails pour différents élément CSS -->
-            <li><a href="./css/trailer.html">Trailer</a></li>
-            <li>
-                <a href="./css/intro.html">Introduction</a><br>
-                <i>pleins d'exemples simples: couleurs, bordures, marges, polices, ...</i>
-            </li>
-            <li><a href="./css/grid/grid.html">Layout - Grid</a></li>
-            <li><a href="./css/grid/grid-easy-syntax.html">Grid - Easy syntax</a></li>
-            <li><a href="./css/grid/grid-demo.html">grid - demo</a></li>
-            <li><a href="./css/grid/grid-login.html">grid - demo-login</a></li>
-            <li><a href="./css/flexbox.html">Layout - Flexbox</a></li>
-
+          <li><a href="./css/flexbox/flexbox.html">Layout - Flexbox</a></li>
         </ul>
+      </ul>
 
-        <!-- liste à puces premier niveau (niveau "titre") : "JavaScript" -->
-        <li>JavaScript (JS)</li>
-        <ul>
-            <li>bientôt...</li>
-        </ul>
+      <!-- liste à puces premier niveau (niveau "titre") : "JavaScript" -->
+      <li>JavaScript (JS)</li>
+      <ul>
+        <li>bientôt...</li>
+      </ul>
     </ul>
-</body>
-
+  </body>
 </html>
