@@ -1,0 +1,54 @@
+body {
+  background-color: rgb(204, 238, 204);
+  margin: 20px;
+}
+
+.card {
+  background-color: rgb(247, 236, 220);
+  border: 1px solid rgb(200, 200, 252);
+  margin: 10px;
+  border-radius: 9px;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+}
+
+.flexbox {
+  background-color: dodgerblue;
+  display: flex;
+  /* height: 500px; */
+
+  /* flex-wrap = "retour à la ligne" :
+    - "no-wrap": pas de retour; la largeur des enfants sera diminuée si besoin mais pas agrandi (même s'il reste de la place)
+    - "wrap": retour automatique; les enfants gardent leur taille
+    - "wrap-reverse": en cas de retour, les derniers éléments sont mis au début  */
+  flex-wrap: wrap;
+
+  /* flex-direction = "direction d'empilement des enfants" :
+    - "column": empile les enfants verticalement
+    - "column-reverse": empile les enfants verticalement, mais à l'envers
+    - "row": empile les enfants horizontalement
+    - "row-reverse": empile les enfants horizontalement, mais à l'envers
+    
+    Note: Si "reverse" utilisé, alors "flex-wrap" doit aussi utiliser le "reverse"  */
+  flex-direction: row;
+
+  /* "jutify-content" = aligne les enfants
+    - "center": aligne au centre
+    - "flex-start" = aligne à gauche
+    - "flex-end" = aligne à droite
+    - "space-around" = répartit les espaces au début, entre et après les enfants 
+    - "space-between" = répartit les espaces seulement entre les enfants   */
+  justify-content: space-around;
+
+  /* "align-items" = aligne les enfants, QUAND la flexbox a une hauteur fixe
+      -"center": aligne au centre;
+    - "flex-start" = aligne en haut
+    - "flex-end" = aligne en bas
+    - "stretch" = étire sur toute la hauteur disponible (si les enfants n'ont pas une hauteur fixe)
+      Note: le wrap ne doit pas être utilisé */
+  /* align-items: baseline; */
+
+  /* "align-content" = aligne les flex lines */
+  align-content: normal;
+}
