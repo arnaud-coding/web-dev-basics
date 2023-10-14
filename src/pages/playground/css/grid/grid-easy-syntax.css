@@ -13,6 +13,8 @@ body {
 .grille {
   /* comme sur la page originale... */
   border: 1px dashed red;
+  border-radius: 9px;
+  padding: 8px;
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(4, minmax(175px, 1fr));
@@ -21,29 +23,37 @@ body {
   grid-auto-rows: minmax(50px, auto);
 
   /* ------------------------------------------------------------------
-    Forme simplfiée: dessin de la grille
+    Forme simplfiée (dessin de la grille)
+    - On affecte chaque cellule à une zone qu'on nomme librement.
+    Par exemple, la zone "john" va occuper 4 cellules (L1C1, L1C2, L2C1, L2C2)
+    
+    Règle:
+    - Une zone (ex. "a") doit être continue (toutes ses cellules doivent se toucher).
+    - Une zone peut ne pas être utilisée (ex. zones "a","c" et "d") par un "grid-area".
+      Dans ce cas, la zone est automatiquement remplie par la grille.
+      
     ------------------------------------------------------------------  */
   grid-template-areas:
-    "item1  item2  item3  item4"
-    "blue   blue   green  green"
-    "blue   blue   item7  item8"
-    "item9  pink   x      x";
+    "a      a      a      a"
+    "john   john   joe    joe"
+    "john   john   c      c"
+    "e      jane   d      d";
 }
 
 .card:nth-child(5) {
   background-color: aqua;
   /* ------------------------------------------------------------------ 
-    place l'élément dans les zones "blue", telle que définies dans le dessin de la grille
+    place l'élément dans les zones "john", telle que définies dans le dessin de la grille
     ------------------------------------------------------------------ */
-  grid-area: blue;
+  grid-area: john;
 }
 
 .card:nth-child(6) {
   background-color: rgb(115, 236, 145);
-  grid-area: green;
+  grid-area: joe;
 }
 
 .card:nth-last-child(1) {
   background-color: rgb(241, 197, 140);
-  grid-area: pink;
+  grid-area: jane;
 }

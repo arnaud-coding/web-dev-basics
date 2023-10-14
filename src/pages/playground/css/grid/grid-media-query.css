@@ -1,0 +1,70 @@
+body {
+  background-color: rgb(204, 238, 204);
+  margin: 20px;
+}
+.grille {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(4, minmax(175px, 1fr));
+  grid-template-rows: 25px 150px 100px 50px;
+  grid-auto-flow: row;
+  grid-auto-rows: minmax(50px, auto);
+  grid-template-areas:
+    "nav nav nav nav"
+    "side main main main"
+    "side  content content content"
+    "side  foot foot foot";
+}
+
+nav {
+    background-color: #BEADFA;
+    grid-area: nav;
+}
+
+main {
+    background-color: #D0BFFF;
+    grid-area: main;
+}
+
+aside {
+    background-color: #FFF8C9;
+    grid-area: side;
+}
+
+.content {
+    background-color: #DFCCFB;
+}
+
+footer {
+    background-color: aquamarine;
+    grid-area: foot;
+}
+
+/* La Media query permet de réagir aux changements de la fenetre du navigateur
+   (ici, on rentrera dans la media quand la largeur de l'écran sera inférieure à 500px)  
+ */
+@media all and (max-width: 500px){
+    /* Dans la Media , on définit quelles propriétés CSS on veut changer */
+    body {
+        /* Ici, on change la couleur de fond de la page */
+        background-color: lightgreen;
+    }
+
+    /* Ici, on remplace les propriétés de la grille pour changer sa disposition
+    
+       Note: on ne remplace que les propriétés qui changent. ex: on ne remet pas "display"(il reste à la valeur précédente) */
+    .grille {
+        /* plus que 1 seule colonne (c'était 4 avant) */
+  grid-template-columns: 1fr;
+  grid-template-rows: 25px 50px 150px;
+  grid-auto-rows: minmax(50px, auto);
+  grid-template-areas:
+    "nav"
+    "side"
+    "main"
+    "content"
+    "content"
+    "content"
+    "foot";
+}
+}
