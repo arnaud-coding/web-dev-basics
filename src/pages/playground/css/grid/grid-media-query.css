@@ -17,54 +17,54 @@ body {
 }
 
 nav {
-    background-color: #BEADFA;
-    grid-area: nav;
+  background-color: #beadfa;
+  grid-area: nav;
 }
 
 main {
-    background-color: #D0BFFF;
-    grid-area: main;
+  background-color: #d0bfff;
+  grid-area: main;
 }
 
 aside {
-    background-color: #FFF8C9;
-    grid-area: side;
+  background-color: #fff8c9;
+  grid-area: side;
 }
 
 .content {
-    background-color: #DFCCFB;
+  background-color: #dfccfb;
 }
 
 footer {
-    background-color: aquamarine;
-    grid-area: foot;
+  background-color: aquamarine;
+  grid-area: foot;
 }
 
 /* La Media query permet de réagir aux changements de la fenetre du navigateur
    (ici, on rentrera dans la media quand la largeur de l'écran sera inférieure à 500px)  
  */
-@media all and (max-width: 500px){
-    /* Dans la Media , on définit quelles propriétés CSS on veut changer */
-    body {
-        /* Ici, on change la couleur de fond de la page */
-        background-color: lightgreen;
-    }
+@media all and (max-width: 500px) {
+  /* Dans la Media , on définit quelles propriétés CSS on veut changer */
+  body {
+    /* Ici, on change la couleur de fond de la page */
+    background-color: lightgreen;
+  }
 
-    /* Ici, on remplace les propriétés de la grille pour changer sa disposition
+  /* Ici, on remplace les propriétés de la grille pour changer sa disposition
     
        Note: on ne remplace que les propriétés qui changent. ex: on ne remet pas "display"(il reste à la valeur précédente) */
-    .grille {
-        /* plus que 1 seule colonne (c'était 4 avant) */
-  grid-template-columns: 1fr;
-  grid-template-rows: 25px 50px 150px;
-  grid-auto-rows: minmax(50px, auto);
-  grid-template-areas:
-    "nav"
-    "side"
-    "main"
-    "content"
-    "content"
-    "content"
-    "foot";
-}
+  .grille {
+    /* plus que 1 seule colonne (c'était 4 avant) */
+    grid-template-columns: 1fr;
+    grid-template-rows: 25px 50px 150px;
+    grid-auto-rows: minmax(50px, auto);
+    grid-template-areas:
+      "nav"
+      "side"
+      "main"
+      "content"
+      "content"
+      "content"
+      "foot";
+  }
 }
