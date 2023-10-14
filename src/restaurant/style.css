@@ -1,7 +1,3 @@
-body {
-    background-color: rgb(191, 137, 242);
-}
-
 h1 {
     font-size: 24px;
     font-style: oblique;
@@ -20,7 +16,7 @@ button {
 /* sélectionne tous les éléments dont la classe = 'hover-bg'*/
 .hover-bg {
     background-color: green;
-    color: yellow
+    color: rgb(207, 207, 12)
 }
 
 /* 
@@ -29,5 +25,5 @@ button {
 .hover-bg:hover {
     transition-duration: 1.5s;
     background-color: orangered;
-    color: white
+    color: rgb(100, 3, 174)
 }
