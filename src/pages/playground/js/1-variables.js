@@ -17,9 +17,10 @@ console.log("----------------------------------------");
 console.log("But: Découvrir les variables");
 console.log("----------------------------------------");
 
-/* Une variable:
+/* ==================================================================================================================== 
+Une variable:
     - contient une ou plusieurs valeurs.
-    - chaque valeur a un type: (JavaScript = language à typage FAIBLE ==> le type de la variable peut changer quand on la réassigne)
+    - est d'un type: (JavaScript = language à typage FAIBLE ==> le type de la variable peut changer quand on la réassigne)
         - chaine de caractère: "", "a", "arnaud", "quelle belle journée"
         - booléen : true, false
         - nombre : entier ou décimal (à virgule), 0, -50, 350.123456
@@ -27,11 +28,13 @@ console.log("----------------------------------------");
         - un tableau: ["marc", 22, 12:19]
         - un objet : {name:"peter", birthday:2001} --------> Ici, cet objet  définit une personne: 2 propriétés (marc et birthday) ainsi que leurs valeurs
     - doit être DÉCLARÉE et INITIALISÉE (en une fois ou en deux fois)
-        - déclarée: - déclare à node qu'on veut utiliser une variable dont on donne le nom. 
+        - DÉCLARÉE: - déclare à node qu'on veut utiliser une variable dont on donne le nom. 
                     - Node crée alors un emplacement mémoire pour contenir cette variable.
                     - Cette variable ne contient alors aucune valeur, on dit qu'elle est indéfinie
-        - initialisée: donne une valeur à la variable
-*/
+        - INITIALISÉE: donne une valeur à la variable
+
+    - existe uniquement dans la portée/bloc ou ellee est définie. 
+==================================================================================================================== */
 
 // --------------------------------------------------------------------------------------------------------------------
 // On DÉCLARE une variable SANS l'initialiser :  Ici on déclare une variable qui s'appelle firstname;
@@ -83,7 +86,7 @@ x = ["arnaud", "thomas", "loïc", "agnès", 12, false, [1, 2, 3]];
 console.log(typeof x, x);
 
 // réassigne la valeur de la variable x = un objet avec des propriétés (firstname, birthday...)
-x = { firstname: "toto", weight: 70, birthday: new Date(1970, 12, 31) };
+x = { firstname: "toto", weight: 70, birthday: new Date(1970, 12, 31) }; // Ce firsname n'est pas celui défini plus haut, car ici, il est dans le bloc de code de "x"
 console.log(typeof x, x);
 
 // calcul de l'age de toto
