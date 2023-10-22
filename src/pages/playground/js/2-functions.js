@@ -19,9 +19,8 @@ Une fonction:
 
 console.log("avant la définition");
 
-// on DÉCLARE la fonction (elle n'est PAS exécutée)
+// on DÉCLARE la fonction (elle n'est PAS exécutée). Ici, la fonction "foo" s'attend à recevoir 2 arguments : "bar" et "baz"
 function foo(bar, baz) {
-  // La fonction "foo" s'attend à recevoir 2 arguments : "bar" et "baz"
   console.log("la fonction foo a été appelée avec les paramètres", bar, baz);
 }
 
