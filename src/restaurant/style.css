@@ -1,0 +1,11 @@
+a {
+  color: blue;
+}
+a:hover {
+  color: green;
+}
+
+input[type="text"],
+[type="email"] {
+  width: 200px;
+}
