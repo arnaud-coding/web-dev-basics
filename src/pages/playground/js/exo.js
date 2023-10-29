@@ -1,3 +1,7 @@
+// --------------------------------------------------------------------------------------------------------------
+// Exemple: des fonctions simples
+// --------------------------------------------------------------------------------------------------------------
+
 /**
  * additionne a et b
  * @param {Number} a
@@ -19,12 +23,13 @@ function sub(a, b = 0) {
 }
 
 /**
- * renvoie valeur moyenne a et b
+ * renvoie valeur moyenne de a et b
  * @param {Number} a
  * @param {Number} b
  * @returns valeur moyenne
  */
 function mean(a, b) {
+  // une fonction qui appele une fonction : "inception" ?
   const res = add(a, b) / 2;
   return res;
 }
@@ -33,7 +38,7 @@ function mean(a, b) {
 let value = mean(12, 8);
 console.log(`moyenne 12 et 8 = ${value}`);
 
-value = sub(4);
+value = sub(4); // dans la fonction 'sub', le paramètre 'rien' sera remplacé par sa valeur par défaut
 console.log(`soustraction de 4 et "rien" = ${value}`);
 
 // assigne à "value" la moyenne de "a" et "b" où:
@@ -46,6 +51,8 @@ const a = add(2, 1);
 const b = sub(9, 4);
 value = mean(a, b);
 
+// --------------------------------------------------------------------------------------------------------------
+// Exemple: Une fonction qui a plein de paramètres
 // --------------------------------------------------------------------------------------------------------------
 
 const limas = {
@@ -74,13 +81,7 @@ function stringifyAdress(number, street, zipCode, city, country) {
   return `${number} ${street}, ${zipCode} ${city.toUpperCase()}, ${country}`;
 }
 // appel de la fonction PENIBLE et "error prone" : on repéte le "limas." pour chaque appel
-let deliveryAddress = stringifyAdress(
-  limas.number,
-  limas.street,
-  limas.zipCode,
-  limas.city,
-  limas.country
-);
+let deliveryAddress = stringifyAdress(limas.number, limas.street, limas.zipCode, limas.city, limas.country);
 console.log(deliveryAddress);
 
 // --------------------
@@ -94,9 +95,7 @@ console.log(deliveryAddress);
  * @returns l'adresse, en une seule ligne
  */
 function stringifyAdressObject(address) {
-  return `${address.number} ${address.street}, ${
-    address.zipCode
-  } ${address.city.toUpperCase()}, ${address.country}`;
+  return `${address.number} ${address.street}, ${address.zipCode} ${address.city.toUpperCase()}, ${address.country}`;
 }
 
 // appel de la fonction plus cool : on passe directment l'objet
@@ -112,13 +111,25 @@ deliveryAddress = stringifyAdressObject(limas);
  * @param {{number: number, street: string, zipCode: string, city: string, country: string}} address an object that must have the expected properties...
  * @returns
  */
-function stringifyAdressDestructured({
-  number,
-  street,
-  zipCode,
-  city,
-  country
-}) {
+function stringifyAdressDestructured({ number, street, zipCode, city, country }) {
   return `${number} ${street}, ${zipCode} ${city.toUpperCase()}, ${country}`;
 }
 deliveryAddress = stringifyAdressDestructured(limas);
+
+// ----------------------------------------------------------------------------------------------
+// autre exemple d'une fonction avec plein de paramètres'...
+// ----------------------------------------------------------------------------------------------
+
+const bladeRunner = {
+  title: "Blade Runner",
+  year: 1982,
+  director: "Ridley Scott",
+  category: "science fiction",
+  starring: ["H.Ford", "R.Hauer", "E.J.Olmos", "..."]
+};
+function getInfos({ title, year, director, category, starring }) {
+  // expected result = Blade Runner is a 1982 science fiction film directed by R.Scott. Starring actors...
+  return `${title} is a ${year} ${category} film directed by ${director}. Starring ${starring.join(", ")}`;
+}
+const film = getInfos(bladeRunner);
+console.log(film);
