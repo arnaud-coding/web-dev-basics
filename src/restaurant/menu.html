@@ -4,26 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menu du Restaurant La Table Ronde</title>
-    <meta
-      name="description"
-      content="Page présentant le menu du Restaurant La Table Ronde "
-    />
+    <meta name="description" content="Page présentant le menu du Restaurant La Table Ronde " />
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <header>
-      <hr />
+    <header class="header">
+      <!-- titre de la page-->
+      <h1 class="header-title">Le menu</h1>
       <!-- barre de navigation -->
-      <nav>
+      <nav class="header-nav">
         <a href="index.html" title="Retourner à l'accueil">Accueil</a>
         <a href="menu.html" title="Voir le menu">Menu</a>
         <a href="contact.html" title="Nous contacter">Contact</a>
       </nav>
 
-      <!-- titre de la page et photo du restaurant -->
-      <h1>Le menu du restaurant La Table Ronde</h1>
       <img
+        class="header-img"
         src="/src/assets/images/plat-restaurant.jpg"
         alt="Photo d'un plat du restaurant La Table Ronde"
         width="1260"
@@ -32,7 +29,7 @@
     </header>
 
     <!-- la carte et les prix -->
-    <article>
+    <article class="main">
       <table>
         <tr>
           <td colspan="2">
@@ -90,9 +87,8 @@
     </article>
 
     <!-- bas de page -->
-    <hr />
-    <footer>
-      <address>90 Quai Charles De Gaulle</address>
+    <footer class="footer">
+      <address>90 Quai Charles De Gaulle 69006 Lyon</address>
     </footer>
   </body>
 </html>

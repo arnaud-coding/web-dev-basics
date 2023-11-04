@@ -3,40 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contacter le estaurant La Table Ronde</title>
-    <meta
-      name="description"
-      content="Page montrant comment contacter le Restaurant La Table Ronde "
-    />
+    <title>Contacter le Restaurant La Table Ronde</title>
+    <meta name="description" content="Page montrant comment contacter le Restaurant La Table Ronde " />
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <header>
-      <hr />
+    <header class="header">
+      <!-- titre de la page -->
+      <h1 class="header-title">Nous contacter</h1>
       <!-- barre de navigation -->
-      <nav>
+      <nav class="header-nav">
         <a href="index.html" title="Retourner à l'accueil">Accueil</a>
         <a href="menu.html" title="Voir le menu">Menu</a>
         <a href="contact.html" title="Nous contacter">Contact</a>
       </nav>
-
-      <!-- titre de la page et photo du restaurant -->
-      <h1>Nous contacter</h1>
       <img
+        class="header-img"
         alt="Photo du Restaurant La Table Ronde"
         src="/src/assets/images/bannière-restaurant-La Table Ronde.jpg.jpg"
         width="1260"
         height="431"
       />
     </header>
-    <hr />
+
     <!-- adresse du restaurant -->
-    <section>
+    <section class="main">
       <h2>Ou nous trouver</h2>
       <p>
-        90 Quai Charles De Gaulle<br />
-        69006 Lyon<br />
+        Restaurant La Table Ronde <br />
+        90 Quai Charles De Gaulle <br />
+        69006 Lyon <br />
         France
       </p>
 
@@ -56,13 +53,7 @@
       <form action="contact.html">
         <div>
           <label for="email">Votre email <sup>*</sup></label>
-          <input
-            type="email"
-            required
-            id="email"
-            name="email"
-            placeholder="votre@email.fr"
-          />
+          <input type="email" required id="email" name="email" placeholder="votre@email.fr" />
         </div>
         <div>
           <label for="firstname">Votre prénom<sup>*</sup></label>
@@ -78,9 +69,8 @@
     </section>
 
     <!-- bas de page -->
-    <hr />
-    <footer>
-      <address>90 Quai Charles De Gaulle</address>
+    <footer class="footer">
+      <address>90 Quai Charles De Gaulle 69006 Lyon</address>
     </footer>
   </body>
 </html>
