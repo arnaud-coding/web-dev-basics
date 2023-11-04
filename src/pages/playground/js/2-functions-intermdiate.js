@@ -2,6 +2,8 @@
 // Exemple: Une fonction qui a plein de paramètres
 // --------------------------------------------------------------------------------------------------------------
 
+// #region fonction avec plein de paramètres
+
 const limas = {
   number: 160,
   street: "allée du coteau",
@@ -73,9 +75,13 @@ function stringifyAdressDestructured({ number, street, zipCode, city, country })
 }
 deliveryAddress = stringifyAdressDestructured(limas);
 
+// #endregion
+
 // ----------------------------------------------------------------------------------------------
 // autre exemple d'une fonction avec plein de paramètres'...
 // ----------------------------------------------------------------------------------------------
+
+// #region - autre exemple
 
 const bladeRunner = {
   title: "Blade Runner",
@@ -102,3 +108,61 @@ function getInfos({ title, year, director, category, starring }) {
 }
 const film = getInfos(bladeRunner);
 console.log(film);
+
+// #endregion
+
+// --------------------------------------------------------------------------------------------------------------
+// Concept : Passer une fonction comme argument à une fonction
+// --------------------------------------------------------------------------------------------------------------
+/**
+ * @callback stringCallBack
+ * @param {string} bar first parameter of the callback
+ * @returns {string} the return of the callback
+ */
+
+/**
+ * une fonction qui utilise une fonction passée en paramètre
+ * @param {string} bar paramètre qui sera passé à la fonction à appeler (cb)
+ * @param {stringCallBack} cb fonction à appeler (la fonction attend 1 paramètre type "string" et retourne une string)
+ */
+const useBar = (bar, cb) => {
+  console.log(`La fonction "useBar" a été appelée avec "bar" = ${bar}`);
+  const ret = cb(bar);
+  console.log(`La fonction qui réfère à/pointe vers "cb" a renvoyé : ${ret}`);
+};
+
+/**
+ * met en majuscules un texte donné
+ * @param {string} bar le texte à mettre en majuscules
+ * @returns {string} le texte donné mis en majuscules
+ */
+const upper = (bar) => {
+  console.log(`La fonction "upper" a été appelée avec bar = ${bar}`);
+  return bar.toUpperCase();
+};
+
+/**
+ * met en minuscules un texte donné
+ * @param {string} bar le texte à mettre en minuscules
+ * @returns {string} le texte donné mis en minuscules
+ */
+const lower = (bar) => {
+  console.log(`La fonction "lower" a été appelée avec bar = ${bar}`);
+  return bar.toLowerCase();
+};
+
+// appels classiques où l'on passe une vraie fonction déclarée au préalable
+useBar("baz", upper);
+useBar("BOZ", lower);
+
+// appels différents où l'on passe une fonction anonyme (la fonction est déclarée sur la même ligne)
+useBar("   trop d'espaces...  ", (s) => {
+  return s.trim();
+});
+
+// cas particulier de fonction anonyme (ne contient qu'UNE SEULE ligne): on peut enlever "{}" et le "return" ===> TRES UTILISEE !!
+useBar("   trop d'espaces...  ", (s) => s.trim());
+
+// --------------------------------------------------------------------------------------------------------------
+// Concept : object constructor function
+// --------------------------------------------------------------------------------------------------------------
