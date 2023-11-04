@@ -50,13 +50,7 @@ function getCircleArea(radius) {
 const radius = 20;
 const area = getCircleArea(radius);
 const result = Math.round(area);
-console.log(
-  "la surface d'un cercle de rayon " +
-    radius +
-    "cm est égale à " +
-    result +
-    "cm²"
-);
+console.log("la surface d'un cercle de rayon " + radius + "cm est égale à " + result + "cm²");
 // manière plus simple de construire un texte avec des variables (string interpolation)
 const msg = `surface cercle de rayon ${radius}cm = ${result}cm²`;
 console.log(msg);
@@ -75,14 +69,63 @@ console.log("2+undefined=" + addition(2));
 // Note importante: Elle déclare un message et un nombre variable d'arguments qui seront vu par la fonction comme un tableau
 function bar(message, ...params) {
   console.log(`${message}: Fonction "bar" appelée avec params = [${params}]`);
-  console.log(
-    `. params est-il un tableau: ${Array.isArray(params)}, ${
-      params?.length
-    } arguments`
-  );
+  console.log(`. params est-il un tableau: ${Array.isArray(params)}, ${params?.length} arguments`);
 }
 // APPELLE la fonction en lui passant plusieurs arguments
 bar("tableau", 2, undefined, "bye", false, { name: "Yohan" });
 bar("string", "toto");
 bar("null", null);
 bar("nothing");
+
+// --------------------------------------------------------------------------------------------------------------
+// Exemple: des fonctions simples
+// --------------------------------------------------------------------------------------------------------------
+
+/**
+ * additionne a et b
+ * @param {Number} a
+ * @param {Number} b
+ * @returns somme de a et b
+ */
+function add(a, b) {
+  return a + b;
+}
+
+/**
+ * soustrait b de a
+ * @param {Number} a
+ * @param {Number} b
+ * @returns b-a
+ */
+function sub(a, b = 0) {
+  return a - b;
+}
+
+/**
+ * renvoie valeur moyenne de a et b
+ * @param {Number} a
+ * @param {Number} b
+ * @returns valeur moyenne
+ */
+function mean(a, b) {
+  // une fonction qui appele une fonction : "inception" ?
+  const res = add(a, b) / 2;
+  return res;
+}
+
+// declare une variable "value" et lui assigne le retour de la fonction "mean" à qui on passe 12 et 8
+let value = mean(12, 8);
+console.log(`moyenne 12 et 8 = ${value}`);
+
+value = sub(4); // dans la fonction 'sub', le paramètre 'rien' sera remplacé par sa valeur par défaut (= 0)
+console.log(`soustraction de 4 et "rien" = ${value}`);
+
+// assigne à "value" la moyenne de "a" et "b" où:
+//  - "a" = somme de 2+1
+//  - "b" = soustraction de 9-4
+value = mean(add(2, 1), sub(9, 4));
+
+// la même chose mais sur plusieurs lignes (moins pratique)
+const a = add(2, 1);
+const b = sub(9, 4);
+value = mean(a, b);
