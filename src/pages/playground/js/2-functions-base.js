@@ -77,6 +77,24 @@ bar("string", "toto");
 bar("null", null);
 bar("nothing");
 
+// ----------------------------------------------------------------------------------------------------------------------
+// Autre façon de déclarer une fonction (la plus utilisée!)
+// ------------------------------------------------------------------------------------------------------------------
+
+// DECLARE une variable qui est égale à une fonction (version intermédiaire)
+const boo = function (firstname) {
+  console.log(`Hey ${firstname}, BOO!`);
+};
+// APPELLE la fonction = on utilise le nom de la variable
+boo("arnaud");
+
+// DECLARE une variable qui est égale à une fonction (version finale : LA FORME LA PLUS UTILISEE) :
+const meow = (firstname) => {
+  console.log(`${firstname} says MEOW!`);
+};
+// APPELLE la fonction = on utilise le nom de la variable
+meow("lenny");
+
 // --------------------------------------------------------------------------------------------------------------
 // Exemple: des fonctions simples
 // --------------------------------------------------------------------------------------------------------------
