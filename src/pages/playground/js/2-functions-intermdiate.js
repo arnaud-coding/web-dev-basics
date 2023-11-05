@@ -43,7 +43,7 @@ console.log(deliveryAddress);
  * @param {Object} address - L'object qui contient l'adresse
  * @param {number} address.number - street number
  * @param {string} address.street - street name
- * @param {string} address.zipCode - zip code (code postal)
+ * @param {number} address.zipCode - zip code (code postal)
  * @param {string} address.city
  * @param {string} address.country
  * @returns l'adresse, en une seule ligne
@@ -65,7 +65,7 @@ deliveryAddress = stringifyAdressObject(limas);
  * @param {Object} address - L'object qui contient l'adresse
  * @param {number} address.number - street number
  * @param {string} address.street - street name
- * @param {string} address.zipCode - zip code (code postal)
+ * @param {number} address.zipCode - zip code (code postal)
  * @param {string} address.city
  * @param {string} address.country
  * @returns l'adresse, en une seule ligne
