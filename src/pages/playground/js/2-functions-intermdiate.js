@@ -2,7 +2,7 @@
 // Exemple: Une fonction qui a plein de paramètres
 // --------------------------------------------------------------------------------------------------------------
 
-// #region fonction avec plein de paramètres
+// #region fonction avec plein de paramètres: 3 façons de le faire et une mieux que les autres...
 
 const limas = {
   number: 160,
@@ -13,7 +13,7 @@ const limas = {
 };
 
 // ----------------------------------------
-// 1ere facon d'écrire une fonction qui attend PLEIN (> 3) de paramètres (cool à définir, chiant à appeler)
+// 1ere facon d'écrire une fonction qui attend PLEIN (> 3) de paramètres: cool à définir, chiant à appeler
 // le plus important: cool à appeler (ici, objectif manqué!)
 // ----------------------------------------
 /**
@@ -29,13 +29,14 @@ function stringifyAdress(number, street, zipCode, city, country) {
   // expected return : 160 allée du coteau, 69400 LIMAS, France
   return `${number} ${street}, ${zipCode} ${city.toUpperCase()}, ${country}`;
 }
+
 // appel de la fonction PENIBLE et "error prone" : on repéte le "limas." pour chaque appel
 let deliveryAddress = stringifyAdress(limas.number, limas.street, limas.zipCode, limas.city, limas.country);
 console.log(deliveryAddress);
 
 // ----------------------------------------
-// 2eme facon d'écrire une fonction qui attend plein de paramètres (chiant à définir, cool à appeler)
-// le plus important: cool à appeler (i, c'est manquéci)
+// 2eme facon d'écrire une fonction qui attend plein de paramètres: chiant à définir, cool à appeler
+// le plus important: cool à appeler (ici, objectif manqué!)
 // ----------------------------------------
 
 /**
@@ -54,15 +55,16 @@ function stringifyAdressObject(address) {
 
 // appel de la fonction plus cool : on passe directment l'objet
 deliveryAddress = stringifyAdressObject(limas);
+console.log(deliveryAddress);
 
 // ----------------------------------------
-// 3eme facon d'écrire une fonction qui attend plein de paramètres (cool à définir, cool à utiliser, chiant à documenter)
+// 3eme facon d'écrire une fonction qui attend plein de paramètres: cool à définir, cool à utiliser, chiant à documenter
 // le plus important: cool à utiliser; cool à écrire  ==> SOLUTION GAGNANTE
 // ----------------------------------------
 
 /**
- * retourne l'adresse sous la forme "43 rue malesherbes, 69006 LYON, France"  (version cool à appeler et cool à écrire)
- * @param {Object} address - L'object qui contient l'adresse
+ * retourne l'adresse sous la forme "43 rue malesherbes, 69006 LYON, France": cool à appeler et cool à écrire
+ * @param {Object} address - L'objet qui contient l'adresse
  * @param {number} address.number - street number
  * @param {string} address.street - street name
  * @param {number} address.zipCode - zip code (code postal)
@@ -74,6 +76,7 @@ function stringifyAdressDestructured({ number, street, zipCode, city, country })
   return `${number} ${street}, ${zipCode} ${city.toUpperCase()}, ${country}`;
 }
 deliveryAddress = stringifyAdressDestructured(limas);
+console.log(deliveryAddress);
 
 // #endregion
 
@@ -106,6 +109,7 @@ const bladeRunner = {
 function getInfos({ title, year, director, category, starring }) {
   return `${title} is a ${year} ${category} film directed by ${director}. Starring ${starring.join(" / ")}`;
 }
+
 const film = getInfos(bladeRunner);
 console.log(film);
 
@@ -127,6 +131,7 @@ console.log(film);
  */
 const useBar = (bar, cb) => {
   console.log(`La fonction "useBar" a été appelée avec "bar" = ${bar}`);
+  // appelle la fonction "cb" passée en paramètre en lui passant le paramètre passé "bar"; stocke la valeur retournée dans "ret"
   const ret = cb(bar);
   console.log(`La fonction qui réfère à/pointe vers "cb" a renvoyé : ${ret}`);
 };
@@ -152,8 +157,8 @@ const lower = (bar) => {
 };
 
 // appels classiques où l'on passe une vraie fonction déclarée au préalable
-useBar("baz", upper);
-useBar("BOZ", lower);
+useBar("Bar", upper);
+useBar("Bar", lower);
 
 // appels différents où l'on passe une fonction anonyme (la fonction est déclarée sur la même ligne)
 useBar("   trop d'espaces...  ", (s) => {

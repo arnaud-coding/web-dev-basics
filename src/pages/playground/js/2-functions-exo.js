@@ -19,11 +19,12 @@ const agnes = { firstname: "agnes", lastname: "berthollet", birthday: new Date(1
  */
 const showPerson = ({ firstname, lastname, birthday, male }, fn = null) => {
   const gender = getGender(male);
-  const capFirst = capitalize(firstname);
-  console.log(gender, capFirst, lastname.toUpperCase(), birthday.toLocaleDateString());
+  const cap = capitalize(firstname);
+  console.log(gender, cap, lastname.toUpperCase(), birthday.toLocaleDateString());
 
+  // si la fonction passée en paramètre n'est pas nulle, alors on l'appelle en lui passant la valeur de la variable "cap"
   if (fn !== null) {
-    fn(capFirst);
+    fn(cap);
   }
 };
 
@@ -40,13 +41,18 @@ const getGender = (male) => {
 };
 
 /**
- * Met en majuscule la première du mot passé
- * @param {string} s
- * @returns le mot passé,
+ * Met en majuscule la première lettre du mot passé
+ * @param {string} s le mot qu'on veut capitalizer
+ * @returns le mot passé, avec la 1ère lettre en majuscule
  */
 const capitalize = (s) => {
-  const tmp = s.toLowerCase().slice(1);
+  // renvoie toutes les lettres en partant de la lettre à la position "1", puis met en minuscule
+  // ex.: si on passe "BOBBY", on obtient "obby"
+  const tmp = s.slice(1).toLowerCase();
+
+  // récupère la 1ère lettre et la passe en majuscule
   const firstLetter = s.charAt(0).toUpperCase();
+
   return firstLetter + tmp;
 };
 
@@ -54,8 +60,9 @@ const capitalize = (s) => {
 
 // appelle la fonction showPerson en lui passant l'objet "arnaud" en argument ET une fonction anonyme à rappeler
 showPerson(arnaud, (identifier) => {
-  // ici, on est dans la fonction "callback" : elle sera rappeler par "showPerson"
-  console.log("rappelé avec " + identifier);
+  // ici, on est dans la fonction anonyme "callback" : elle sera rappelée par "showPerson" qui lui passera le paramètre
+  console.log("rappelé avec paramètre ", identifier);
 });
+
 // appelle la fonction showPerson en lui passant l'objet "arnaud" en argument SANS fonction à rappeler
 showPerson(agnes);
