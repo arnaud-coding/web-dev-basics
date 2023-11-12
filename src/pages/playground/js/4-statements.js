@@ -6,20 +6,21 @@ const family = [
   { firstname: "Arnaud", lastname: "Berthollet", male: true, birthday: new Date(1995, 7, 22) }
 ];
 
-const club = clubs[1]; // récupère le 2e élément du tableau
-console.log("club:", club);
-
-const l = clubs.length; // récupère la longueur du tableau
-console.log("length:", l);
-
+// exemples utilsation des tableaux
+// ----------------------------------------------
 const agnes = family[0]; // récupère le 1er membre de la famille
+console.log("club:", clubs[1]); // récupère le 2e élément du tableau des clubs
+console.log("length:", clubs.length);// récupère la longueur du tableau des clubs
+
+// autre facon de récupérer la valeur d'une propriété (object + notation tableau avec index = nom propriété)
+// - avantage: on peut utiliser une vqriqble pour comme index pour récupérer une propriété de l'objet
 // eslint-disable-next-line dot-notation
-const x = agnes["firstname"]; // autre facon de récupérer la valeur d'une propriété (object utilisé en tableau, index = nom propriété)
-console.log("x:", x);
+console.log("x:", agnes["firstname"]);
 
 /** ===========================================================================
  * * Loops (boucles)
  ============================================================================== */
+//#region loops - for, for-in, for-of
 
 /** ------------------------------------------------------
   * for
@@ -79,6 +80,10 @@ for (const person of family) {
   console.log("for...of family:", person.firstname);
 }
 
+//#endregion
+
+//#region loops - do while
+
 /** ------------------------------------------------------
   * do ... while
   --------------------------------------------------------- */
@@ -98,6 +103,10 @@ while (r < 0.5) {
   r = Math.random();
   console.log("r:", r);
 }
+
+//#endregion
+
+//#region loops - break, continue
 
 /** ------------------------------------------------------
   * break : permet de s'arrêter sur un élément du tableau
@@ -122,9 +131,13 @@ for (const person of family) {
   console.log("continue family: person under 40 is", person.firstname);
 }
 
+//#endregion
+
 /** ===========================================================================
  * * Choices 
  ============================================================================== */
+
+//#region choices (if-else if-else, switch) 
 
 /** ------------------------------------------------------
   * if ... else if ... else 
@@ -171,8 +184,10 @@ switchHour(10);
 switchHour(19);
 switchHour(20);
 
+//#endregion
+
 /** ===========================================================================
- * * Errors 
+ * * Errors
  ============================================================================== */
 
 /** ------------------------------------------------------
