@@ -10,17 +10,17 @@ const family = [
 // ----------------------------------------------
 const agnes = family[0]; // récupère le 1er membre de la famille
 console.log("club:", clubs[1]); // récupère le 2e élément du tableau des clubs
-console.log("length:", clubs.length);// récupère la longueur du tableau des clubs
+console.log("length:", clubs.length); // récupère le nombre d'éléments dans le tableau des clubs
 
 // autre facon de récupérer la valeur d'une propriété (object + notation tableau avec index = nom propriété)
 // - avantage: on peut utiliser une vqriqble pour comme index pour récupérer une propriété de l'objet
 // eslint-disable-next-line dot-notation
-console.log("x:", agnes["firstname"]);
+console.log("agnes:", agnes["firstname"]);
 
 /** ===========================================================================
  * * Loops (boucles)
  ============================================================================== */
-//#region loops - for, for-in, for-of
+// #region loops - for, for-in, for-of
 
 /** ------------------------------------------------------
   * for
@@ -49,7 +49,7 @@ for (let index = 0; index < family.length; index++) {
 }
 
 /** ------------------------------------------------------
-  * for ... in
+  * for ... in           (que avec des itérables(=arrays))
  --------------------------------------------------------- */
 // parcours un tableau de strings (le for...in renvoie l'index du tableau)
 for (const index in clubs) {
@@ -62,13 +62,14 @@ for (const index in family) {
   console.log(`for...in family: index=${index}, person=${person.firstname} ${person.lastname}`);
 }
 
-// parcours un objet ( le for...in renvoie les noms de propriétés)
+// parcours un objet ( le for...in renvoie les noms des propriétés)
 for (const propertyName in agnes) {
-  console.log("person property/value:", propertyName, agnes[propertyName]);
+  const propertyValue = agnes[propertyName];
+  console.log("person property/value:", propertyName, propertyValue);
 }
 
 /** ------------------------------------------------------
-  * for ... of
+  * for ... of           (que avec des itérables(=arrays))
  --------------------------------------------------------- */
 // parcours un tableau (le for...of renvoie la valeur de l'élément)
 for (const club of clubs) {
@@ -80,9 +81,9 @@ for (const person of family) {
   console.log("for...of family:", person.firstname);
 }
 
-//#endregion
+// #endregion
 
-//#region loops - do while
+// #region loops - do while
 
 /** ------------------------------------------------------
   * do ... while
@@ -104,9 +105,9 @@ while (r < 0.5) {
   console.log("r:", r);
 }
 
-//#endregion
+// #endregion
 
-//#region loops - break, continue
+// #region loops - break, continue
 
 /** ------------------------------------------------------
   * break : permet de s'arrêter sur un élément du tableau
@@ -131,13 +132,13 @@ for (const person of family) {
   console.log("continue family: person under 40 is", person.firstname);
 }
 
-//#endregion
+// #endregion
 
 /** ===========================================================================
  * * Choices 
  ============================================================================== */
 
-//#region choices (if-else if-else, switch) 
+// #region choices (if-else if-else, switch)
 
 /** ------------------------------------------------------
   * if ... else if ... else 
@@ -160,7 +161,7 @@ ifHour(15);
 ifHour(23);
 
 /** ------------------------------------------------------
-  * switch
+  * switch (plus facile mais ne peut PAS utiliser les "> ou <")
  --------------------------------------------------------- */
 const switchHour = (hours) => {
   switch (hours) {
@@ -184,7 +185,7 @@ switchHour(10);
 switchHour(19);
 switchHour(20);
 
-//#endregion
+// #endregion
 
 /** ===========================================================================
  * * Errors
