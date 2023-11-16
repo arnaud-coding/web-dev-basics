@@ -49,7 +49,7 @@ b = five <= 8; // b = true si five est inférieur ou égal à 8 , sinon b = fals
 
 b = s === "xyz"; // b = true si s égal "xyz", sinon b = false
 
-s = five === 8 ? "donald" : "daisy"; // Ternary Operators : s = "donald" si five égal 8, "daisy" sinon
+s = five === 8 ? "donald" : "daisy"; // Ternary Operators : s = "donald" si five égal 8, "daisy" sinon (forme plus rapide que "if...else")
 
 // ----------------------------------------------------------------
 // Logical Operators
@@ -57,7 +57,7 @@ s = five === 8 ? "donald" : "daisy"; // Ternary Operators : s = "donald" si five
 b = five >= 5 && five < 10; // b = true si five est supérieur ou égal à 5 ET inférieur à 10
 b = five === 2 || five === 22; // b = true si five égal 2 OU 22
 b = !b; // b = NOT b  (ca inverse b)
-b = !five; // transforme "five" en booléen (false pour 0, true pour toute autre valeur) ,puis inverse ce booleen
+b = !five; // b= NOT five : transforme "five" en booléen (false pour 0, true pour toute autre valeur) ,puis inverse ce booleen
 
 // ----------------------------------------------------------------
 //  The Nullish Coalescing Operator: (??)
@@ -67,8 +67,9 @@ b = !five; // transforme "five" en booléen (false pour 0, true pour toute autre
 const getWinner = () => "karim";
 const getNull = () => null;
 const psg = getNull();
-s = psg ?? "looser"; // s = valeur de psg si psg n'est pas nul, sinon s = toto
-s = getWinner() ?? "looser";
+
+s = psg ?? "looser"; // s = valeur de psg si psg n'est pas nullish (nul ou undefined), sinon s = looser
+s = getWinner() ?? "looser"; // s = valeur retournée par la fonction "getWinner" si elle n'est pas nullish, sinon s = looser
 
 // ----------------------------------------------------------------
 //  The Optionnal Chaining Operator: (?.)

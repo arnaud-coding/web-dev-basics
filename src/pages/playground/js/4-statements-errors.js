@@ -7,7 +7,7 @@
    ============================================================================== */
 
   /** ------------------------------------------------------
-     * try .. catch ... finally
+     * try .. catch ... finally            
      * -----------------------------------------------------
      * ne doit etre utilisé que pour des erreurs imprévisibles. Ex.: échec écriture de fichiers , échec accès internet 
     --------------------------------------------------------- */
@@ -22,7 +22,9 @@
     console.error(`on a attrapé une erreur de type "${error.name}". message = "${error.message}"`);
   } finally {
     // optionnel
-    console.log("finalement, avec ou sans erreur, on exécute ce bloc de code  ");
+    console.log(
+      "finalement, avec ou sans erreur, on exécute ce bloc de code pour faire du nettoyage (fermer un fichier)"
+    );
   }
 
   // exemple d'un autre type d'erreur(RangeError)
@@ -69,7 +71,7 @@
     * Pourquoi : de temps en temps (surtout lorsqu'on écrit une librairie, on  préfère provoquer une erreur personnalisée
    --------------------------------------------------------- */
   try {
-    // throw " hello 12"; // déclenche une erreur
+    // throw " hello 12"; // déclenche une erreur de type string
     throw Error("ceci est une erreur personnalisée");
   } catch (error) {
     if (error instanceof Error) {
@@ -78,5 +80,6 @@
       console.error(`on a attrapé une erreur inconnue`, error);
     }
   }
+
   console.log("that's all folks!");
 })();
