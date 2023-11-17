@@ -82,6 +82,37 @@
     setTimeout(() => cb(n * 3), 5000); // simule une vraie action asynchrone (comme requêtes internet, lectures fichiers...)
   };
   moo(1, (x) => console.log("moo callback ~ x:", x));
+  // ----------------------------------------------------------
+  // exo callback
+  // --------------------------------------
+  const notes = [5, 10, 8, -9, -25, 19, 6, -4];
+
+  /**
+   * Trie un tableau de nombres
+   * @param {number[]} numbers le tableau de nombres à trier
+   * @param {*} cb la fonction qui va faire la comparaison. recoit le nombre a tester en paramètres et doit retourner "true" pour garder le nombre
+   * @returns le tableau trié
+   */
+  const filter = (numbers, cb) => {
+    const res = [];
+    for (const n of numbers) {
+      // "if" appelle "cb" en lui passant n et utilise le retour de cb pour tester le "if"
+      if (cb(n)) {
+        res.push(n);
+      }
+    }
+    return res;
+  };
+
+  // appelle la fonction filter en lui passant le tableau de notes et la fonction qui va faire la comparaison
+  const negs = filter(notes, (n) => n < 0);
+  console.log("negs:", negs);
+  const pos = filter(notes, (n) => n > 0);
+  console.log("pos:", pos);
+  const smol = filter(notes, (n) => n > -10 && n < 10);
+  console.log("smol:", smol);
+
+  notes.filter((n) => n > 5);
 
   /** ------------------------------------------------------------------------------------------------------
     * appel asynchrone : Promises                                         (less old fashion but still used)
