@@ -7,62 +7,63 @@
 * ----------------------------------------------------------------------------------------------------
 * - on passe une fonction "cb" à la fonction "boo".
 * - "boo" rappellera la fonction "cb" quand elle le voudra
-------------------------------------------------------------------------------------------------------- */
+* -------------------------------------------------------------------------------------------------------- */
+
+/**
+ * The callback type expected, as expected by the foo function.
+ * @callback fooCallback
+ * @param {number} n the number to process
+ * @returns {void}
+*/
 
   /**
-   * la fonction qui va utiliser une fonction callback
+   * Cette fonction utilise une fonction callback
    * @param {number} n le parametre qu'on attend
-   * @param {*} cb la fonction callback qu'on va rappeler
+   * @param {fooCallback} cb la fonction callback qu'on va rappeler dans cette fonction
    */
-  const boo = (n, cb) => {
-    cb(n * 3); // appelle la fonction callback
+  const foo = (n, cb) => {
+    console.log("foo called with n=", n)
+    cb(n * 3); // appelle la fonction callback qui a été passée à cette fonction
   };
 
   /**
-   * définit la fonction callback qui devra etre rappelée par "boo"
-   * @param {number} x le parametre qui devra etre passé par "boo"
+   * définit la fonction callback qui devra etre rappelée par "foo"
+   * @param {number} x le parametre qui devra etre passé par "foo"
    */
   const callback = (x) => {
-    console.log("callback ~ x:", x);
+    console.log("named function 'callback' called, x=", x);
   };
 
-  // appelle la fonction "boo" en lui passant le callback (ici c'est une fontion nommée "callback")
-  boo(1, callback);
-
-  // appelle la fonction "boo" en lui passant le callback (ici c'est une fontion anonyme d'une seule ligne)
-  boo(1, (x) => console.log("callback ~ x:", x));
-
-  // appelle la fonction "boo" en lui passant le callback (ici c'est une fontion anonyme de plusieurs lignes possibles) LA FORME LA PLUS COURANTE
-  boo(1, (x) => {
-    console.log("boo callback ~ x:", x);
+  // appelle la fonction "foo" en lui passant le callback (ici, une fontion nommée "callback")
+  console.log("calling foo, callback: named function")
+  foo(1, callback);
+  
+  // appelle la fonction "foo" en lui passant le callback (ici, une fontion anonyme d'une seule ligne)
+  console.log("calling foo, callback: singleline anonymous function")
+  foo(2, (x) => console.log("anonymous singleline callback called, x=", x));
+  
+  // appelle la fonction "boo" en lui passant le callback (ici, une fontion anonyme de plusieurs lignes possibles) LA FORME LA PLUS COURANTE
+  console.log("calling foo, callback: multiline anonymous function")
+  foo(3, (x) => {
+    console.log("anonymous multiline callback called, x=", x);
   });
 
-  /** ------------------------------------------------------------------------------------------------------
-*  Callback                                                (très utilisée avec les DOM events de l'html)
-* ----------------------------------------------------------------------------------------------------
-* - on passe une fonction "cb" à la fonction "boo".
-* - "boo" rappellera la fonction "cb" quand boo sera terminée
-------------------------------------------------------------------------------------------------------- */
-  // exemple en utilisant la fonction asynchrone "setTimeout"
-  console.log("calling setTimeout...");
-  setTimeout(() => {
-    console.log("setTimeout callback called"); // ici, c'est la callback anonyme qui sera rappelée par setTimeout dans 2s
-  }, 2000);
-
-  // moo est une fonction asynchrone : elle rappelera "cb" dans 5s sans bloquer l'appelant (qui lui-meme bloquerait le navigateur )
-  const moo = (n, cb) => {
-    setTimeout(() => cb(n * 3), 5000); // simule une vraie action asynchrone (comme requêtes internet, lectures fichiers...)
-  };
-  moo(1, (x) => console.log("moo callback ~ x:", x));
   // ----------------------------------------------------------
   // exo callback
   // --------------------------------------
   const notes = [5, 10, 8, -9, -25, 19, 6, -4];
 
   /**
-   * Trie un tableau de nombres
-   * @param {number[]} numbers le tableau de nombres à trier
-   * @param {*} cb la fonction qui va faire la comparaison. recoit le nombre a tester en paramètres et doit retourner "true" pour garder le nombre
+   * The comparison function : Receive a number and returns true to keept it, false to reject
+   * @callback filterCallback
+   * @param {number} n the number to test
+   * @returns {boolean} true to keep the number, false to reject the number
+  */
+
+  /**
+   * Trie un tableau de nombres selon un critère de compqraison donné par une callback
+   * @param {number[]} numbers - le tableau de nombres à trier
+   * @param {filterCallback} cb - la fonction qui va faire la comparaison.
    * @returns le tableau trié
    */
   const filter = (numbers, cb) => {
@@ -76,13 +77,16 @@
     return res;
   };
 
-  // appelle la fonction filter en lui passant le tableau de notes et la fonction qui va faire la comparaison
+  // Appelle la fonction filter en lui passant le tableau de notes et la fonction qui va faire la comparaison.
+  // Ici, la comparaison renvoie 'true' pour les nombres négatifs
   const negs = filter(notes, (n) => n < 0);
-  console.log("negs:", negs);
+  console.log("filter negs:", negs);
+  
+  // Ici, la comparaison renvoie 'true' pour les nombres positifs
   const pos = filter(notes, (n) => n > 0);
-  console.log("pos:", pos);
+  console.log("filter pos:", pos);
+  
+  // Ici, la comparaison renvoie 'true' pour les nombres entre -10 et 10
   const smol = filter(notes, (n) => n > -10 && n < 10);
-  console.log("smol:", smol);
-
-  notes.filter((n) => n > 5);
+  console.log("filter smol:", smol);
 })();
