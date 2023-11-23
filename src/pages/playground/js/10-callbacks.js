@@ -89,8 +89,12 @@
   const smol = filter(notes, (n) => n > -10 && n < 10);
   console.log("filter smol:", smol);
 
+  // la meme chose que notre fonction filter, mais avec la fonction filter des tableaux JS
+  const bigs = notes.filter((n) => n >= 10 || n <= -10);
+  console.log("bigs:", bigs);
+
   // ----------------------------------------------------------
-  // exo callback : Sort
+  // exo callback : Map
   // --------------------------------------
 
   const family = [
@@ -107,22 +111,29 @@
    */
 
   /**
-   * transforme un tableau de personnes en un tableau de noms
-   * @param {object[]} people
-   * @param {mapCallback} cb
-   * @returns {string[]} tableau de noms
+   * transforme un tableau d'objets en un autre  tableau d'objets
+   * @param {object[]} arr le tableau d'objets à transformer
+   * @param {mapCallback} cb la fonction à appeler pour transformer un objet
+   * @returns {string[]} tableau transformé
    */
-  const map = (people, cb) => {
+  const map = (arr, cb) => {
     const res = [];
-    for (const person of people) {
-      const name = cb(person);
-      res.push(name);
+    for (const obj of arr) {
+      const transform = cb(obj);
+      res.push(transform);
     }
     return res;
   };
 
+  // on appelle la fonction map en lui passant la famille et une callback qui transforme une personne en son nom et prénom
   const names = map(family, (person) => {
     return `${person.firstname} ${person.lastname}`; // ou : person.firstname + " " + person.lastname;
   });
   console.log("sorted:", names);
+
+  // la meme chose que notre fonction map, mais avec la fonction map des tableaux JS
+  const mapped = family.map((person) => {
+    return person.firstname;
+  });
+  console.log("mapped ~ mapped:", mapped);
 })();
