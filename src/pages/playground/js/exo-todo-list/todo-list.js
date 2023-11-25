@@ -5,8 +5,6 @@
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement
 // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
 
-console.log("Script chargé!");
-
 /**
  * --------------------------------------------------------------------------------------
  * activer le bouton "Add" uniquement quant le titre et la date d'expiration sont remplis
@@ -42,18 +40,18 @@ console.log("Script chargé!");
  * fonctionnement du bouton delete
  * --------------------------------------------------------------------------------------
  *    plan :
- *      - 
- *      - 
- *      - 
- *      - 
+ *      -
+ *      -
+ *      -
+ *      -
  *
  * --------------------------------------------------------------------------------------
  * fonctionnement du bouton done
  * --------------------------------------------------------------------------------------
  *    plan :
- *      - 
- *      - 
- *      - 
+ *      -
+ *      -
+ *      -
  *
  */
 
@@ -216,20 +214,31 @@ function addTodo() {
  * @param {Todo} todo
  */
 function addToList(todo) {
-  // dupliquer un element <li> de la liste
+  // select the todo row template (modèle de <li> de todo pour le <ul>)
   const template = document.getElementById("todo-row");
   if (template && template instanceof HTMLTemplateElement) {
+    // ---------- copie le template de la ligne todo : cette copie sera l'élement à insérer dans la liste
+    const clone = template.content.cloneNode(true);
 
-    const li = template.content.cloneNode(true);
-
-    // écrire les valeurs du todo dans l'élement dupliqué
-    li.querySelector(".todo-title").innerHTML = todo.title;
-    li.querySelector(".todo-desc").innerHTML = todo.description;
+    // ---------- écrire les valeurs du todo dans l'élement dupliqué
+    clone.querySelector(".todo-title").innerHTML = todo.title;
+    clone.querySelector(".todo-desc").innerHTML = todo.description;
     const date = new Date(todo.expiryDate).toLocaleDateString(undefined, { dateStyle: "medium" });
-    li.querySelector(".todo-exp-date").innerHTML = date;
+    clone.querySelector(".todo-exp-date").innerHTML = date;
 
-    // ajouter l'élement dupliqué dans la liste
-    todoList?.appendChild(li);
+    // ---------- ajoute les gestionnaires d'évenements aux boutons delete et done
+    //  - selectionne les boutons
+    //  - ajoute une gestionnaire d'evenements au boutons
+    clone.querySelector(".btn-done").addEventListener("click", () => {
+      console.log("done clicked");
+    });
+    clone.querySelector(".btn-del").addEventListener("click", () => {
+      console.log("delete clicked", clone);
+      todoList?.remove(clone);
+    });
+
+    // ---------- ajouter l'élement dupliqué dans la liste
+    todoList?.appendChild(clone);
   }
 }
 
