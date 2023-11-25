@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="todo-list.css" />
+  <script src="todo-list.js" defer></script>
+  <title>TODO list</title>
+</head>
+
+<body>
+  <h1>Plan your day</h1>
+
+  <!-- area : add TODO -->
+  <h2>Add TODO</h2>
+  <div>
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" placeholder="title" />
+    <label for="desc">Description</label>
+    <input type="text" name="desc" id="desc" placeholder="description" />
+    <label for="exp-date">Expiry</label>
+    <input type="date" name="exp-date" id="exp-date" />
+    <button id="btn-add">Add</button>
+  </div>
+
+  <!-- area : show/hide -->
+  <div>
+    <button id="toggle-visibility">Hide list</button>
+  </div>
+
+  <!-- area : display TODO list -->
+  <h2>TODOs</h2>
+  <ul id="todo-list"></ul>
+
+  <!-- <li> template -->
+  <template id="todo-row">
+    <li>
+      <h3 class="todo-title">TODO title</h3>
+      <span class="todo-desc">description</span>
+      <p class="todo-exp-date">exp-date</p>
+      <button>Done</button>
+      <button>X</button>
+    </li>
+  </template>
+</body>
+
+</html>

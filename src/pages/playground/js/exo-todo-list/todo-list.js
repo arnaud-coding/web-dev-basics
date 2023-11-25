@@ -8,40 +8,57 @@
 console.log("Script chargé!");
 
 /**
- * activer le bouton add uniquement quant le titre et la date d'expiration sont remplis
+ * --------------------------------------------------------------------------------------
+ * activer le bouton "Add" uniquement quant le titre et la date d'expiration sont remplis
+ * --------------------------------------------------------------------------------------
  *    plan :
  *      - séléctionner les éléments titre et date
  *      - ajouter un évenement "quant la valeur du input change"
  *      - récupérer les valeurs de titre et date d'expiration
  *      - activer ou désactiver le bouton en fonction des valeurs récupérées
  *
- * fonctionnement du bouton add
+ * --------------------------------------------------------------------------------------
+ * fonctionnement du bouton "Add"
+ * --------------------------------------------------------------------------------------
  *    but : ajoute une activité à la liste des TODO
  *    plan :
- *      - sélectionner l'élément bouton add
+ *      - sélectionner l'élément bouton "Add"
  *      - ajouter un événement sur le clic du bouton
  *      - récupérer les valeurs de titre, description et date d'expiration
  *      - construire un objet de type TODO
  *      - ajouter cet objet à la liste
  *        - comment ?
  *
+ * --------------------------------------------------------------------------------------
  * fonctionnement du show/hide
+ * --------------------------------------------------------------------------------------
  *    plan :
  *      - sélectionner bouton hide
  *      - ajouter evenement clic
  *      - sélectionner liste
  *      - affiche/masquer liste
  *
+ * --------------------------------------------------------------------------------------
  * fonctionnement du bouton delete
+ * --------------------------------------------------------------------------------------
  *    plan :
+ *      - 
+ *      - 
+ *      - 
+ *      - 
  *
+ * --------------------------------------------------------------------------------------
  * fonctionnement du bouton done
+ * --------------------------------------------------------------------------------------
  *    plan :
+ *      - 
+ *      - 
+ *      - 
  *
  */
 
 /**
- * @typedef Todo
+ * @typedef Todo Type of the TODO object
  * @type {object}
  * @property {string} title - title of the todo
  * @property {string | undefined} description - description of the todo
@@ -60,7 +77,7 @@ const hideListButton = document.getElementById("toggle-visibility");
 const todoList = document.getElementById("todo-list");
 
 /** -------------------------------------------------------------------------------------------------------------------
- * Add events to HTML elements
+ * Add events listeners to HTML elements
  * ----------------------------------------------------------------------------------------------------------------- */
 if (addButton) {
   addButton.addEventListener("click", addTodo);
@@ -72,7 +89,7 @@ if (dateInput) {
   dateInput.addEventListener("input", setAddState);
 }
 if (hideListButton) {
-  hideListButton.addEventListener("click", hideList);
+  hideListButton.addEventListener("click", toggleTodosVisibility);
 }
 
 /** -------------------------------------------------------------------------------------------------------------------
@@ -104,7 +121,9 @@ function clearValue(element) {
 /** -------------------------------------------------------------------------------------------------------------------
  * Show/Hide HTML element
  * ----------------------------------------------------------------------------------------------------------------- */
-function hideList() {
+
+/** Toggle todos list visibility */
+function toggleTodosVisibility() {
   if (todoList && hideListButton) {
     const hidden = todoList.hidden;
     if (hidden) {
@@ -122,9 +141,8 @@ function hideList() {
 /** -------------------------------------------------------------------------------------------------------------------
  * Enable/Disable HTML element
  * ----------------------------------------------------------------------------------------------------------------- */
-/**
- * enabled/desabled the addButton depending on title and expiry date
- */
+
+/** enabled/desabled the addButton depending on title and expiry date */
 function setAddState() {
   // get title and date
   const title = getValue(titleInput);
@@ -142,9 +160,8 @@ function setAddState() {
 /** -------------------------------------------------------------------------------------------------------------------
  * Create HTML element
  * ----------------------------------------------------------------------------------------------------------------- */
-/**
- * add a label containing a copyright at body end
- */
+
+/** Add at body end a label containing a copyright */
 function addCopyright() {
   // create a <label> element (HTMLLabelElement)
   const label = document.createElement("label");
@@ -155,6 +172,7 @@ function addCopyright() {
   // add the label at body end
   document.getElementsByTagName("body")[0].appendChild(label);
 }
+
 /** -------------------------------------------------------------------------------------------------------------------
  * Duplicate HTML template element
  * ----------------------------------------------------------------------------------------------------------------- */
@@ -179,15 +197,19 @@ function addTodo() {
     return;
   }
 
-  // create TODO object
+  // create the TODO object
   const todo = { title, description: desc, expiryDate: date, done: false };
 
-  // add TODO to list
+  // add the TODO object to the todos list
   addToList(todo);
 
   // clear the "add todo" form
   clearForm();
 }
+
+// ---------------------------------------------------------
+// helper functions
+// ---------------------------------------------------------
 
 /**
  * add a given todo into the list of todos
@@ -197,14 +219,13 @@ function addToList(todo) {
   // dupliquer un element <li> de la liste
   const template = document.getElementById("todo-row");
   if (template && template instanceof HTMLTemplateElement) {
+
     const li = template.content.cloneNode(true);
-    console.log("addToList ~ li:", li);
 
     // écrire les valeurs du todo dans l'élement dupliqué
     li.querySelector(".todo-title").innerHTML = todo.title;
     li.querySelector(".todo-desc").innerHTML = todo.description;
-    const options = { dateStyle: "medium" };
-    const date = new Date(todo.expiryDate).toLocaleDateString(undefined, options);
+    const date = new Date(todo.expiryDate).toLocaleDateString(undefined, { dateStyle: "medium" });
     li.querySelector(".todo-exp-date").innerHTML = date;
 
     // ajouter l'élement dupliqué dans la liste
