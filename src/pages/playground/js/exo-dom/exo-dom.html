@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="exo-dom.css" />
     <script src="exo-dom.js" defer></script>
     <title>Exo - DOM</title>
   </head>
@@ -12,8 +13,41 @@
       <button id="btn-start">Click me</button>
     </div>
 
+    <!-- montrer/cacher, activer/désactiver un élément -->
     <div>
-      <textarea name="txt-lorem" id="txt-lorem" cols="30" rows="10"></textarea>
+      <textarea name="txt-lorem" id="txt-lorem" cols="60" rows="5"></textarea>
+      <br />
+      <button id="btn-toggle-vis">toggle visiblity</button>
+      <button id="btn-toggle-enable">toggle enable</button>
     </div>
+    <br />
+
+    <!-- lire/écrire propriétés -->
+    <div>
+      <label id="time">--:--</label>
+    </div>
+
+    <!-- ajouter/enlever des classes -->
+    <div>
+      <br />
+      <label id="lbl-class">click on me to change my style</label>
+    </div>
+
+    <!-- Créer des elements -->
+    <div>
+      <ul id="list">
+        <li>ligne 1</li>
+      </ul>
+    </div>
+
+    <!-- dupliquer un élément -->
+    <template id="template">
+      <!-- ! Si des "id" existent dans le template, il faudra changer leurs valeurs dans les "copies" -->
+      <div>
+        <label>texte original</label>
+        <input type="text" />
+        <button disabled>click</button>
+      </div>
+    </template>
   </body>
 </html>
