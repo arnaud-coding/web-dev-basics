@@ -34,17 +34,17 @@
 const btn = document.getElementById("btn-start");
 
 // 2°) vérifier le type exact de "btn"
-if (btn && btn instanceof HTMLButtonElement) {
+if (btn instanceof HTMLButtonElement) {
   // ici, grace au "if", on est sur que "btn" existe et qu'il représent un bouton :
   //  - on peut donc utiliser les méthodes et propriétés du bouton
   //  - vs code va nous montrer les méthodes et propriétés de ce bouton
   //  - es lint ne signalera plus d'erreur quand on utilisera un méthode/propriété de HTMLButtonElement qui n'existe pas sur le HTMLElement
 
   // 3°) ajout du gestionnaire d'évènement au bouton (le gestionnaire d'évènements est une callback)
-  // exemple : ici la callback est une fonction anonyme
+  // exemple : ici la callback est une fonction anonyme. elle recoit un parameter "event" qui ici est un "MousePointer" event
   btn.addEventListener("click", (event) => {
     // ce code sera appelé plus tard quand l'utilisateur cliquera sur le bouton
-    console.log("bouton cliqué", event);
+    console.log("bouton cliqué avec paramètre d'évènement = ", event);
     alert("Bravo, tu as cliqué sur le bouton " + event);
   });
   // exemple : le gestionnaire d'évènements est une fonction nommée
@@ -57,7 +57,7 @@ if (btn && btn instanceof HTMLButtonElement) {
  * @param {MouseEvent} event
  */
 function mouseCallback(event) {
-  if (btn && btn instanceof HTMLButtonElement) {
+  if (btn instanceof HTMLButtonElement) {
     if (event.type === "mouseenter") {
       // la souris vient de rentrer dans la zone du bouton
       btn.style.background = "#F39678";
@@ -74,7 +74,7 @@ function mouseCallback(event) {
 
 // 1er exemple : ajout texte dans <textarea>
 const lorem = document.getElementById("txt-lorem");
-if (lorem && lorem instanceof HTMLTextAreaElement) {
+if (lorem instanceof HTMLTextAreaElement) {
   // la fonction setTimeOut rapellera sa callback au bout du délai (3s)
   setTimeout(() => {
     // code de la callback
