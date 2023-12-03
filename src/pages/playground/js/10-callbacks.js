@@ -3,11 +3,18 @@
   /* eslint-disable n/no-callback-literal */
 
   /** ------------------------------------------------------------------------------------------------------
-   * utilisation d'un "callback" (une fonction qui sera rappelée)
+   * utilisation d'un "callback" (une fonction qui sera rappelée) :
    * ----------------------------------------------------------------------------------------------------
    * - on passe une fonction "cb" à la fonction "boo".
    * - "boo" rappellera la fonction "cb" quand elle le voudra
    * -------------------------------------------------------------------------------------------------------- */
+
+  const family = [
+    { firstname: "Agnès", lastname: "Berthollet", male: false, birthday: new Date(1967, 1, 27) },
+    { lastname: "Berthollet", firstname: "Loïc", male: true, birthday: new Date(1967, 2, 17) },
+    { firstname: "Thomas", lastname: "Berthollet", male: true, birthday: new Date(1994, 8, 25) },
+    { firstname: "Arnaud", lastname: "Berthollet", male: true, birthday: new Date(1995, 7, 22) }
+  ];
 
   /**
    * The callback type expected, as expected by the foo function.
@@ -60,16 +67,20 @@
    */
 
   /**
-   * Trie un tableau de nombres selon un critère de compqraison donné par une callback
-   * @param {number[]} numbers - le tableau de nombres à trier
-   * @param {filterCallback} cb - la fonction qui va faire la comparaison.
-   * @returns le tableau trié
+   * Trie un tableau de nombres selon un critère déterminé par une callback
+   * @param {number[]} numbers - le tableau de nombres à filtrer
+   * @param {filterCallback} cb - la fonction qui filtre.
+   * @returns le tableau filtré
    */
   const filter = (numbers, cb) => {
+    // res contient le tableau filtré
     const res = [];
+
+    // parcours le tableau original : dans la boucle, "n" prendra successivement toutes les valeurs de "numbers"
     for (const n of numbers) {
-      // "if" appelle "cb" en lui passant n et utilise le retour de cb pour tester le "if"
+      // "if" appelle "cb" en lui passant "n" et utilise le retour de cb pour tester le "if"
       if (cb(n)) {
+        // si la callback (cb) a retourné true, alors on ajoute "n" au tableau filtré
         res.push(n);
       }
     }
@@ -93,16 +104,44 @@
   const bigs = notes.filter((n) => n >= 10 || n <= -10);
   console.log("bigs:", bigs);
 
+  // -------------------------------
+
+  /**
+   * @callback filterObjectsCallback The filter callback function : Receives an objects and returns true to keept it, false to reject
+   * @param {object} obj the object to test
+   * @returns {boolean} true to keep the object, false to reject the object
+   */
+
+  /**
+   * Trie un tableau de objets selon un critère déterminé par une callback
+   * @param {object[]} objects - le tableau de objets à filtrer
+   * @param {filterObjectsCallback} cb - la fonction qui filtre.
+   * @returns le tableau filtré
+   */
+  const filterObjects = (objects, cb) => {
+    // res contient le tableau filtré
+    const res = [];
+
+    // parcours le tableau original : dans la boucle, "obj" prendra successivement toutes les valeurs de "objects"
+    for (const obj of objects) {
+      // "if" appelle "cb" en lui passant "obj" et utilise le retour de cb pour tester le "if"
+      if (cb(obj)) {
+        // si la callback (cb) a retourné true, alors on ajoute "obj" au tableau filtré
+        res.push(obj);
+      }
+    }
+    return res;
+  };
+
+  const men = filterObjects(family, (obj) => {
+    // role de cette fonction anonyme : retourner true si on veut garder l'objet passé
+    return obj.male;
+  });
+  console.log("men ~ men:", men);
+
   // ----------------------------------------------------------
   // exo callback : Map
   // --------------------------------------
-
-  const family = [
-    { firstname: "Agnès", lastname: "Berthollet", male: false, birthday: new Date(1967, 1, 27) },
-    { lastname: "Berthollet", firstname: "Loïc", male: true, birthday: new Date(1967, 2, 17) },
-    { firstname: "Thomas", lastname: "Berthollet", male: true, birthday: new Date(1994, 8, 25) },
-    { firstname: "Arnaud", lastname: "Berthollet", male: true, birthday: new Date(1995, 7, 22) }
-  ];
 
   /**
    * @callback mapCallback The conversion function : Receive a person and returns its name
