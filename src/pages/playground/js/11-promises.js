@@ -1,20 +1,27 @@
 (() => {
-  /**
+  /** =================================================================================================================
+   *
    * Les promesses sont une facon plus simple d'écrire CERTAINES callbacks.
-   * Une promesse , ça se résout (en cas de succès) ou ça se rejete (en cas d'échec)
+   *
+   * ------------------------------------------------------------------------------------------------------------------
+   *
+   * Une promesse, ça se résout (en cas de succès) ou ça se rejete (en cas d'échec).
    * Il y a 2 façcons qui se valent de retourner une promesse (voir exemples simple/complex)
    *
-   *  => les callbacks qui ne peuvent PAS etre remplacées :
+   * --------------------------------------------------------------------------
+   *
+   * => les callbacks qui ne peuvent PAS etre remplacées :
    *    - les gestionnaires d'évenements liés aux éléments HTML (ex. : clic d'un bouton)
    *    - les callbacks qui font un travail (filter, map...)
    *
-   *  => les callbacks qui peuvent et doivent etre remplacées (celles qui ne font que attendre)
-   *    - ex. : lecture d'un fichier -> la fonction readFile fait tout le travail pour lire le fichier et envoie le fichier lu à la callback,
-   *                                    la callback ne fait donc qu'attendre que le fichier soit lu.
+   *  => les callbacks qui PEUVENT et DOIVENT etre remplacées (celles qui ne font que attendre)
+   *    - ex. : lecture d'un fichier -> La fonction readFile de JS fait tout le travail pour lire le fichier et envoie le fichier lu à la callback
+   *                                 -> La callback ne fait donc qu'attendre que le fichier soit lu.
    *
-   * Les promesses servent très majoritairement pour appeler des fonctions asynchrones (ex. : lecture/écriture de fichiers, requêtes API)
-   * Ici, on ne verra que des appels SYNCHRONES
-   *  */
+   * --------------------------------------------------------------------------
+   * Les promesses servent très majoritairement pour appeler des fonctions asynchrones (ex. : lecture/écriture de fichiers, requêtes API, ...)
+   * Ici, on ne verra que des appels synchrones
+   * =============================================================================================================== */
 
   /**
    * 1ere partie de la démo : renvoyer une promesse (comme le fait la fonction "fetch" pour la requête API)
