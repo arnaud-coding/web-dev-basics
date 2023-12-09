@@ -13,7 +13,7 @@
    *                                    la callback ne fait donc qu'attendre que le fichier soit lu.
    *
    * Les promesses servent très majoritairement pour appeler des fonctions asynchrones (ex. : lecture/écriture de fichiers, requêtes API)
-   * Ici, on ne verra que des appels synchrones
+   * Ici, on ne verra que des appels SYNCHRONES
    *  */
 
   /**
@@ -82,4 +82,21 @@
 
   usePromiseComplex(5);
   usePromiseComplex(15);
+
+  // =======================================================================================================
+
+  // Exemple : "Promise Chaining Hell" (enfer de l'enchainement des promesses) = code illisible
+  // ==> solution = async/await
+
+  const p1 = returnPromiseComplex(2);
+  p1.then((p1value) => {
+    const p2 = returnPromiseComplex(3);
+    p2.then((p2value) => {
+      console.log("p1, p2 :", p1value, p2value);
+    }).catch((reason) => {
+      console.error("p2 a été rejetée : elle renvoie 'reason'=", reason);
+    });
+  }).catch((reason) => {
+    console.error("p1 a été rejetée : elle renvoie 'reason'=", reason);
+  });
 })();
