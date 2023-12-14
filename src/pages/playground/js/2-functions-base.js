@@ -3,29 +3,44 @@ console.log("---------------------------------------- JS");
 console.log("But: Découvrir les fonctions");
 console.log("---------------------------------------- JS");
 
-/* ==================================================================================================================== 
+/* ====================================================================================================================
 Une fonction:
+=============
     - est un bloc de code qui fait quelque chose (ex.: calculer un âge, afficher un texte, changer un élément html, changer une propriété css, ...)
     - peut renvoyer/retourner une valeur (pas obligatoire)
-    - peut recevoir un ou plusieurs paramètres (i.e. des données qu'on lui passe)  i.e. = Id est = c'est à dire
-    - a pour vocation d'être appelée(réutilisée) plusieurs fois (avec des paramètres différents).
-    
+    - peut recevoir un ou plusieurs paramètres (des données qu'on lui passe)
+    - a pour vocation d'être appelée (réutilisée) plusieurs fois (avec des paramètres différents).
+
     - doit être DÉCLARÉE :
-      - "déclare" à JavaScript qu'on veut utiliser une fonction dont on donne le nom et les paramètres que la fonction recevra:
-      - format: function foo(param1, param2) { ... }
-          - "foo" est nom de la fonction
-          - param1 et param2 sont les 2 paramètres qu'on DOIT passer à la fonction (on peut en passer de 0 à plusieurs) quand on l'appelle.
-          - les accolades contiennent le code qui sera exécutée à l'appel de la fonction (accolades = bloc de code)
+    -----------------------------------------------------------------------------------------------
+      - déclare à JavaScript qu'on crée une fonction dont on donne le nom, les paramètres qu'elle recevra, et le code à exécuter :
+      - syntaxe déclaration 1 : function foo(a, b) {...}
+      - syntaxe déclaration 2 : const foo = (a, b) => {...}
+      - "foo" est le nom de la fonction
+      - "a" et "b" sont les 2 VARIABLES qui vont contenir les paramètres qu'on DOIT passer à la fonction
+      (on peut en passer de 0 à plusieurs) quand on appellela fonction.
+      - les accolades contiennent le code qui sera exécuté à l'appel de la fonction (accolades = bloc de code)
       - JavaScript crée alors un emplacement mémoire pour contenir cette fonction MAIS il n'exécute pas la fonction (elle doit être appelée)
 
     - doit être APPELÉE ( ou invoquée) :
-      - syntaxe : const ret = foo(12, false)
-        =>  appelle la fonction "foo" en lui passant les arguments "12" et "false"
-            le 1er argument passé ("12") va dans le 1er paramètre de la fonction appelé (param1)
-            le 2nd argument passé ("false") va dans le 1er paramètre de la fonction appelé (param2)
+    -----------------------------------------------------------------------------------------------
+      - syntaxe appel : const ret = foo(12, false)
+        =>  appelle la fonction "foo" en lui passant en arguments les VALEURS "12" et "false"
+            - le 1er argument passé ("12") va dans la varible "a" (1er paramètre de la fonction appelée)
+            - le 2nd argument passé ("false") va dans la varible "b" (2nd paramètre de la fonction appelée)
         => le retour de la fonction est assigné à la variable "ret"
-        
-    
+
+        - syntaxe appel : const ret = foo(age, adult)
+        =>  appelle la fonction "foo" en lui passant en arguments les VARIABLES "age" et "adult"
+            - la valeur de la variable "age" (1er argument de l'appelant) va dans la variable "a" (1er paramètre de la fonction appelée)
+            - la valeur de la variable "adult" (2eme argument de l'appelant) va dans la variable "b" (2eme paramètre de la fonction appelée)
+
+        => le retour de la fonction est assigné à la variable "ret"
+
+    const foo = (a, b) => {...}   // la fonction travaille avec "a" et "b"
+                 ↑  ↑
+             foo(c, d)            // lors de l'appel : valeur de "c" va dans "a", valeur de "d" va dans "b"
+
 ==================================================================================================================== */
 
 console.log("... avant la définition de foo...");
@@ -56,7 +71,7 @@ function getCircleArea(radius) {
 // on appelle la fonction en lui passant un rayon de 20, puis on stocke le retour dans une constante "area"
 const radius = 20;
 const area = getCircleArea(radius); // appel la fonction en lui passant le contenu de la variable "radius". Stocke le résultat dans 'area'
-const result = Math.round(area);    // arrondi le résultat
+const result = Math.round(area); // arrondi le résultat
 
 // ancienne manière de construire une chaine
 console.log("surface cercle de rayon " + radius + "cm = " + result + "cm²");
@@ -69,8 +84,8 @@ console.log(`surface cercle de rayon ${radius}cm = ${result}cm²`);
 function addition(a, b = 1) {
   return a + b;
 }
-console.log("2+3=" + addition(2, 3));       // appelle la fonction en lui passant les 2 paramètres
-console.log("2+undefined=" + addition(2));  // appelle la fonction en lui passant le 1er paramètre (pour le 2nd, la valeur par défaut sera utilisé)
+console.log("2+3=" + addition(2, 3)); // appelle la fonction en lui passant les 2 paramètres
+console.log("2+undefined=" + addition(2)); // appelle la fonction en lui passant le 1er paramètre (pour le 2nd, la valeur par défaut sera utilisé)
 
 // --------------------------------------------------------------------------------------------------------------------
 // DECLARE une fonction appelé 'foo' et qui ne fait qu'écrire dans la console.
