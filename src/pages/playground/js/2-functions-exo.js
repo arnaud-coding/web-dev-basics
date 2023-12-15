@@ -29,11 +29,11 @@ const showPerson = ({ firstname, lastname, birthday, male }, fn = null) => {
 };
 
 /** Renvoi le titre du genre (Mr. pour true, Ms. pour false)
- * @param {boolean} male true pour un homme, false pour une femme
+ * @param {boolean} m true pour un homme, false pour une femme
  * @returns le titre du genre
  */
-const getGender = (male) => {
-  if (male) {
+const getGender = (m) => {
+  if (m) {
     return "Mr.";
   } else {
     return "Ms.";
