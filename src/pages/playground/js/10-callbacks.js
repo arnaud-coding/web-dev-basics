@@ -17,16 +17,9 @@
   ];
 
   /**
-   * The callback type expected, as expected by the foo function.
-   * @callback fooCallback
-   * @param {number} n the number to process
-   * @returns {void}
-   */
-
-  /**
    * Cette fonction utilise une fonction callback
    * @param {number} n le parametre qu'on attend
-   * @param {fooCallback} cb la fonction callback qu'on va rappeler dans cette fonction
+   * @param {function(number):void} cb la fonction callback qu'on va rappeler dans cette fonction
    */
   const foo = (n, cb) => {
     console.log("foo called with n=", n);
@@ -61,15 +54,9 @@
   const notes = [5, 10, 8, -9, -25, 19, 6, -4];
 
   /**
-   * @callback filterCallback The comparison function : Receive a number and returns true to keept it, false to reject
-   * @param {number} n the number to test
-   * @returns {boolean} true to keep the number, false to reject the number
-   */
-
-  /**
    * Trie un tableau de nombres selon un critère déterminé par une callback
    * @param {number[]} numbers - le tableau de nombres à filtrer
-   * @param {filterCallback} cb - la fonction qui filtre.
+   * @param {function(number):boolean} cb - la fonction qui filtre.
    * @returns le tableau filtré
    */
   const filter = (numbers, cb) => {
@@ -107,19 +94,13 @@
   // -------------------------------
 
   /**
-   * @callback filterObjectsCallback The filter callback function : Receives an objects and returns true to keept it, false to reject
-   * @param {object} obj the object to test
-   * @returns {boolean} true to keep the object, false to reject the object
-   */
-
-  /**
    * Trie un tableau de objets selon un critère déterminé par une callback
    * @param {object[]} objects - le tableau de objets à filtrer
-   * @param {filterObjectsCallback} cb - la fonction qui filtre.
+   * @param {function(object):boolean} cb - la fonction qui filtre.
    * @returns le tableau filtré
    */
   const filterObjects = (objects, cb) => {
-    // res contient le tableau filtré
+    // res contient le tableau filtré (le résultat) qu'on retournera à la fin 
     const res = [];
 
     // parcours le tableau original : dans la boucle, "obj" prendra successivement toutes les valeurs de "objects"
@@ -144,15 +125,9 @@
   // --------------------------------------
 
   /**
-   * @callback mapCallback The conversion function : Receive a person and returns its name
-   * @param {object} n the person to transorm
-   * @returns {string} the person's name
-   */
-
-  /**
    * transforme un tableau d'objets en un autre  tableau d'objets
    * @param {object[]} arr le tableau d'objets à transformer
-   * @param {mapCallback} cb la fonction à appeler pour transformer un objet
+   * @param {function(object): string} cb la fonction à appeler pour transformer un objet
    * @returns {string[]} tableau transformé
    */
   const map = (arr, cb) => {

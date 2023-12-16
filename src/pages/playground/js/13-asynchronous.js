@@ -20,29 +20,22 @@
     * IMPORTANT: On ne doit jamais bloquer longtemps un navaigateur !
     *            -> si une fonction dure logntemps, on doit l'appeler de manière ASYNCHRONE (appel non bloquant)
    --------------------------------------------------------------------------------------------------------------- */
-   
-   /**
-    * A demo function to demonstrate the synchronous behavior
-    * @param {number} n - the parameter to process
-    * @returns the given parameter multiplied by 3
-   */
+
+  /**
+   * A demo function to demonstrate the synchronous behavior
+   * @param {number} n - the parameter to process
+   * @returns the given parameter multiplied by 3
+  */
   const foo = (n) => {
     console.log("synchronous foo called with n=", n);
     return (n *= 3);
   };
-  
+
   // cet appel est bloquant : le console.log suivant sera executé seulement quand "foo" sera terminée ()
   console.log("BEFORE calling synchronous foo...");
   const triple = foo(1);
   console.log("AFTER foo synchronous call, triple=", triple);
   // ------------------------------------------------------------------------------------------------------------
-
-  /**
- * The callback that expect a number to process and return nothing
- * @callback nCallback
- * @param {number} n the number to process
- * @returns {void}
- */
 
   /** ---------------------------------------------------------------------------------------------
 *  appel asynchrone  : Callback                                                       (old fashion)          
@@ -55,21 +48,21 @@
   console.log("BEFORE calling setTimeout...");
   setTimeout(() => {
     // ici, c'est la callback anonyme qui sera rappelée par setTimeout dans 1s
-    console.log("setTimeout callback called"); 
+    console.log("setTimeout callback called");
   }, 1000);
   console.log("AFTER setTimeout synchronous call");
 
   /**
    * Une fonction asynchrone qui rappelera "cb" dans 2s sans bloquer l'appelant (qui lui-meme bloquerait le navigateur )
    * @param {number} n - the number to process
-   * @param {nCallback} cb - the callback to call, passing the given number
+   * @param {function(number):void} cb - the callback to call, passing the given number
    */
   const boo = (n, cb) => {
     // simule une vraie action asynchrone (comme requêtes internet, lectures fichiers...)
     // => le callback du settimeout est une fonction anonyme qui appelle 'cb'
     setTimeout(() => cb(n * 3), 2000);
   };
-  
+
   console.log("BEFORE calling boo...");
   boo(1, (x) => console.log("boo callback called, x=", x));
   console.log("AFTER boo call");
