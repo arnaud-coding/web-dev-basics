@@ -16,13 +16,14 @@ Une fonction:
       - déclare à JavaScript qu'on crée une fonction dont on donne le nom, les paramètres qu'elle recevra, et le code à exécuter :
       - syntaxe déclaration 1 : function foo(a, b) {...}
       - syntaxe déclaration 2 : const foo = (a, b) => {...}
-      - "foo" est le nom de la fonction
-      - "a" et "b" sont les 2 VARIABLES qui vont contenir les paramètres qu'on DOIT passer à la fonction
-      (on peut en passer de 0 à plusieurs) quand on appellela fonction.
-      - les accolades contiennent le code qui sera exécuté à l'appel de la fonction (accolades = bloc de code)
+        - "foo" est le nom de la fonction
+        - "a" et "b" sont 2 VARIABLES qui contiendront les valeurs des paramètres qu'on DOIT passer à la fonction lors de son appel.
+        - "a" et "b" sont locales à la fonction (elles n'existent pas en dehors) : Elles sont crées quand on appelle la fonction et sont détruites
+          quand on en sort (portée d'une variable = le bloc de code ou elle est définie)
+        - les accolades contiennent le corps de la function (le code qui sera exécuté à l'appel de la fonction)   (accolades = bloc de code)
       - JavaScript crée alors un emplacement mémoire pour contenir cette fonction MAIS il n'exécute pas la fonction (elle doit être appelée)
 
-    - doit être APPELÉE ( ou invoquée) :
+    - doit être APPELÉE ( ou invoquée ou exécutée) :
     -----------------------------------------------------------------------------------------------
       - syntaxe appel : const ret = foo(12, false)
         =>  appelle la fonction "foo" en lui passant en arguments les VALEURS "12" et "false"
@@ -31,13 +32,13 @@ Une fonction:
         => le retour de la fonction est assigné à la variable "ret"
 
         - syntaxe appel : const ret = foo(age, adult)
-        =>  appelle la fonction "foo" en lui passant en arguments les VARIABLES "age" et "adult"
+        =>  appelle la fonction "foo" en lui passant en arguments les valeurs des VARIABLES "age" et "adult"
             - la valeur de la variable "age" (1er argument de l'appelant) va dans la variable "a" (1er paramètre de la fonction appelée)
             - la valeur de la variable "adult" (2eme argument de l'appelant) va dans la variable "b" (2eme paramètre de la fonction appelée)
 
         => le retour de la fonction est assigné à la variable "ret"
 
-    const foo = (a, b) => {...}   // la fonction travaille avec "a" et "b"
+    const foo = (a, b) => {...}   // la fonction travaille avec les VARIABLES "a" et "b"
                  ↑  ↑
              foo(c, d)            // lors de l'appel : valeur de "c" va dans "a", valeur de "d" va dans "b"
 
