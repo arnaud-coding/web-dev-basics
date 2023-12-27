@@ -57,9 +57,9 @@
   /**
    * @typedef PokemonEvolution
    * @type {object}
-   * @property {string} pre
-   * @property {string} next
-   * @property {string | null} mega
+   * @property {any} pre
+   * @property {any} next
+   * @property {object[] | null} mega
    */
 
   /**
@@ -113,7 +113,7 @@
      * @return {number[]}
      */
     getMegasId = () => {
-      const megas = this.pokemons.filter((poke) => poke.evolution?.mega).map((poke) => poke.pokedexId);
+      const megas = this.pokemons.filter((pokemon) => pokemon.evolution?.mega).map((poke) => poke.pokedexId);
       console.log(`get ${megas.length} pokemons with a mega evolution`);
       return megas;
     };
@@ -134,24 +134,28 @@
 
   // va chercher tous les pokemons...
   const pokemons = await fetchPokemons();
-  // vérifie si pokemons est un tableau
-  if (Array.isArray(pokemons)) {
+  // vérifie si pokemons est un tableau qui contient au moins un élément
+  if (Array.isArray(pokemons) && pokemons.length) {
     // vérifie si le tableau des pokemons contient au moins un élément
-    if (pokemons.length) {
-      // à partir d'ici, ON EST SUR  d'avoir un tableau de pokemons
-      // ---------------------------------------------------------
-      const inspector = new PokemonInspector(pokemons);
+    // à partir d'ici, ON EST SUR  d'avoir un tableau de pokemons
+    // ---------------------------------------------------------
+    const inspector = new PokemonInspector(pokemons);
 
-      // chope tous pokemons qui ont une evo mega
-      const megasId = inspector.getMegasId();
-      console.log("megasId:", megasId);
+    // chope tous pokemons qui ont une evo mega
+    const megasId = inspector.getMegasId();
+    console.log("megasId:", megasId);
 
-      // const id = megasId[0];
-      // const pokemon = getPokemonById(pokemons, id);
-      // console.log("pokemon:", pokemon?.name.fr, pokemon?.evolution?.mega?.[0]);
-      for (const id of megasId) {
-        const pokemon = inspector.getPokemonById(id);
-        console.log("pokemon:", pokemon?.name.fr, pokemon?.evolution?.mega?.[0]);
+    // liste tous les pokemons ayant une méga-évolution
+    for (const id of megasId) {
+      const pokemon = inspector.getPokemonById(id);
+      if (pokemon !== undefined) {
+        const megas = pokemon.evolution?.mega;
+        let megaEvos = "";
+        if (Array.isArray(megas) && megas.length) {
+          const orbes = megas.map((mega) => mega.orbe);
+          megaEvos = orbes.join(", ");
+        }
+        console.log(`pokemon ${pokemon.pokedexId}, name = ${pokemon.name.fr}, mega evos = ${megaEvos} `);
       }
     }
   }
