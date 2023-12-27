@@ -43,6 +43,9 @@
 
   // ===============================================================
 
+  // Définition des types de données renvoyées par l'API
+  // (on a crée manuellement ces types en observqnt le retour d'un appel à l'API)
+
   /**
    * @typedef PokemonName
    * @type {object}
@@ -69,31 +72,36 @@
    * @property {PokemonEvolution | null} evolution
    */
 
+  // ===============================================================
+
   /**
    * va chercher sur internet tous les pokémons
    * @returns {Promise<Pokemon[]>} promesse d'un tableau de pokémons
    */
   const fetchPokemons = async () => {
+    // allez hop, va chercher...
     const response = await fetch("https://tyradex.tech/api/v1/pokemon");
     if (response.ok) {
+      // transforme la réponse en un object de type JSON
       const pokemons = await response.json();
       console.log(`Fetched ${pokemons.length} pokemons`);
       return pokemons;
     }
-    console.error("erreur fetch", response.statusText);
+    console.error("erreur fetch pokemons", response.status, response.statusText);
     return [];
   };
 
   // -------------------------------------------------
   // Définition d'une classe Inspector
   // -------------------------------------------------
+
   /**
    * Inspecte les pokemon
    */
   class PokemonInspector {
     /**
      * Instancie l'inspecteur avec un tableau de pokemens
-     * @param {Pokemon[]} pokemons
+     * @param {Pokemon[]} pokemons le tableau de pokemons à inspecter
      */
     constructor(pokemons) {
       /** @type {Pokemon[]} */
