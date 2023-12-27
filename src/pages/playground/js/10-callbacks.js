@@ -9,13 +9,6 @@
    * - "boo" rappellera la fonction "cb" quand elle le voudra
    * -------------------------------------------------------------------------------------------------------- */
 
-  const family = [
-    { firstname: "Agnès", lastname: "Berthollet", male: false, birthday: new Date(1967, 1, 27) },
-    { lastname: "Berthollet", firstname: "Loïc", male: true, birthday: new Date(1967, 2, 17) },
-    { firstname: "Thomas", lastname: "Berthollet", male: true, birthday: new Date(1994, 8, 25) },
-    { firstname: "Arnaud", lastname: "Berthollet", male: true, birthday: new Date(1995, 7, 22) }
-  ];
-
   /**
    * Cette fonction utilise une fonction callback
    * @param {number} n le parametre qu'on attend
@@ -93,6 +86,15 @@
 
   // -------------------------------
 
+  const family = [
+    { firstname: "Agnès", lastname: "Berthollet", male: false, birthday: new Date(1967, 1, 27) },
+    { lastname: "Berthollet", firstname: "Loïc", male: true, birthday: new Date(1967, 2, 17) },
+    { firstname: "Thomas", lastname: "Berthollet", male: true, birthday: new Date(1994, 8, 25) },
+    { firstname: "Arnaud", lastname: "Berthollet", male: true, birthday: new Date(1995, 7, 22) },
+    { firstname: "Pierre", lastname: "Laurent", male: true, birthday: new Date(1940, 0, 27) },
+    { firstname: "Marie-Claude", lastname: "Laurent", male: false, birthday: new Date(1945, 10, 26) }
+  ];
+
   /**
    * Trie un tableau de objets selon un critère déterminé par une callback
    * @param {object[]} objects - le tableau de objets à filtrer
@@ -100,7 +102,7 @@
    * @returns le tableau filtré
    */
   const filterObjects = (objects, cb) => {
-    // res contient le tableau filtré (le résultat) qu'on retournera à la fin 
+    // res contient le tableau filtré (le résultat) qu'on retournera à la fin
     const res = [];
 
     // parcours le tableau original : dans la boucle, "obj" prendra successivement toutes les valeurs de "objects"
@@ -143,11 +145,11 @@
   const names = map(family, (person) => {
     return `${person.firstname} ${person.lastname}`; // ou : person.firstname + " " + person.lastname;
   });
-  console.log("sorted:", names);
+  console.log("mapped custom:", names);
 
   // la meme chose que notre fonction map, mais avec la fonction map des tableaux JS
   const mapped = family.map((person) => {
     return person.firstname;
   });
-  console.log("mapped ~ mapped:", mapped);
+  console.log("mapped JS:", mapped);
 })();
