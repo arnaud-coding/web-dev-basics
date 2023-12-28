@@ -3,42 +3,40 @@
 /** ===========================================================================
  * * JS types - String
  ============================================================================== */
- //#region string type
+ // #region string type
  // TODO
  // https://www.w3schools.com/jsref/jsref_obj_string.asp
- //#endregion
- 
+ // #endregion
+
  /** ===========================================================================
   * * JS types - Array
  ============================================================================== */
- //#region array type
+ // #region array type
  // TODO
  // https://www.w3schools.com/jsref/jsref_obj_array.asp
- //#endregion
- 
+ // #endregion
+
  /** ===========================================================================
   * * JS types - Date
  ============================================================================== */
- //#region date type
+ // #region date type
  // TODO
- //https://www.w3schools.com/jsref/jsref_obj_date.asp
- //#endregion
- 
+ // https://www.w3schools.com/jsref/jsref_obj_date.asp
+ // #endregion
+
  /** ===========================================================================
   * * JS types - Number
  ============================================================================== */
- //#region number type
+ // #region number type
  // TODO
  // https://www.w3schools.com/jsref/jsref_obj_number.asp
- //#endregion
- 
- 
+ // #endregion
+
+
  /** ===========================================================================
   * * JS types - Regular Expressions (regex)
  ============================================================================== */
- //#region regex type
+ // #region regex type
  // TODO
  // https://www.w3schools.com/jsref/jsref_obj_regexp.asp
- //#endregion
-
- 
+ // #endregion
