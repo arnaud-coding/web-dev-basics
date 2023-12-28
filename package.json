@@ -1,34 +1,39 @@
 {
-    "name": "web-dev-basics",
-    "version": "1.0.0",
-    "description": "mon aprentissage",
-    "type": "module",
-    "main": "index.js",
-    "scripts": {
-        "dev": "node ./src/pages/playground/js/1-variables.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/arnaud-coding/web-dev-basics.git"
-    },
-    "keywords": [
-        "web"
-    ],
-    "author": "Arnaud Berthollet",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/arnaud-coding/web-dev-basics/issues"
-    },
-    "homepage": "https://github.com/arnaud-coding/web-dev-basics#readme",
-    "devDependencies": {
-        "@typescript-eslint/parser": "^6.8.0",
-        "eslint": "^8.52.0",
-        "eslint-config-prettier": "^9.0.0",
-        "eslint-config-standard": "^17.1.0",
-        "eslint-plugin-import": "^2.28.1",
-        "eslint-plugin-n": "^16.2.0",
-        "eslint-plugin-promise": "^6.1.1",
-        "prettier": "^3.0.3",
-        "typescript": "^5.2.2"
-    }
+  "name": "web-dev-basics",
+  "version": "1.0.0",
+  "description": "mon aprentissage",
+  "type": "module",
+  "scripts": {
+    "dev": "vite serve src/",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arnaud-coding/web-dev-basics.git"
+  },
+  "keywords": [
+    "web",
+    "learning",
+    "HTML",
+    "CSS",
+    "JS"
+  ],
+  "author": "Arnaud Berthollet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arnaud-coding/web-dev-basics/issues"
+  },
+  "homepage": "https://github.com/arnaud-coding/web-dev-basics#readme",
+  "devDependencies": {
+    "@typescript-eslint/parser": "^6.16.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.5.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "prettier": "^3.1.1",
+    "vite": "^5.0.8"
+  }
 }
