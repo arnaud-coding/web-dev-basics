@@ -4,21 +4,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="pokemons.css" />
+  <!-- <link rel="stylesheet" href="pokemons.css" /> -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
   <script type="module" src="pokemons.js" defer></script>
   <title>Pokemon Explorer</title>
 </head>
 
 <body>
-  <h1>Explorateur de Pokemons</h1>
+  <div class="w3-container">
+    <div class="w3-container w3-green">
+      <h1>Explorateur de Pokemons</h1>
+    </div>
 
-  <label for="pokemon-search">Filtre de pokemon par nom:</label>
-  <input type="text" name="pokemon-search" id="pokemon-search" placeholder="ex. bulbi">
+    <!-- filtre -->
+    <form class="w3-container">
+      <p>
+      <label for="pokemon-search">Filtre par nom:</label>
+      <input class="w3-input" type="text" name="pokemon-search" id="pokemon-search" placeholder="ex. bulbi">
+    </form>
 
-  <h2>Tableau des Pokemons</h2>
+    <!-- tableau des pokemons filtrés  -->
+    <table class="w3-table-all w3-hoverable w3-card-4">
+      <thead>
+        <tr class="w3-pale-green">
+          <th>Nom</th>
+          <th>Catégorie</th>
+          <th class="w3-center">Génération</th>
+          <th>Type(s)</th>
+        </tr>
+      </thead>
+      <tbody id="pokemon-tbody">
 
-  <label>Section DEBUG</label><br>
-  <textarea id="dbg-area" id="txt-lorem" cols="80" rows="9"></textarea>
-</body>
+      </tbody>
+    </table>
+
+    <!-- footer -->
+    <div class="w3-container w3-pale-green w3-card-4">
+      <h5>footer</h2>
+      </div>
+
+      <br><label>Section DEBUG</label><br>
+      <textarea id="dbg-area" id="txt-lorem" cols="80" rows="9"></textarea>
+    </div>
+
+    <!-- modèle de ligne pokemon -->
+    <template id="pokemon-row-template">
+      <tr>
+        <td>0: name</td>
+        <td>1: category</td>
+        <td class="w3-center">2: generation</td>
+        <td>3: type(s)</td>
+      </tr>
+    </template>
+    </body>
 
 </html>

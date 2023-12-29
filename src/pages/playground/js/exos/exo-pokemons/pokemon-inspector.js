@@ -25,5 +25,5 @@ export class PokemonInspector {
    * @param {string} name le nom francais du pokemon qu'on cherche
    * @returns {Pokemon | undefined} le pokemon si trouvé, undefined sinon
    */
-  getPokemonByName = (name) => this.pokemons.find(pokemon => pokemon.name.fr === name)
+  getPokemonByName = (name) => this.pokemons.find(pokemon => pokemon.name.fr.toLowerCase() === name.toLowerCase())
 }

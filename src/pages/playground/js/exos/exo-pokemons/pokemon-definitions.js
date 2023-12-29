@@ -18,7 +18,14 @@
  */
 
 /**
- * @typedef Sprites 
+ * @typedef PokemonType
+ * @type {object}
+ * @property {string} name
+ * @property {string} image
+ */
+
+/**
+ * @typedef Sprites
  * @type {object}
  * @property {string} regular le chemin d'accès vers l'image normal
  * @property {string | null} shiny le chemin d'accès vers son image 'timide'
@@ -30,8 +37,9 @@
  * @type {object}
  * @property {number} pokedexId l'identifiant
  * @property {number} generation la génération
- * @property {string} category la catégorie
+ * @property {string} category la catégorie (graine, lézard, ...)
  * @property {PokemonName} name le nom; en 3 langues (fr, en, jp)
+ * @property {PokemonType[] | null} types les types (plante, poison, ...)
  * @property {Sprites} sprites les images
  * @property {PokemonEvolution | null} evolution
  */
