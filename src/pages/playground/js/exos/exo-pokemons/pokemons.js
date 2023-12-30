@@ -1,24 +1,45 @@
 import { fetchPokemons } from './pokemon-api'
 import { PokemonInspector } from './pokemon-inspector'
 
+const pokemonTableBodyElement = document.getElementById("pokemon-tbody")
+
+// ajout gestionnaires d'évènement
+const filterElement = document.getElementById("pokemon-search")
+if (filterElement instanceof HTMLInputElement) {
+  filterElement.addEventListener("input", ()=>{
+    // cette fonction anonyme est appelée à chaque nouveau caractère tapé dans le filtre : on récupère le filtre
+    const filter = filterElement.value
+    filterPokemons(filter)
+  })
+}
+
 /** Tableau de pokemons chargés en mémoire */
 const pokemons = await fetchPokemons()
 
 /** l'inspecteur pour manipuler les pokemons */
 const inspector = new PokemonInspector(pokemons)
 
-// parcours le tableau mémoire des pokémons
-// eslint-disable-next-line no-unreachable-loop
-for (const pokemon of pokemons) {
-  // filtrer les pokemon bug
-  if (pokemon.types === null){
-    continue
-  }
-  // ajouter le pokémon courant dans une nouvelle ligne du tableau HTML
-  addPokemonRow(pokemon)
+createPokemonTable()
 
-  if (pokemon.name.fr === "Dracaufeu") {
-    // break //! temporaire
+// ----------------------------------------------------------------------------
+// Private functions
+// ----------------------------------------------------------------------------
+
+function createPokemonTable() {
+  // parcours le tableau mémoire des pokémons pour les afficher dans le tableau HTML
+  // eslint-disable-next-line no-unreachable-loop
+  for (const pokemon of pokemons) {
+    // filtrer les pokemon bug
+    if (pokemon.types === null){
+      continue
+    }
+
+    // ajouter le pokémon courant dans une nouvelle ligne du tableau HTML
+    addPokemonRow(pokemon)
+
+    if (pokemon.name.fr === "Dracaufeu") {
+      // break //! temporaire
+    }
   }
 }
 
@@ -96,8 +117,49 @@ function setPokemonRow(pokemon, row) {
  * @param {HTMLTableRowElement} row
  */
 function addRowTemplate(row) {
-  const tbody = document.getElementById("pokemon-tbody")
-  if (tbody !== null) {
-    tbody.appendChild(row)
+  if (pokemonTableBodyElement !== null) {
+    pokemonTableBodyElement.appendChild(row)
   }
+}
+
+/**
+ * cache les lignes du tableau de pokemons en fonction du flitre
+ * @param {string} filter
+ */
+function filterPokemons(filter) {
+  /**
+   * algoritme :
+   *  - parcourir chaque ligne du tableau
+   *  - pour chaque ligne :
+   *    - récupérer le nom du pokemon depuis son <td>
+   *    - vérifier si le nom contient le filtre
+   *    - montrer/cacher la ligne
+   */
+
+  // parcours chaque ligne du tableau
+  const rows = pokemonTableBodyElement?.getElementsByTagName("tr")
+  if (rows instanceof HTMLCollection && rows.length > 1) {
+    for (const row of rows) {
+
+      // récupère le nom du pokemon de cette ligne
+      const cells = row.getElementsByTagName("td")
+      if (cells instanceof HTMLCollection && cells.length > 1) {
+        const name = cells[0].textContent
+
+        // vérifier si nom contient filtre
+        if (typeof name === 'string') {
+          if (name.toUpperCase().includes(filter.toUpperCase())) {
+            // montrer la ligne
+            row.style.display = ""
+
+          } else {
+            // cacher la ligne
+            row.style.display = "none"
+          }
+        }
+      }
+
+    }
+  }
+
 }
