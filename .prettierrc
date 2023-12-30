@@ -1,0 +1,6 @@
+{
+    "files": ["*.html", "*.js", "*.css"],
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+}
