@@ -86,8 +86,8 @@ function setPokemonRow(pokemon, row) {
     setCellValue(0, pokemon.name.fr)
     setCellValue(1, pokemon.category)
     setCellValue(2, pokemon.generation)
-    setCellValue(3, pokemon.types?.map((type) => type.name).join(", "))
-    setCellValue(4, getEvolutionDescription(pokemon.evolution))
+    setCellValue(3,inspector.getTypesDescription(pokemon.types))
+    setCellValue(4, inspector.getEvolutionsDescription(pokemon.evolution))
   }
 }
 
@@ -102,30 +102,7 @@ function addRowTemplate(row) {
   }
 }
 
-/**
- * renvoie les évolutions sous la forme  "Herbizzare (16), Florizarre (32)"
- * @param {PokemonEvolution | null} evo
- * @returns {string} les évolutions
- */
-function getEvolutionDescription(evo) {
 
-  if (evo === null) {
-    return ""
-  }
-
-  return evo?.next?.map((item)=>{
-    let level
-    if (item.condition.startsWith("Niveau")) {
-      // on a condition = "Niveau 16", on veut extraire le lvl
-      level = item.condition.split(" ")[1]
-    } else {
-      // on a condition = "Pierre soleil", on veut la garder telle qu'elle
-      level = item.condition
-    }
-    const res = `${item.name} (${level})`
-    return res
-  }).join(", ") ?? ''
-}
 
 
 // debug tmp

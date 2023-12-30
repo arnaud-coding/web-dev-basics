@@ -26,4 +26,38 @@ export class PokemonInspector {
    * @returns {Pokemon | undefined} le pokemon si trouvé, undefined sinon
    */
   getPokemonByName = (name) => this.pokemons.find(pokemon => pokemon.name.fr.toLowerCase() === name.toLowerCase())
+
+  /**
+   * renvoie les évolutions sous la forme  "Herbizzare (16), Florizarre (32)"
+   * @param {PokemonEvolution | null} evo
+   * @returns {string} les évolutions
+   */
+  getEvolutionsDescription(evo) {
+
+    if (evo === null) {
+      return ""
+    }
+
+    return evo?.next?.map((item)=>{
+      let level
+      if (item.condition.startsWith("Niveau")) {
+        // on a condition = "Niveau 16", on veut extraire le lvl
+        level = item.condition.split(" ")[1]
+      } else {
+        // on a condition = "Pierre soleil", on veut la garder telle qu'elle
+        level = item.condition
+      }
+      const res = `${item.name} (${level})`
+      return res
+    }).join(", ") ?? ''
+  }
+
+  /**
+   * renvoies les types sous la forme "plante, poison", ou ""
+   * @param {PokemonType[] | null} types
+   * @returns {string}
+   */
+  getTypesDescription(types) {
+    return types?.map((type) => type.name).join(", ") ?? ""
+  }
 }
