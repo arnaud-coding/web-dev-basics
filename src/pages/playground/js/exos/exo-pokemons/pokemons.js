@@ -101,13 +101,3 @@ function addRowTemplate(row) {
     tbody.appendChild(row)
   }
 }
-
-
-
-
-// debug tmp
-const pokemon = inspector.getPokemonByName('Mystherbe')
-const dbg = document.getElementById('dbg-area')
-if (dbg instanceof HTMLTextAreaElement) {
-  dbg.innerHTML = JSON.stringify(pokemon, null, 2)
-}
