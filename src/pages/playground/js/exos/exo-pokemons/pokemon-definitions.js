@@ -10,10 +10,18 @@
  */
 
 /**
+ * @typedef PokemonEvolutionItem
+ * @type {object}
+ * @property {number} pokedexId
+ * @property {string} name
+ * @property {string} condition
+ */
+
+/**
  * @typedef PokemonEvolution
  * @type {object}
- * @property {any} pre
- * @property {any} next
+ * @property {PokemonEvolutionItem[] | null} pre
+ * @property {PokemonEvolutionItem[] | null} next
  * @property {object[] | null} mega
  */
 
