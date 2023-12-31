@@ -3,23 +3,36 @@ import { PokemonInspector } from './pokemon-inspector'
 
 const pokemonTableBodyElement = document.getElementById("pokemon-tbody")
 
-// ajout gestionnaires d'évènement
-const filterElement = document.getElementById("pokemon-search")
-if (filterElement instanceof HTMLInputElement) {
-  filterElement.addEventListener("input", ()=>{
-    // cette fonction anonyme est appelée à chaque nouveau caractère tapé dans le filtre : on récupère le filtre
-    const filter = filterElement.value
-    filterPokemons(filter)
-  })
-}
-
 /** Tableau de pokemons chargés en mémoire */
 const pokemons = await fetchPokemons()
 
 /** l'inspecteur pour manipuler les pokemons */
 const inspector = new PokemonInspector(pokemons)
 
+// remplit la boite de séléction du filtre génération
+setGenerationsFilter(inspector.getGenerationsNumber())
+
 createPokemonTable()
+
+// ajout gestionnaires d'évènement
+let nameFilter = ""
+const nameFilterElement = document.getElementById("name-filter")
+if (nameFilterElement instanceof HTMLInputElement) {
+  nameFilterElement.addEventListener("input", ()=>{
+    // cette fonction anonyme est appelée à chaque nouveau caractère tapé dans le filtre : on récupère le filtre
+    nameFilter = nameFilterElement.value
+    filterPokemons()
+  })
+}
+
+let generationFilter = 0
+const generationFilterElement = document.getElementById("generation-filter")
+if (generationFilterElement instanceof HTMLSelectElement) {
+  generationFilterElement.addEventListener("input", ()=>{
+    generationFilter = generationFilterElement.selectedIndex
+    filterPokemons()
+  })
+}
 
 // ----------------------------------------------------------------------------
 // Private functions
@@ -27,7 +40,6 @@ createPokemonTable()
 
 function createPokemonTable() {
   // parcours le tableau mémoire des pokémons pour les afficher dans le tableau HTML
-  // eslint-disable-next-line no-unreachable-loop
   for (const pokemon of pokemons) {
     // filtrer les pokemon bug
     if (pokemon.types === null){
@@ -36,10 +48,6 @@ function createPokemonTable() {
 
     // ajouter le pokémon courant dans une nouvelle ligne du tableau HTML
     addPokemonRow(pokemon)
-
-    if (pokemon.name.fr === "Dracaufeu") {
-      // break //! temporaire
-    }
   }
 }
 
@@ -49,25 +57,25 @@ function createPokemonTable() {
  */
 function addPokemonRow(pokemon) {
   // créer ligne tableau html
-  const row = createEmptyPokemonRow()
-  if (row === null) {
-    return
+  const row = cloneTemplate("pokemon-row-template")
+  if (row instanceof HTMLTableRowElement) {
+
+    // placer les données du pokemon courant dans la ligne
+    setPokemonRow(pokemon, row)
+
+    // ajouter ligne
+    addRowTemplate(row)
   }
-
-  // placer les données du pokemon courant dans la ligne
-  setPokemonRow(pokemon, row)
-
-  // ajouter ligne
-  addRowTemplate(row)
 
 }
 
 /**
- * crée une ligne vide de pokemon
- * @returns {HTMLTableRowElement | null}
+ * clone le premier enfant du template dont on donne l'id
+ * @param {string} templateId
+ * @returns
  */
-function createEmptyPokemonRow() {
-  const rowTemplate = document.getElementById("pokemon-row-template")
+function cloneTemplate(templateId) {
+  const rowTemplate = document.getElementById(templateId)
 
   // code qui marche, plus rapide mais pas tres propre :
   // return rowTemplate?.content?.firstElementChild
@@ -76,16 +84,16 @@ function createEmptyPokemonRow() {
     const fragment = rowTemplate.content
     if (fragment instanceof DocumentFragment) {
       const child = fragment.firstElementChild
-      if (child instanceof HTMLTableRowElement) {
+      if (child instanceof HTMLElement) {
         const clone = child.cloneNode(true)
-        if (clone instanceof HTMLTableRowElement) {
+        if (clone instanceof HTMLElement) {
           return clone
         }
       }
     }
   }
 
-  console.error("pokemon row template not found")
+  console.error(`template ${templateId} not found`)
   return null
 }
 
@@ -124,9 +132,8 @@ function addRowTemplate(row) {
 
 /**
  * cache les lignes du tableau de pokemons en fonction du flitre
- * @param {string} filter
  */
-function filterPokemons(filter) {
+function filterPokemons() {
   /**
    * algoritme :
    *  - parcourir chaque ligne du tableau
@@ -141,25 +148,53 @@ function filterPokemons(filter) {
   if (rows instanceof HTMLCollection && rows.length > 1) {
     for (const row of rows) {
 
-      // récupère le nom du pokemon de cette ligne
+      // récupère toutes les cellules de la ligne
       const cells = row.getElementsByTagName("td")
       if (cells instanceof HTMLCollection && cells.length > 1) {
-        const name = cells[0].textContent
 
         // vérifier si nom contient filtre
+        let hasNameFilter = true
+        const name = cells[0].textContent
         if (typeof name === 'string') {
-          if (name.toUpperCase().includes(filter.toUpperCase())) {
-            // montrer la ligne
-            row.style.display = ""
-
-          } else {
-            // cacher la ligne
-            row.style.display = "none"
-          }
+          hasNameFilter = name.toUpperCase().includes(nameFilter.toUpperCase())
         }
+
+        // vérifier si generation correspon au filtre
+        let hasGenerationFilter = true
+        const generation = cells[2].textContent
+        if (typeof generation === 'string') {
+          hasGenerationFilter = generationFilter === 0 || generationFilter.toString() === generation
+        }
+
+        // montrer/cacher la ligne
+        row.style.display = (hasNameFilter && hasGenerationFilter) ? "" : "none"
       }
 
     }
   }
 
+}
+
+/**
+ * ajoute les générations dans <select>
+ * @param {number} generations le nombre de générations
+ */
+function setGenerationsFilter(generations) {
+  for (let generation = 1; generation <= generations; generation++) {
+    // ------ Créer une nouvelle <option>
+    //    - trouver le <template> et  cloner l'<option>
+    const option = cloneTemplate("generation-option-template")
+
+    //    - mettre à jour les valeurs du clone
+    if (option instanceof HTMLOptionElement) {
+      option.value = generation.toString()
+      option.innerText = generation.toString()
+
+      // ----- ajouter l' <option> à <select>
+      const filter = document.getElementById("generation-filter")
+      if (filter instanceof HTMLSelectElement) {
+        filter.appendChild(option)
+      }
+    }
+  }
 }

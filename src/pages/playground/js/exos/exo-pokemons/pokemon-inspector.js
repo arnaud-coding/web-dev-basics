@@ -60,4 +60,18 @@ export class PokemonInspector {
   getTypesDescription(types) {
     return types?.map((type) => type.name).join(", ") ?? ""
   }
+
+  /**
+   * retourne le nombre de générations
+   * @return {number}
+   */
+  getGenerationsNumber() {
+    let gen = 0
+    for (const pokemon of this.pokemons) {
+      if (pokemon.generation > gen) {
+        gen = pokemon.generation
+      }
+    }
+    return gen
+  }
 }
