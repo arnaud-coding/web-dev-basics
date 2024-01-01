@@ -143,30 +143,30 @@ function filterPokemons() {
    *    - montrer/cacher la ligne
    */
 
-  // parcours chaque ligne du tableau
-  const rows = pokemonTableBodyElement?.getElementsByTagName("tr")
-  if (rows instanceof HTMLCollection && rows.length > 1) {
-    for (const row of rows) {
+  // ---------- parcours chaque ligne du tableau
+  const rows = pokemonTableBodyElement?.getElementsByTagName("tr")  // récupère toutes les lignes du tableau
+  if (rows instanceof HTMLCollection && rows.length > 1) {          // si des lignes existent...
+    for (const row of rows) {                                       // parcours toutes les lignes une à une...
 
-      // récupère toutes les cellules de la ligne
+      // ----- récupère toutes les cellules de la ligne courante
       const cells = row.getElementsByTagName("td")
       if (cells instanceof HTMLCollection && cells.length > 1) {
 
-        // vérifier si nom contient filtre
+        // ----- vérifier si nom contient filtre de nom
         let hasNameFilter = true
         const name = cells[0].textContent
         if (typeof name === 'string') {
           hasNameFilter = name.toUpperCase().includes(nameFilter.toUpperCase())
         }
 
-        // vérifier si generation correspon au filtre
+        // -----vérifier si generation correspond au filtre de generation
         let hasGenerationFilter = true
         const generation = cells[2].textContent
         if (typeof generation === 'string') {
           hasGenerationFilter = generationFilter === 0 || generationFilter.toString() === generation
         }
 
-        // montrer/cacher la ligne
+        // montrer/cacher la ligne courante
         row.style.display = (hasNameFilter && hasGenerationFilter) ? "" : "none"
       }
 
