@@ -7,7 +7,7 @@ const TABLE_COL_GENERATION = 2
 const TABLE_COL_TYPES = 3
 const TABLE_COL_EVOLUTIONS = 4
 
-const pokemonTableBodyElement = document.getElementById("pokemon-tbody")
+const tableBodyElement = document.getElementById("pokemon-tbody")
 
 /** Tableau de pokemons chargés en mémoire */
 const pokemons = await fetchPokemons()
@@ -53,6 +53,37 @@ if (typesFilterElement instanceof HTMLInputElement) {
     typesFilter = typesFilterElement.value.toUpperCase()
     filterPokemons()
   })
+}
+
+if (tableBodyElement instanceof HTMLTableSectionElement) {
+  //! todo -> temporaire
+  setTimeout(() => {
+    showPokemonDetails('Carapuce')
+  }, 500);
+
+  tableBodyElement.addEventListener("click", (event) => {
+    // récupère la cellule sur laquelle le client a cliqué
+    const td = event.target
+    if (td instanceof HTMLTableCellElement ){
+      // récupère la ligne complète (le parent), puis le premier enfant (cellule "name")
+      const tdName = td.parentElement?.firstElementChild
+      if ( tdName instanceof HTMLTableCellElement) {
+        const name = tdName.innerText
+        showPokemonDetails(name)
+      }
+    }
+  })
+}
+
+const close = document.getElementById("pokemon-close")
+if (close instanceof HTMLElement) {
+  close.addEventListener("click", () => {
+    const details = document.getElementById("pokemon-details")
+    if (details instanceof HTMLElement) {
+      details.hidden = true
+    }
+  })
+
 }
 
 // ----------------------------------------------------------------------------
@@ -146,8 +177,8 @@ function setPokemonRow(pokemon, row) {
  * @param {HTMLTableRowElement} row
  */
 function addRowTemplate(row) {
-  if (pokemonTableBodyElement !== null) {
-    pokemonTableBodyElement.appendChild(row)
+  if (tableBodyElement !== null) {
+    tableBodyElement.appendChild(row)
   }
 }
 
@@ -165,7 +196,7 @@ function filterPokemons() {
    */
 
   // ---------- parcours chaque ligne du tableau
-  const rows = pokemonTableBodyElement?.getElementsByTagName("tr")  // récupère toutes les lignes du tableau
+  const rows = tableBodyElement?.getElementsByTagName("tr")  // récupère toutes les lignes du tableau
   if (rows instanceof HTMLCollection && rows.length > 1) {          // si des lignes existent...
     for (const row of rows) {                                       // parcours toutes les lignes une à une...
 
@@ -224,5 +255,30 @@ function setGenerationsFilter(generations) {
         filter.appendChild(option)
       }
     }
+  }
+}
+
+/**
+ * affiche les détails d'un pokemon sélectionné
+ * @param {string} pokemonName le nom du pokemon
+ */
+function showPokemonDetails(pokemonName) {
+  const pokemon = inspector.getPokemonByName(pokemonName)
+  if (pokemon) {
+    // montre la carte des détails
+    const details = document.getElementById("pokemon-details")
+      if (details instanceof HTMLElement) {
+        details.hidden = false
+
+        const nameEl = document.getElementById("pokemon-name")
+        if (nameEl instanceof HTMLElement) {
+          nameEl.innerHTML = `<strong>${pokemonName}</strong> ${pokemon.name.en}`
+        }
+
+        const img = document.getElementById("pokemon-img")
+        if (img instanceof HTMLImageElement) {
+          img.src = pokemon.sprites.regular
+        }
+      }
   }
 }
