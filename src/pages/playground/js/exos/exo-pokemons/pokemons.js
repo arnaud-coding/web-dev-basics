@@ -1,6 +1,12 @@
 import { fetchPokemons } from './pokemon-api'
 import { PokemonInspector } from './pokemon-inspector'
 
+const TABLE_COL_NAME = 0
+const TABLE_COL_CATEGORY = 1
+const TABLE_COL_GENERATION = 2
+const TABLE_COL_TYPES = 3
+const TABLE_COL_EVOLUTIONS = 4
+
 const pokemonTableBodyElement = document.getElementById("pokemon-tbody")
 
 /** Tableau de pokemons chargés en mémoire */
@@ -14,7 +20,11 @@ setGenerationsFilter(inspector.getGenerationsNumber())
 
 createPokemonTable()
 
-// ajout gestionnaires d'évènement
+// ----------------------------------------------------------------------------
+// ajout gestionnaires d'évènement pour tous les filtres
+// ----------------------------------------------------------------------------
+
+// gestionnaire d'évènement pour filtre sur les noms
 let nameFilter = ""
 const nameFilterElement = document.getElementById("name-filter")
 if (nameFilterElement instanceof HTMLInputElement) {
@@ -25,11 +35,22 @@ if (nameFilterElement instanceof HTMLInputElement) {
   })
 }
 
+// gestionnaire d'évènement pour filtre sur les gnérations
 let generationFilter = 0
 const generationFilterElement = document.getElementById("generation-filter")
 if (generationFilterElement instanceof HTMLSelectElement) {
-  generationFilterElement.addEventListener("input", ()=>{
+  generationFilterElement.addEventListener("input", () => {
     generationFilter = generationFilterElement.selectedIndex
+    filterPokemons()
+  })
+}
+
+// gestionnaire d'évènement pour filtre sur les types
+let typesFilter = ""
+const typesFilterElement = document.getElementById("types-filter")
+if (typesFilterElement instanceof HTMLInputElement) {
+  typesFilterElement.addEventListener("input", () => {
+    typesFilter = typesFilterElement.value
     filterPokemons()
   })
 }
@@ -112,11 +133,11 @@ function setPokemonRow(pokemon, row) {
         cell.innerText = value
       }
     }
-    setCellValue(0, pokemon.name.fr)
-    setCellValue(1, pokemon.category)
-    setCellValue(2, pokemon.generation)
-    setCellValue(3,inspector.getTypesDescription(pokemon.types))
-    setCellValue(4, inspector.getEvolutionsDescription(pokemon.evolution))
+    setCellValue(TABLE_COL_NAME, pokemon.name.fr)
+    setCellValue(TABLE_COL_CATEGORY, pokemon.category)
+    setCellValue(TABLE_COL_GENERATION, pokemon.generation)
+    setCellValue(TABLE_COL_TYPES,inspector.getTypesDescription(pokemon.types))
+    setCellValue(TABLE_COL_EVOLUTIONS, inspector.getEvolutionsDescription(pokemon.evolution))
   }
 }
 
@@ -153,21 +174,28 @@ function filterPokemons() {
       if (cells instanceof HTMLCollection && cells.length > 1) {
 
         // ----- vérifier si nom contient filtre de nom
-        let hasNameFilter = true
-        const name = cells[0].textContent
+        let matchNameFilter = true
+        const name = cells[TABLE_COL_NAME].textContent
         if (typeof name === 'string') {
-          hasNameFilter = name.toUpperCase().includes(nameFilter.toUpperCase())
+          matchNameFilter = name.toUpperCase().includes(nameFilter.toUpperCase())
         }
 
         // -----vérifier si generation correspond au filtre de generation
-        let hasGenerationFilter = true
-        const generation = cells[2].textContent
+        let matchGenerationFilter = true
+        const generation = cells[TABLE_COL_GENERATION].textContent
         if (typeof generation === 'string') {
-          hasGenerationFilter = generationFilter === 0 || generationFilter.toString() === generation
+          matchGenerationFilter = generationFilter === 0 || generationFilter.toString() === generation
+        }
+
+        // -----vérifier si types correspond au filtre de types
+        let matchTypesFilter = true
+        const types = cells[TABLE_COL_TYPES].textContent
+        if (typeof types === 'string') {
+          matchTypesFilter = types.toUpperCase().includes(typesFilter.toUpperCase())
         }
 
         // montrer/cacher la ligne courante
-        row.style.display = (hasNameFilter && hasGenerationFilter) ? "" : "none"
+        row.style.display = (matchNameFilter && matchGenerationFilter && matchTypesFilter) ? "" : "none"
       }
 
     }
