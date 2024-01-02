@@ -17,23 +17,27 @@
     </div>
 
     <!-- filtres -->
-    <form class="w3-container">
+    <div class="w3-cell-row w3-panel">
       <!-- filtre par nom -->
-      <p>
-      <label for="name-filter">Filtre par nom:</label>
-      <input class="w3-input" type="text" name="name-filter" id="name-filter" placeholder="ex. bulbi">
+      <div class="w3-container w3-cell w3-mobile">
+        <label for="name-filter">Filtre par nom :</label>
+        <input class="w3-input w3-border" type="text" name="name-filter" id="name-filter" placeholder="ex. bulbi">
+      </div>
 
       <!-- filtre par génération -->
-      <label for="generation-filter">filtre par génération</label>
-      <select id="generation-filter">
+      <div class="w3-container w3-cell w3-mobile w3-padding-16">
+        <label for="generation-filter">Filtre par génération :</label>
+        <select id="generation-filter">
           <option value="all">Toutes</option>
-      </select>
+        </select>
+      </div>
 
       <!-- filtre par types -->
-      <p>
-      <label for="types-filter">filtre par types</label>
-      <input class="w3-input" type="text" name="types-filter" id="types-filter" placeholder="ex. : feu">
-    </form>
+      <div class="w3-container w3-cell w3-mobile">
+        <label for="types-filter">Filtre par types :</label>
+        <input class="w3-input w3-border" type="text" name="types-filter" id="types-filter" placeholder="ex. : feu">
+      </div>
+    </div>
 
     <!-- tableau des pokemons filtrés  -->
     <table class="w3-table-all w3-hoverable w3-card-4">
