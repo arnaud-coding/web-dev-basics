@@ -30,7 +30,7 @@ const nameFilterElement = document.getElementById("name-filter")
 if (nameFilterElement instanceof HTMLInputElement) {
   nameFilterElement.addEventListener("input", ()=>{
     // cette fonction anonyme est appelée à chaque nouveau caractère tapé dans le filtre : on récupère le filtre
-    nameFilter = nameFilterElement.value
+    nameFilter = nameFilterElement.value.toUpperCase()
     filterPokemons()
   })
 }
@@ -50,7 +50,7 @@ let typesFilter = ""
 const typesFilterElement = document.getElementById("types-filter")
 if (typesFilterElement instanceof HTMLInputElement) {
   typesFilterElement.addEventListener("input", () => {
-    typesFilter = typesFilterElement.value
+    typesFilter = typesFilterElement.value.toUpperCase()
     filterPokemons()
   })
 }
@@ -177,7 +177,7 @@ function filterPokemons() {
         let matchNameFilter = true
         const name = cells[TABLE_COL_NAME].textContent
         if (typeof name === 'string') {
-          matchNameFilter = name.toUpperCase().includes(nameFilter.toUpperCase())
+          matchNameFilter = name.toUpperCase().includes(nameFilter)
         }
 
         // -----vérifier si generation correspond au filtre de generation
@@ -191,7 +191,7 @@ function filterPokemons() {
         let matchTypesFilter = true
         const types = cells[TABLE_COL_TYPES].textContent
         if (typeof types === 'string') {
-          matchTypesFilter = types.toUpperCase().includes(typesFilter.toUpperCase())
+          matchTypesFilter = types.toUpperCase().includes(typesFilter)
         }
 
         // montrer/cacher la ligne courante
