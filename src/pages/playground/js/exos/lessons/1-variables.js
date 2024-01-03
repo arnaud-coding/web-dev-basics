@@ -13,9 +13,9 @@ Note: On peut débuger avec VScode; on ne peut faire que des console.log avec no
 // eslint-disable-next-line no-unused-vars
 // import * as util from "utils";
 
-console.log("---------------------------------------- JS");
-console.log("But: Découvrir les variables");
-console.log("---------------------------------------- JS");
+console.log('---------------------------------------- JS')
+console.log('But: Découvrir les variables')
+console.log('---------------------------------------- JS')
 
 /* ==================================================================================================================== 
 Une variable:
@@ -39,31 +39,31 @@ Une variable:
 // --------------------------------------------------------------------------------------------------------------------
 // On DÉCLARE une variable SANS l'initialiser :  Ici on déclare une variable qui s'appelle firstname;
 // note: déclarée mais sont assignée: sa valeur est 'undefined'.
-let firstname;
-console.log("la valeur de la variable 'firstname' est égal à " + firstname); // écrit dans la console la VALEUR de firstname (cad 'undefined)
+let firstname
+console.log("la valeur de la variable 'firstname' est égal à " + firstname) // écrit dans la console la VALEUR de firstname (cad 'undefined)
 
 // On INITIALISE/ASSIGNE la valeur de la variable 'firstname'
-firstname = "Arnaud";
-console.log("valeur variable 'firstname' = " + firstname); // écrit dans la console la VALEUR de firstname;
+firstname = 'Arnaud'
+console.log("valeur variable 'firstname' = " + firstname) // écrit dans la console la VALEUR de firstname;
 
 // On MODIFIE/REASSIGNE la valeur de la variable 'firstname'
-firstname = "Thomas";
-console.log("valeur variable 'firstname' = " + firstname); // écrit dans la console la VALEUR de firstname;
+firstname = 'Thomas'
+console.log("valeur variable 'firstname' = " + firstname) // écrit dans la console la VALEUR de firstname;
 // --------------------------------------------------------------------------------------------------------------------
 
 // --------------------------------------------------------------------------------------------------------------------
 // On DÉCLARE une variable ET on INITIALISE en même temps : la variable s'appelle "age" et contient la valeur 25
-let age = 25;
-console.log("valeur variable 'age' = " + age);
+let age = 25
+console.log("valeur variable 'age' = " + age)
 
 // On MODIFIE/REASSIGNE la valeur de la variable "age". Ici on lui ajoute 10
-age = age + 10;
-console.log("valeur variable 'age' = " + age);
+age = age + 10
+console.log("valeur variable 'age' = " + age)
 
 // On DÉCLARE une variable ET on l'INITIALISE avec une partie fixe ET la valeur de la variable "firstname"
 // le mot-clé "const" signifie que la valeur de la variable ne doit pas changer.
-const welcome = "Hello " + firstname;
-console.log("valeur variable 'welcome' = " + welcome);
+const welcome = 'Hello ' + firstname
+console.log("valeur variable 'welcome' = " + welcome)
 
 // Si on dé-commente la ligne suivante, cela va provoquer une erreur d'exécution car on tente de modifier une constante
 // welcome = "toto";
@@ -74,29 +74,29 @@ console.log("valeur variable 'welcome' = " + welcome);
 console.log('\nAffichage type variable x, et valeur variable x:')
 
 // --------------------------------------------------------------------------------------------------------------------
-let x = true; // La variable "x" est de type booléen, sa valeur est 'vraie'.
-console.log(typeof x, x); // affiche dans la console le type de la variable "x", puis la valeur de "x"
+let x = true // La variable "x" est de type booléen, sa valeur est 'vraie'.
+console.log(typeof x, x) // affiche dans la console le type de la variable "x", puis la valeur de "x"
 
 // réassigne la valeur de la variable x en changeant aussi son type: valeur= date de maintenant; type= Date
-x = new Date();
-console.log(typeof x, x);
+x = new Date()
+console.log(typeof x, x)
 
 // réassigne la valeur de la variable x en changeant aussi son type: valeur= surface cercle rayon 4cm (s = PI x R²), type= number
-x = Math.PI * 4 * 4;
-console.log(typeof x, x);
+x = Math.PI * 4 * 4
+console.log(typeof x, x)
 
 // réassigne la valeur de la variable x en changeant aussi son type: valeur= tableau de 7 éléments de types différents (le dernier est lui-même un tableau)
-x = ["arnaud", "thomas", "loïc", "agnès", 12, false, [1, 2, 3]];
-console.log(typeof x, x);
+x = ['arnaud', 'thomas', 'loïc', 'agnès', 12, false, [1, 2, 3]]
+console.log(typeof x, x)
 
 // réassigne la valeur de la variable x en changeant aussi son type: valeur= un objet avec des propriétés "firstname" et "birthday"
-x = { firstname: "Arnaud", weight: 55, birthday: new Date(1995, 8, 25) }; // Ce firstname n'est pas celui défini plus haut, car ici, il est dans le bloc de code de "x"
-console.log(typeof x, x);
+x = { firstname: 'Arnaud', weight: 55, birthday: new Date(1995, 8, 25) } // Ce firstname n'est pas celui défini plus haut, car ici, il est dans le bloc de code de "x"
+console.log(typeof x, x)
 
 // calcul de l'age de toto (réutilise la variable 'toto' définie plus haut dans cette page)
-age = new Date().getFullYear() - x.birthday.getFullYear();
+age = new Date().getFullYear() - x.birthday.getFullYear()
 // affiche une phrase qui donne le poids et l'age de toto.
-console.log(x.firstname + " pèse " + x.weight + " kg, il a " + age + " ans.");
+console.log(x.firstname + ' pèse ' + x.weight + ' kg, il a ' + age + ' ans.')
 // même phrase, mais avec une technique différente (string interpolation)
-console.log(`${x.firstname} pèse ${x.weight} kg, il a ${age} ans.`);
+console.log(`${x.firstname} pèse ${x.weight} kg, il a ${age} ans.`)
 // --------------------------------------------------------------------------------------------------------------------

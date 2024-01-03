@@ -31,7 +31,7 @@
 //    - en  fait le type exact n'est pas HTMLElement mais un des ses enfants (ex.:HTMLButtonElement, HTMLInputElement, HTMLLabelElement, ...)
 //    - le type exact dépend du sélecteur ".btn-start"
 //    - dans cet exemple, "btn" sera du type HTMLButtonElement
-const btn = document.getElementById("btn-start");
+const btn = document.getElementById('btn-start')
 
 // 2°) vérifier le type exact de "btn"
 if (btn instanceof HTMLButtonElement) {
@@ -42,14 +42,14 @@ if (btn instanceof HTMLButtonElement) {
 
   // 3°) ajout du gestionnaire d'évènement au bouton (le gestionnaire d'évènements est une callback)
   // exemple : ici la callback est une fonction anonyme. elle recoit un parameter "event" qui ici est un "MousePointer" event
-  btn.addEventListener("click", (event) => {
+  btn.addEventListener('click', (event) => {
     // ce code sera appelé plus tard quand l'utilisateur cliquera sur le bouton
-    console.log("bouton cliqué avec paramètre d'évènement = ", event);
-    alert("Bravo, tu as cliqué sur le bouton " + event);
-  });
+    console.log("bouton cliqué avec paramètre d'évènement = ", event)
+    alert('Bravo, tu as cliqué sur le bouton ' + event)
+  })
   // exemple : le gestionnaire d'évènements est une fonction nommée
-  btn.addEventListener("mouseenter", mouseCallback);
-  btn.addEventListener("mouseleave", mouseCallback);
+  btn.addEventListener('mouseenter', mouseCallback)
+  btn.addEventListener('mouseleave', mouseCallback)
 }
 
 /**
@@ -58,12 +58,12 @@ if (btn instanceof HTMLButtonElement) {
  */
 function mouseCallback(event) {
   if (btn instanceof HTMLButtonElement) {
-    if (event.type === "mouseenter") {
+    if (event.type === 'mouseenter') {
       // la souris vient de rentrer dans la zone du bouton
-      btn.style.background = "#F39678";
-    } else if (event.type === "mouseleave") {
+      btn.style.background = '#F39678'
+    } else if (event.type === 'mouseleave') {
       // la souris vient de rentrer dans la zone du bouton
-      btn.style.background = "#CAEEB9";
+      btn.style.background = '#CAEEB9'
     }
   }
 }
@@ -73,63 +73,63 @@ function mouseCallback(event) {
  * ----------------------------------------------------------------------------------------------------------------- */
 
 // 1er exemple : ajout texte dans <textarea>
-const lorem = document.getElementById("txt-lorem");
+const lorem = document.getElementById('txt-lorem')
 if (lorem instanceof HTMLTextAreaElement) {
   // la fonction setTimeOut rapellera sa callback au bout du délai (3s)
   setTimeout(() => {
     // code de la callback
     lorem.value =
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. In blanditiis temporibus odio, asperiores accusamus maiores expedita fuga vitae repellendus consequatur at, adipisci corrupti qui dolor rerum ullam possimus fugit incidunt?";
-  }, 3000);
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. In blanditiis temporibus odio, asperiores accusamus maiores expedita fuga vitae repellendus consequatur at, adipisci corrupti qui dolor rerum ullam possimus fugit incidunt?'
+  }, 3000)
 }
 
 // 2e exemple : afficher l'heure dans un <label>
-const timeLabel = document.getElementById("time");
+const timeLabel = document.getElementById('time')
 if (timeLabel) {
   // la fonction setTimeInterval rapellera sa callback toutes les 1s
   setInterval(() => {
     // code de la callback
-    const time = new Date().toLocaleTimeString(undefined, { timeStyle: "medium" });
-    timeLabel.innerHTML = time;
-  }, 1000);
+    const time = new Date().toLocaleTimeString(undefined, { timeStyle: 'medium' })
+    timeLabel.innerHTML = time
+  }, 1000)
 }
 
 /** -------------------------------------------------------------------------------------------------------------------
  *  Ajouter une classe à une élément
  * ----------------------------------------------------------------------------------------------------------------- */
-const lblClass = document.getElementById("lbl-class");
+const lblClass = document.getElementById('lbl-class')
 if (lblClass) {
-  lblClass.addEventListener("click", () => {
+  lblClass.addEventListener('click', () => {
     // remove = true si ".highlight" est deja presente dans le bouton
-    const remove = lblClass.classList.contains("highlight");
+    const remove = lblClass.classList.contains('highlight')
     if (remove) {
       // si classe deja presente, on l'enleve
-      lblClass.classList.remove("highlight");
+      lblClass.classList.remove('highlight')
     } else {
       // si classe absente, on l'ajoute
-      lblClass.classList.add("highlight");
+      lblClass.classList.add('highlight')
     }
-  });
+  })
 }
 
 /** -------------------------------------------------------------------------------------------------------------------
  *  Montrer/cacher un élément
  * ----------------------------------------------------------------------------------------------------------------- */
-const toggleVisibility = document.getElementById("btn-toggle-vis");
+const toggleVisibility = document.getElementById('btn-toggle-vis')
 if (toggleVisibility && lorem) {
-  toggleVisibility.addEventListener("click", () => {
-    lorem.hidden = !lorem.hidden;
-  });
+  toggleVisibility.addEventListener('click', () => {
+    lorem.hidden = !lorem.hidden
+  })
 }
 
 /** -------------------------------------------------------------------------------------------------------------------
  *  Activer/désactiver un élément
  * ----------------------------------------------------------------------------------------------------------------- */
-const toggleEnable = document.getElementById("btn-toggle-enable");
+const toggleEnable = document.getElementById('btn-toggle-enable')
 if (toggleEnable && toggleVisibility instanceof HTMLButtonElement) {
-  toggleEnable.addEventListener("click", () => {
-    toggleVisibility.disabled = !toggleVisibility.disabled;
-  });
+  toggleEnable.addEventListener('click', () => {
+    toggleVisibility.disabled = !toggleVisibility.disabled
+  })
 }
 
 /** -------------------------------------------------------------------------------------------------------------------
@@ -137,13 +137,13 @@ if (toggleEnable && toggleVisibility instanceof HTMLButtonElement) {
  * ----------------------------------------------------------------------------------------------------------------- */
 for (let index = 0; index < 3; index++) {
   // 1°) Créer l'élément
-  const line = document.createElement("li");
-  line.innerHTML = `JS ligne ${index + 2}`;
+  const line = document.createElement('li')
+  line.innerHTML = `JS ligne ${index + 2}`
 
   // 2°) ajouter à l'élément liste
-  const list = document.getElementById("list");
+  const list = document.getElementById('list')
   if (list && line) {
-    list.appendChild(line);
+    list.appendChild(line)
   }
 }
 
@@ -151,17 +151,17 @@ for (let index = 0; index < 3; index++) {
  *  Dupliquer un élément
  * ----------------------------------------------------------------------------------------------------------------- */
 // sélectionne l'élément template à dupliquer
-const tpl = document.getElementById("template");
+const tpl = document.getElementById('template')
 if (tpl instanceof HTMLTemplateElement) {
   // duplique l'élément template
-  const clone1 = tpl.content.cloneNode(true);
-  const clone2 = tpl.content.cloneNode(true);
+  const clone1 = tpl.content.cloneNode(true)
+  const clone2 = tpl.content.cloneNode(true)
 
   // sélectionne l'élément dans lequel on veut ajouter l'élément dupliqué
-  const tags = document.getElementsByTagName("body"); // sélectionne tous les éléments <body> et les mets dans un tableau
-  const body = tags[0]; // sélectionne le 1er élément du tableau (= <body> du document)
+  const tags = document.getElementsByTagName('body') // sélectionne tous les éléments <body> et les mets dans un tableau
+  const body = tags[0] // sélectionne le 1er élément du tableau (= <body> du document)
 
   // ajouter l'élément dupliqué dans le body
-  body.appendChild(clone1);
-  body.appendChild(clone2);
+  body.appendChild(clone1)
+  body.appendChild(clone2)
 }

@@ -18,50 +18,50 @@
  *      - Revalider les boutons
  */
 
-(async () => {
-  let indexUser = 1;
+;(async () => {
+  let indexUser = 1
   // sélection boutons et label
-  const btnPrev = document.getElementById("btn-prev");
-  const btnNext = document.getElementById("btn-next");
-  const userName = document.getElementById("user-name");
-  const userElement = document.getElementById("api-result");
+  const btnPrev = document.getElementById('btn-prev')
+  const btnNext = document.getElementById('btn-next')
+  const userName = document.getElementById('user-name')
+  const userElement = document.getElementById('api-result')
   // adresse de l'API
-  const url = "https://jsonplaceholder.typicode.com/";
+  const url = 'https://jsonplaceholder.typicode.com/'
 
   if (userElement && btnNext && btnPrev && userName) {
     // ajout de gestionnaires d'évenements
-    btnPrev.addEventListener("click", onUserButtonClick);
-    btnNext.addEventListener("click", onUserButtonClick);
+    btnPrev.addEventListener('click', onUserButtonClick)
+    btnNext.addEventListener('click', onUserButtonClick)
 
-    await fetchAndDisplayUser(indexUser);
-    disableButtons(false);
+    await fetchAndDisplayUser(indexUser)
+    disableButtons(false)
   }
 
   // requête et affiche l'utilisateur suivant/précedent
   async function onUserButtonClick(event) {
     if (btnNext instanceof HTMLButtonElement && btnPrev instanceof HTMLButtonElement && userName) {
       // dévalider les boutons
-      disableButtons(true);
+      disableButtons(true)
 
       //  effacer les affichages de l'utilisateur
       if (userElement && userName) {
-        userElement.innerHTML = ``;
-        userName.innerHTML = `Please wait...`;
+        userElement.innerHTML = ``
+        userName.innerHTML = `Please wait...`
       }
       // savoir quel bouton a été appuyé
       if (event.target === btnNext) {
         // boutton affiché = Next : incrémenter l'index utilisateurs
-        indexUser++;
+        indexUser++
       } else {
         // bouton affiché = Previous : décrémenter l'index
-        indexUser--;
+        indexUser--
       }
 
       // appel de la fonction fetchAndDisplayUser
-      await fetchAndDisplayUser(indexUser);
+      await fetchAndDisplayUser(indexUser)
 
       // valider les boutons
-      disableButtons(false);
+      disableButtons(false)
     }
   }
 
@@ -71,23 +71,23 @@
    */
   async function fetchAndDisplayUser(indexUser) {
     // effectue la requête HTTP et attend la réponse
-    const response = await fetch(url + "users/" + indexUser);
-    console.log("response:", response);
+    const response = await fetch(url + 'users/' + indexUser)
+    console.log('response:', response)
 
     // si la requête est réussie, le "ok" sera true ...
     if (response.ok) {
       // la requête a réussi : on a une réponse JSON et on en extrait un objet JS (qu'on met dans "user")
-      const user = await response.json();
+      const user = await response.json()
 
       // juste pour débugger, on log l'objet qu'on a reçu
-      const json = JSON.stringify(user);
-      console.log("json:", json);
+      const json = JSON.stringify(user)
+      console.log('json:', json)
 
       // affiche l'utilisateur
       if (userElement && userName) {
         userElement.innerHTML = `${user.id} : ${user.name} lives in ${user.address.city} and works for ${user.company.name}.<br>
-        Contact her/him at ${user.phone} or ${user.email}.`;
-        userName.innerHTML = `${user.name}`;
+        Contact her/him at ${user.phone} or ${user.email}.`
+        userName.innerHTML = `${user.name}`
       }
     }
   }
@@ -99,11 +99,11 @@
   function disableButtons(disabled) {
     if (btnNext instanceof HTMLButtonElement && btnPrev instanceof HTMLButtonElement) {
       if (indexUser === 1) {
-        btnPrev.disabled = true;
+        btnPrev.disabled = true
       } else {
-        btnPrev.disabled = disabled;
+        btnPrev.disabled = disabled
       }
-      btnNext.disabled = disabled;
+      btnNext.disabled = disabled
     }
   }
-})();
+})()

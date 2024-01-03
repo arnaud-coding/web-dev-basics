@@ -23,19 +23,19 @@ class Rectangle {
    */
   constructor(name, length, width) {
     // on crée les propriétés de l'objet à partir des paramètres reçus
-    this.length = length;
-    this.width = width;
-    this.name = name;
+    this.length = length
+    this.width = width
+    this.name = name
   }
 
   /** calcule l'aire du rectangle */
   get area() {
-    return this.length * this.width;
+    return this.length * this.width
   }
 
   /**   fonction qui va loguer l'objet */
   log() {
-    console.log(`${this.name} a une surface de ${this.area}`);
+    console.log(`${this.name} a une surface de ${this.area}`)
   }
 }
 
@@ -46,20 +46,20 @@ class Rectangle {
 class RectangleCuboid extends Rectangle {
   constructor(name, length, width, height) {
     // on crée l'objet de base (ici, super appelle le constructeur de rectangle)
-    super(name, length, width);
+    super(name, length, width)
     // on crée la propriété spécifique au cake
-    this.height = height;
+    this.height = height
   }
 
   /** calcule le volume */
   get volume() {
     // ici, on appelle "area", contenue dans l'objet de base (le rectangle)
-    return this.area * this.height;
+    return this.area * this.height
   }
 
   /**   fonction qui va loguer l'objet : elle REMPLACE la fonction "log" de l'objet de base (on dit qu'elle surcharge la fonction) */
   log() {
-    console.log(`${this.name} a un volume de ${this.volume}`);
+    console.log(`${this.name} a un volume de ${this.volume}`)
   }
 }
 
@@ -67,24 +67,24 @@ class RectangleCuboid extends Rectangle {
 // utilisation de la classe
 // -----------------------------------------------------
 // on instancie 2 objets (on crée 2 instances/objets)
-const rect1 = new Rectangle("bill", 2, 4);
-const rect2 = new Rectangle("bob", 1, 5);
+const rect1 = new Rectangle('bill', 2, 4)
+const rect2 = new Rectangle('bob', 1, 5)
 
 // utilisation directe de l'objet
-rect1.log();
-rect2.log();
+rect1.log()
+rect2.log()
 
 /**
  * Utilise le rectangle
  * @param {Rectangle} rectangle
  */
 function demoRectangleUsage(rectangle) {
-  rectangle.log();
+  rectangle.log()
 }
 
 // utilisation dans une fonction  d'un rectangle
-demoRectangleUsage(rect1);
-demoRectangleUsage(rect2);
+demoRectangleUsage(rect1)
+demoRectangleUsage(rect2)
 
-const cake = new RectangleCuboid("cake", 2, 3, 8);
-cake.log();
+const cake = new RectangleCuboid('cake', 2, 3, 8)
+cake.log()

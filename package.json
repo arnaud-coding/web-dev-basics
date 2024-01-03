@@ -7,8 +7,7 @@
     "dev": "vite serve src/",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier-eslint --write \"src/**/*.js\"",
-    "format-write": "prettier-eslint --write test.js"
+    "format": "prettier-eslint --write \"src/**/*.js\""
   },
   "repository": {
     "type": "git",

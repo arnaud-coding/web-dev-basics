@@ -1,4 +1,4 @@
-(async () => {
+;(async () => {
   // #region demo basique
 
   /**
@@ -7,13 +7,13 @@
    * @return {string[]}
    */
   const trimStrings = (sentences) => {
-    const res = [];
+    const res = []
     for (const sentence of sentences) {
-      const clean = sentence.trim();
-      res.push(clean);
+      const clean = sentence.trim()
+      res.push(clean)
     }
-    return res;
-  };
+    return res
+  }
 
   /**
    * décompose une phrase en un tableau de mots
@@ -21,7 +21,7 @@
    * @param {string} separator
    * @return {string[]}
    */
-  const splitSentence = (sentence, separator) => sentence.split(separator);
+  const splitSentence = (sentence, separator) => sentence.split(separator)
 
   /**
    * décompose une phrase en un tableau de mots ET enlève tout les espaces en début et en fin de chaque élément d'un tableau de strings
@@ -30,14 +30,14 @@
    * @return {string[]}
    */
   const trimSplit = (sentence, separator) => {
-    const words = splitSentence(sentence, separator);
+    const words = splitSentence(sentence, separator)
 
-    const cleanWords = trimStrings(words);
-    return cleanWords;
-  };
+    const cleanWords = trimStrings(words)
+    return cleanWords
+  }
 
-  const arr = trimSplit("brian is in the kitchen, lives in london", "in");
-  console.log("arr:", arr);
+  const arr = trimSplit('brian is in the kitchen, lives in london', 'in')
+  console.log('arr:', arr)
 
   // #endregion
 
@@ -80,16 +80,16 @@
    */
   const fetchPokemons = async () => {
     // allez hop, va chercher...
-    const response = await fetch("https://tyradex.tech/api/v1/pokemon");
+    const response = await fetch('https://tyradex.tech/api/v1/pokemon')
     if (response.ok) {
       // transforme la réponse en un object de type JSON
-      const pokemons = await response.json();
-      console.log(`Fetched ${pokemons.length} pokemons`);
-      return pokemons;
+      const pokemons = await response.json()
+      console.log(`Fetched ${pokemons.length} pokemons`)
+      return pokemons
     }
-    console.error("erreur fetch pokemons", response.status, response.statusText);
-    return [];
-  };
+    console.error('erreur fetch pokemons', response.status, response.statusText)
+    return []
+  }
 
   // -------------------------------------------------
   // Définition d'une classe Inspector
@@ -105,7 +105,7 @@
      */
     constructor(pokemons) {
       /** @type {Pokemon[]} */
-      this.pokemons = pokemons; // stocke le tableau de pokemon passé en arguments dans une variable propre à la classe
+      this.pokemons = pokemons // stocke le tableau de pokemon passé en arguments dans une variable propre à la classe
     }
 
     /**
@@ -113,17 +113,17 @@
      * @return {number[]}
      */
     getMegasId = () => {
-      const megas = this.pokemons.filter((pokemon) => pokemon.evolution?.mega).map((poke) => poke.pokedexId);
-      console.log(`get ${megas.length} pokemons with a mega evolution`);
-      return megas;
-    };
+      const megas = this.pokemons.filter((pokemon) => pokemon.evolution?.mega).map((poke) => poke.pokedexId)
+      console.log(`get ${megas.length} pokemons with a mega evolution`)
+      return megas
+    }
 
     /**
      * cherche le pokemon dont on donne l'id
      * @param {number} id
      * @returns {Pokemon | undefined}
      */
-    getPokemonById = (id) => this.pokemons.find((pokemon) => pokemon.pokedexId === id);
+    getPokemonById = (id) => this.pokemons.find((pokemon) => pokemon.pokedexId === id)
   }
 
   // -------------------------------------------------
@@ -133,30 +133,30 @@
   // -------------------------------------------------
 
   // va chercher tous les pokemons...
-  const pokemons = await fetchPokemons();
+  const pokemons = await fetchPokemons()
   // vérifie si pokemons est un tableau qui contient au moins un élément
   if (Array.isArray(pokemons) && pokemons.length) {
     // vérifie si le tableau des pokemons contient au moins un élément
     // à partir d'ici, ON EST SUR  d'avoir un tableau de pokemons
     // ---------------------------------------------------------
-    const inspector = new PokemonInspector(pokemons);
+    const inspector = new PokemonInspector(pokemons)
 
     // chope tous pokemons qui ont une evo mega
-    const megasId = inspector.getMegasId();
-    console.log("megasId:", megasId);
+    const megasId = inspector.getMegasId()
+    console.log('megasId:', megasId)
 
     // liste tous les pokemons ayant une méga-évolution
     for (const id of megasId) {
-      const pokemon = inspector.getPokemonById(id);
+      const pokemon = inspector.getPokemonById(id)
       if (pokemon !== undefined) {
-        const megas = pokemon.evolution?.mega;
-        let megaEvos = "";
+        const megas = pokemon.evolution?.mega
+        let megaEvos = ''
         if (Array.isArray(megas) && megas.length) {
-          const orbes = megas.map((mega) => mega.orbe);
-          megaEvos = orbes.join(", ");
+          const orbes = megas.map((mega) => mega.orbe)
+          megaEvos = orbes.join(', ')
         }
-        console.log(`pokemon ${pokemon.pokedexId}, name = ${pokemon.name.fr}, mega evos = ${megaEvos} `);
+        console.log(`pokemon ${pokemon.pokedexId}, name = ${pokemon.name.fr}, mega evos = ${megaEvos} `)
       }
     }
   }
-})();
+})()
