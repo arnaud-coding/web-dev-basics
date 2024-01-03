@@ -1,15 +1,20 @@
 import { fetchPokemons } from './pokemon-api'
 import { PokemonInspector } from './pokemon-inspector'
 
+/** Pokemon table: column index for the name */
 const TABLE_COL_NAME = 0
+/** Pokemon table: column index for the category */
 const TABLE_COL_CATEGORY = 1
+/** Pokemon table: column index for the generation */
 const TABLE_COL_GENERATION = 2
+/** Pokemon table: column index for the types */
 const TABLE_COL_TYPES = 3
+/** Pokemon table: column index for the evolutions */
 const TABLE_COL_EVOLUTIONS = 4
 
-const tableBodyElement = document.getElementById("pokemon-tbody")
+const tableBodyElement = document.getElementById('pokemon-tbody')
 
-/** Tableau de pokemons chargés en mémoire */
+/** Charge le tableau de pokemons en mémoire */
 const pokemons = await fetchPokemons()
 
 /** l'inspecteur pour manipuler les pokemons */
@@ -25,10 +30,10 @@ createPokemonTable()
 // ----------------------------------------------------------------------------
 
 // gestionnaire d'évènement pour filtre sur les noms
-let nameFilter = ""
-const nameFilterElement = document.getElementById("name-filter")
+let nameFilter = ''
+const nameFilterElement = document.getElementById('name-filter')
 if (nameFilterElement instanceof HTMLInputElement) {
-  nameFilterElement.addEventListener("input", ()=>{
+  nameFilterElement.addEventListener('input', () => {
     // cette fonction anonyme est appelée à chaque nouveau caractère tapé dans le filtre : on récupère le filtre
     nameFilter = nameFilterElement.value.toUpperCase()
     filterPokemons()
@@ -37,19 +42,19 @@ if (nameFilterElement instanceof HTMLInputElement) {
 
 // gestionnaire d'évènement pour filtre sur les gnérations
 let generationFilter = 0
-const generationFilterElement = document.getElementById("generation-filter")
+const generationFilterElement = document.getElementById('generation-filter')
 if (generationFilterElement instanceof HTMLSelectElement) {
-  generationFilterElement.addEventListener("input", () => {
+  generationFilterElement.addEventListener('input', () => {
     generationFilter = generationFilterElement.selectedIndex
     filterPokemons()
   })
 }
 
 // gestionnaire d'évènement pour filtre sur les types
-let typesFilter = ""
-const typesFilterElement = document.getElementById("types-filter")
+let typesFilter = ''
+const typesFilterElement = document.getElementById('types-filter')
 if (typesFilterElement instanceof HTMLInputElement) {
-  typesFilterElement.addEventListener("input", () => {
+  typesFilterElement.addEventListener('input', () => {
     typesFilter = typesFilterElement.value.toUpperCase()
     filterPokemons()
   })
@@ -59,15 +64,15 @@ if (tableBodyElement instanceof HTMLTableSectionElement) {
   //! todo -> temporaire
   setTimeout(() => {
     showPokemonDetails('Carapuce')
-  }, 500);
+  }, 500)
 
-  tableBodyElement.addEventListener("click", (event) => {
+  tableBodyElement.addEventListener('click', (event) => {
     // récupère la cellule sur laquelle le client a cliqué
     const td = event.target
-    if (td instanceof HTMLTableCellElement ){
+    if (td instanceof HTMLTableCellElement) {
       // récupère la ligne complète (le parent), puis le premier enfant (cellule "name")
       const tdName = td.parentElement?.firstElementChild
-      if ( tdName instanceof HTMLTableCellElement) {
+      if (tdName instanceof HTMLTableCellElement) {
         const name = tdName.innerText
         showPokemonDetails(name)
       }
@@ -75,15 +80,14 @@ if (tableBodyElement instanceof HTMLTableSectionElement) {
   })
 }
 
-const close = document.getElementById("pokemon-close")
+const close = document.getElementById('pokemon-close')
 if (close instanceof HTMLElement) {
-  close.addEventListener("click", () => {
-    const details = document.getElementById("pokemon-details")
+  close.addEventListener('click', () => {
+    const details = document.getElementById('pokemon-details')
     if (details instanceof HTMLElement) {
       details.hidden = true
     }
   })
-
 }
 
 // ----------------------------------------------------------------------------
@@ -94,7 +98,7 @@ function createPokemonTable() {
   // parcours le tableau mémoire des pokémons pour les afficher dans le tableau HTML
   for (const pokemon of pokemons) {
     // filtrer les pokemon bug
-    if (pokemon.types === null){
+    if (pokemon.types === null) {
       continue
     }
 
@@ -109,16 +113,14 @@ function createPokemonTable() {
  */
 function addPokemonRow(pokemon) {
   // créer ligne tableau html
-  const row = cloneTemplate("pokemon-row-template")
+  const row = cloneTemplate('pokemon-row-template')
   if (row instanceof HTMLTableRowElement) {
-
     // placer les données du pokemon courant dans la ligne
     setPokemonRow(pokemon, row)
 
     // ajouter ligne
     addRowTemplate(row)
   }
-
 }
 
 /**
@@ -155,19 +157,18 @@ function cloneTemplate(templateId) {
  * @param {HTMLTableRowElement} row la ligne html où mettre les données du pokemon
  */
 function setPokemonRow(pokemon, row) {
-  const cells = row.getElementsByTagName("td")
+  const cells = row.getElementsByTagName('td')
   if (cells instanceof HTMLCollection && cells.length > 1) {
-
     const setCellValue = (cellIndex, value) => {
       const cell = cells[cellIndex]
-      if(cell instanceof HTMLTableCellElement) {
+      if (cell instanceof HTMLTableCellElement) {
         cell.innerText = value
       }
     }
     setCellValue(TABLE_COL_NAME, pokemon.name.fr)
     setCellValue(TABLE_COL_CATEGORY, pokemon.category)
     setCellValue(TABLE_COL_GENERATION, pokemon.generation)
-    setCellValue(TABLE_COL_TYPES,inspector.getTypesDescription(pokemon.types))
+    setCellValue(TABLE_COL_TYPES, inspector.getTypesDescription(pokemon.types))
     setCellValue(TABLE_COL_EVOLUTIONS, inspector.getEvolutionsDescription(pokemon.evolution))
   }
 }
@@ -196,14 +197,15 @@ function filterPokemons() {
    */
 
   // ---------- parcours chaque ligne du tableau
-  const rows = tableBodyElement?.getElementsByTagName("tr")  // récupère toutes les lignes du tableau
-  if (rows instanceof HTMLCollection && rows.length > 1) {          // si des lignes existent...
-    for (const row of rows) {                                       // parcours toutes les lignes une à une...
+  const rows = tableBodyElement?.getElementsByTagName('tr') // récupère toutes les lignes du tableau
+  if (rows instanceof HTMLCollection && rows.length > 1) {
+    // si des lignes existent...
+    for (const row of rows) {
+      // parcours toutes les lignes une à une...
 
       // ----- récupère toutes les cellules de la ligne courante
-      const cells = row.getElementsByTagName("td")
+      const cells = row.getElementsByTagName('td')
       if (cells instanceof HTMLCollection && cells.length > 1) {
-
         // ----- vérifier si nom contient filtre de nom
         let matchNameFilter = true
         const name = cells[TABLE_COL_NAME].textContent
@@ -226,12 +228,10 @@ function filterPokemons() {
         }
 
         // montrer/cacher la ligne courante
-        row.style.display = (matchNameFilter && matchGenerationFilter && matchTypesFilter) ? "" : "none"
+        row.style.display = matchNameFilter && matchGenerationFilter && matchTypesFilter ? '' : 'none'
       }
-
     }
   }
-
 }
 
 /**
@@ -242,7 +242,7 @@ function setGenerationsFilter(generations) {
   for (let generation = 1; generation <= generations; generation++) {
     // ------ Créer une nouvelle <option>
     //    - trouver le <template> et  cloner l'<option>
-    const option = cloneTemplate("generation-option-template")
+    const option = cloneTemplate('generation-option-template')
 
     //    - mettre à jour les valeurs du clone
     if (option instanceof HTMLOptionElement) {
@@ -250,7 +250,7 @@ function setGenerationsFilter(generations) {
       option.innerText = generation.toString()
 
       // ----- ajouter l' <option> à <select>
-      const filter = document.getElementById("generation-filter")
+      const filter = document.getElementById('generation-filter')
       if (filter instanceof HTMLSelectElement) {
         filter.appendChild(option)
       }
@@ -266,19 +266,19 @@ function showPokemonDetails(pokemonName) {
   const pokemon = inspector.getPokemonByName(pokemonName)
   if (pokemon) {
     // montre la carte des détails
-    const details = document.getElementById("pokemon-details")
-      if (details instanceof HTMLElement) {
-        details.hidden = false
+    const details = document.getElementById('pokemon-details')
+    if (details instanceof HTMLElement) {
+      details.hidden = false
 
-        const nameEl = document.getElementById("pokemon-name")
-        if (nameEl instanceof HTMLElement) {
-          nameEl.innerHTML = `<strong>${pokemonName}</strong> ${pokemon.name.en}`
-        }
-
-        const img = document.getElementById("pokemon-img")
-        if (img instanceof HTMLImageElement) {
-          img.src = pokemon.sprites.regular
-        }
+      const nameEl = document.getElementById('pokemon-name')
+      if (nameEl instanceof HTMLElement) {
+        nameEl.innerHTML = `<strong>${pokemonName}</strong> ${pokemon.name.en}`
       }
+
+      const img = document.getElementById('pokemon-img')
+      if (img instanceof HTMLImageElement) {
+        img.src = pokemon.sprites.regular
+      }
+    }
   }
 }
