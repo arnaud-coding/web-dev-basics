@@ -10,9 +10,6 @@ Note: L'ordinateur et sa console ne savent pas exécuter un fichier JS. Pour cel
 Note: On peut débuger avec VScode; on ne peut faire que des console.log avec node.
 */
 
-// eslint-disable-next-line no-unused-vars
-// import * as util from "utils";
-
 console.log('---------------------------------------- JS')
 console.log('But: Découvrir les variables')
 console.log('---------------------------------------- JS')
