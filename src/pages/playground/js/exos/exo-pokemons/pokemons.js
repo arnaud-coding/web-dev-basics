@@ -12,17 +12,17 @@ const TABLE_COL_TYPES = 3
 /** Pokemon table: column index for the evolutions */
 const TABLE_COL_EVOLUTIONS = 4
 
-const tableBodyElement = document.getElementById('pokemon-tbody')
-
 /** Charge le tableau de pokemons en mémoire */
 const pokemons = await fetchPokemons()
 
 /** l'inspecteur pour manipuler les pokemons */
 const inspector = new PokemonInspector(pokemons)
 
-// remplit la boite de séléction du filtre génération
-setGenerationsFilter(inspector.getGenerationsNumber())
+// remplit la boite de sélection du filtre génération
+setGenerationsFilterElements(inspector.getGenerationsNumber())
 
+// Crée le tableau des pokemons
+const tableBodyElement = document.getElementById('pokemon-tbody')
 createPokemonTable()
 
 // ----------------------------------------------------------------------------
@@ -238,7 +238,7 @@ function filterPokemons() {
  * ajoute les générations dans <select>
  * @param {number} generations le nombre de générations
  */
-function setGenerationsFilter(generations) {
+function setGenerationsFilterElements(generations) {
   for (let generation = 1; generation <= generations; generation++) {
     // ------ Créer une nouvelle <option>
     //    - trouver le <template> et  cloner l'<option>
