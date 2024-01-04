@@ -1,3 +1,37 @@
+/**
+ * ================================================================================================
+ * Exo 1 : Afficher la description détaillée de la <card>
+ *         - syntaxe: Taille = 0,7 m ; poids = 6,9 kg ; taux de capture = 45 % ; méga-évo = ? (que s'il y en une)
+ * -------------------------------------------------------------------------------------
+ * Plan :
+ *   - construire la description quand on sélectionne un pokemon
+ *      - mettre la fonction qui construit la description dans le pokemon inspector
+ *        (Attention! : ne pas afficher méga-évo quand il n'y en a pas)
+ *   - afficher la description :
+ *      - sélectionner l'élement html cible
+ *      - mettre la description dans l'élement cible
+ * ================================================================================================
+ *
+ * ================================================================================================
+ * Exo 2 : Afficher les stats et les talents
+ * -------------------------------------------------------------------------------------
+ * Plan :
+ *   - créer les élements html correspondants (aller voir w3-schools pour trouver un bon style)
+ *     https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_responsive_third&stacked=h
+ *   - sélectionner l'élement html cible (un <ul>) pour les stats :
+ *   - pour chaque stat :
+ *      - créer un <li>
+ *      - mettre la stat dans la <li> sous la forme : "Points de vie : 45"
+ *      - ajouter la <li> dans le <ul>
+ *
+ *   - sélectionner l'élement html cible (un <ul>) pour les talents :
+ *   - pour chaque talent :
+ *      - créer un <li>
+ *      - mettre le talent dans la <li>
+ *      - ajouter la <li> dans le <ul>
+ * ================================================================================================
+ */
+
 import { fetchPokemons } from './pokemon-api'
 import { PokemonInspector } from './pokemon-inspector'
 
@@ -60,31 +94,45 @@ if (typesFilterElement instanceof HTMLInputElement) {
   })
 }
 
+/** @type {HTMLTableRowElement | null} */
+let selectedRow = null
+
+// gestionnaire d'évènement pour la sélection
 if (tableBodyElement instanceof HTMLTableSectionElement) {
-  //! todo -> temporaire
+  // sélectionne le premier pokémon au chargement de la page
   setTimeout(() => {
-    showPokemonDetails('Carapuce')
+    showPokemonDetails('Bulbizarre')
   }, 500)
 
   tableBodyElement.addEventListener('click', (event) => {
-    // récupère la cellule sur laquelle le client a cliqué
+    // récupère la cellule (nom, catégorie, types...) sur laquelle le client a cliqué
     const td = event.target
     if (td instanceof HTMLTableCellElement) {
-      // récupère la ligne complète (le parent), puis le premier enfant (cellule "name")
-      const tdName = td.parentElement?.firstElementChild
-      if (tdName instanceof HTMLTableCellElement) {
-        const name = tdName.innerText
-        showPokemonDetails(name)
+      // récupère la ligne complète (le parent)
+      const tr = td.parentElement
+      if (tr instanceof HTMLTableRowElement) {
+
+        // chqnge la ligne sélectionnée
+        setRowSelection(tr)
+
+        // récupérer cellule nom (1er enfant) et afficher détails
+        const tdName = tr.firstElementChild
+        if (tdName instanceof HTMLTableCellElement) {
+          const name = tdName.innerText
+          showPokemonDetails(name)
+        }
       }
     }
   })
 }
 
+// gestionnaire d'évènement pour la fermeture de la carte détails
 const close = document.getElementById('pokemon-close')
 if (close instanceof HTMLElement) {
   close.addEventListener('click', () => {
     const details = document.getElementById('pokemon-details')
     if (details instanceof HTMLElement) {
+      setRowSelection(null)
       details.hidden = true
     }
   })
@@ -265,20 +313,54 @@ function setGenerationsFilterElements(generations) {
 function showPokemonDetails(pokemonName) {
   const pokemon = inspector.getPokemonByName(pokemonName)
   if (pokemon) {
+    console.log(`show ${pokemon} details`)
     // montre la carte des détails
     const details = document.getElementById('pokemon-details')
     if (details instanceof HTMLElement) {
       details.hidden = false
 
+      // affiche le nom
       const nameEl = document.getElementById('pokemon-name')
       if (nameEl instanceof HTMLElement) {
         nameEl.innerHTML = `<strong>${pokemonName}</strong> ${pokemon.name.en}`
       }
 
+      // affiche l'image
       const img = document.getElementById('pokemon-img')
       if (img instanceof HTMLImageElement) {
         img.src = pokemon.sprites.regular
       }
+
+      // affiche la description
+      // todo
+
+      // affiche les stats
+      // todo
+
+      // affiche les talents
+      // todo
     }
+  } else {
+    console.warn(`failed to show ${pokemon} details`)
   }
+}
+
+/**
+ * colorie et mémorise la ligne sélectionnée
+ * @param {HTMLTableRowElement | null} row
+ */
+function setRowSelection(row) {
+        // effacer la sélection précédente
+        if (selectedRow !== null)
+        {
+          selectedRow.classList.remove('w3-blue')
+        }
+
+        if (row) {
+          // colorer le tr
+          row.classList.add('w3-blue')
+        }
+
+        // mémoriser la nouvelle ligne sélectionnée ou nulle si pas de ligne sélectionnée
+        selectedRow = row
 }
