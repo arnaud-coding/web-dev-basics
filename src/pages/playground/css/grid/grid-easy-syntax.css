@@ -34,10 +34,10 @@ body {
       
     ------------------------------------------------------------------  */
   grid-template-areas:
-    "a      a      a      a"
-    "john   john   joe    joe"
-    "john   john   c      c"
-    "e      jane   d      d";
+    'a      a      a      a'
+    'john   john   joe    joe'
+    'john   john   c      c'
+    'e      jane   d      d';
 }
 
 .card:nth-child(5) {

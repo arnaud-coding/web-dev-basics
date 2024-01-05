@@ -111,7 +111,6 @@ if (tableBodyElement instanceof HTMLTableSectionElement) {
       // récupère la ligne complète (le parent)
       const tr = td.parentElement
       if (tr instanceof HTMLTableRowElement) {
-
         // chqnge la ligne sélectionnée
         setRowSelection(tr)
 
@@ -350,17 +349,16 @@ function showPokemonDetails(pokemonName) {
  * @param {HTMLTableRowElement | null} row
  */
 function setRowSelection(row) {
-        // effacer la sélection précédente
-        if (selectedRow !== null)
-        {
-          selectedRow.classList.remove('w3-blue')
-        }
+  // effacer la sélection précédente
+  if (selectedRow !== null) {
+    selectedRow.classList.remove('w3-blue')
+  }
 
-        if (row) {
-          // colorer le tr
-          row.classList.add('w3-blue')
-        }
+  if (row) {
+    // colorer le tr
+    row.classList.add('w3-blue')
+  }
 
-        // mémoriser la nouvelle ligne sélectionnée ou nulle si pas de ligne sélectionnée
-        selectedRow = row
+  // mémoriser la nouvelle ligne sélectionnée ou nulle si pas de ligne sélectionnée
+  selectedRow = row
 }

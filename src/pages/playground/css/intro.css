@@ -1,91 +1,92 @@
 /* selectionne toute la page */
 body {
-    background-color: lemonchiffon;
+  background-color: lemonchiffon;
 }
 
 /* sélectionne le titre niveau 1 de la page */
 h1 {
-    /* couleur du texte */
-    color: #feff;
-    /* police de caractères */
-    font-family: fantasy;
-    /* texte plus ou moins gras */
-    font-weight: lighter;
-    /* espace entre lettres */
-    letter-spacing: 0.06em;
-    /* espace entre mots*/
-    word-spacing: 0.5em;
-    /* met le texte en majuscule */
-    text-transform: uppercase;
-    /* souligne le texte */
-    text-decoration: underline;
-    /* ombrage bien chelou (le rose avec un halo) */
-    text-shadow: 1px 1px 2px #f01c,
-        1px -1px 2px #f0cc,
-        -1px 1px 2px #f0fc,
-        -1px -1px 2px #f0fc,
-        0 0 16px #f0fa,
-        0 0 64px #f0fd;
+  /* couleur du texte */
+  color: #feff;
+  /* police de caractères */
+  font-family: fantasy;
+  /* texte plus ou moins gras */
+  font-weight: lighter;
+  /* espace entre lettres */
+  letter-spacing: 0.06em;
+  /* espace entre mots*/
+  word-spacing: 0.5em;
+  /* met le texte en majuscule */
+  text-transform: uppercase;
+  /* souligne le texte */
+  text-decoration: underline;
+  /* ombrage bien chelou (le rose avec un halo) */
+  text-shadow:
+    1px 1px 2px #f01c,
+    1px -1px 2px #f0cc,
+    -1px 1px 2px #f0fc,
+    -1px -1px 2px #f0fc,
+    0 0 16px #f0fa,
+    0 0 64px #f0fd;
 }
 
 /* sélectionne la partie principale du document */
 main {
-    /* couleur de fond: il est intéresant de voir qu'elle se propage à tous les éléments enfants (ceux contenu dans le "main") */
-    background-color: bisque;
+  /* couleur de fond: il est intéresant de voir qu'elle se propage à tous les éléments enfants (ceux contenu dans le "main") */
+  background-color: bisque;
 }
 
 /* sélectionne le titre niveau 3 */
 h3 {
-    /* bordure: épaisseur,  type de trait (ligne continue, pointillé) et couleur */
-    border: 5px solid rgb(238, 104, 104);
-    /* marge extérieure: top, right, bottom, left  OU  vertical, horizontal  OU  tous */
-    margin: 0.5em 3em 0.1em 0;
-    /* marge intérieure */
-    padding: 0.4em;
-    /* couleur de fond en dégradé  de rouge à rose vers la gauche */
-    background: linear-gradient(to left, pink, rgb(238, 104, 104));
+  /* bordure: épaisseur,  type de trait (ligne continue, pointillé) et couleur */
+  border: 5px solid rgb(238, 104, 104);
+  /* marge extérieure: top, right, bottom, left  OU  vertical, horizontal  OU  tous */
+  margin: 0.5em 3em 0.1em 0;
+  /* marge intérieure */
+  padding: 0.4em;
+  /* couleur de fond en dégradé  de rouge à rose vers la gauche */
+  background: linear-gradient(to left, pink, rgb(238, 104, 104));
 }
 
 /* sélectionne le titre niveau 4 */
 h4 {
-    color: green;
-    font-weight: bolder;
+  color: green;
+  font-weight: bolder;
 }
 
 /* sélectionne TOUS les paragraphes */
 p {
-    /* police de caractères */
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    /* taille de la police */
-    font-size: small;
-    /* hauteur de ligne */
-    line-height: 1;
-    /* indentation (espace avant) le 1er mot du paragraphe */
-    text-indent: 3em;
-    /* alignement: aligné sur les bords droits et gauches */
-    text-align: justify;
+  /* police de caractères */
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  /* taille de la police */
+  font-size: small;
+  /* hauteur de ligne */
+  line-height: 1;
+  /* indentation (espace avant) le 1er mot du paragraphe */
+  text-indent: 3em;
+  /* alignement: aligné sur les bords droits et gauches */
+  text-align: justify;
 }
 
 /* sélectionne TOUS les paragraphes qui suivent immédiatement un titre niveau 4
  * => Utilisation des sélecteur combinatoires: https: //developer.mozilla.org/fr/docs/Web/CSS/Adjacent_sibling_combinator */
-h4+p {
-    border: 1px dotted grey;
-    padding: 3px;
+h4 + p {
+  border: 1px dotted grey;
+  padding: 3px;
 }
 
 /* sélectionne la première lettre de TOUS les paragraphes
  *  => utilisation des pseudos-éléments : https: //developer.mozilla.org/fr/docs/Web/CSS/Pseudo-elements */
 p::first-letter {
-    /* trait bien épais */
-    font-weight: bolder;
-    /* taille police bien balèze */
-    font-size: larger;
-    color: rgb(21, 4, 170);
+  /* trait bien épais */
+  font-weight: bolder;
+  /* taille police bien balèze */
+  font-size: larger;
+  color: rgb(21, 4, 170);
 }
 
 /* sélectionne tous les paragraphes qui ont le pointeur de souris sur eux
  * => utilisation des pseudo classes : https://developer.mozilla.org/fr/docs/Web/CSS/Pseudo-classes#liste_des_pseudo-classes_standards/ */
 p:hover {
-    color: rgb(21, 4, 170);
-    font-weight: bold;
+  color: rgb(21, 4, 170);
+  font-weight: bold;
 }

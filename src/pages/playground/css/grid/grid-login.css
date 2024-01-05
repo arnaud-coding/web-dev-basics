@@ -1,63 +1,61 @@
 body {
-    background-color: rgb(192, 252, 192);
-    margin: 20px;
-    
+  background-color: rgb(192, 252, 192);
+  margin: 20px;
 }
 
 h1 {
-    margin: 0;
+  margin: 0;
 }
 
 /* définit le style du parent (la div) qui contient la grille  
    Note: permet la réutilisation du style de la classe "container" sans recevoir la grille qu'il contient*/
 .container {
-    border: 1px solid grey;
-    padding: 48px;
-    background-color: #ffffff;
-    border-radius: 16px;
+  border: 1px solid grey;
+  padding: 48px;
+  background-color: #ffffff;
+  border-radius: 16px;
 }
 
 /* définit le syle de la grille 
    Note: permet la réutilisation de la grille sans recevoir le style de la classe "container" */
-.grille{ 
-    
-    display: grid;
-    width: 380px;
+.grille {
+  display: grid;
+  width: 380px;
 }
- 
-.space-before{
-    margin-top: 30px;
+
+.space-before {
+  margin-top: 30px;
 }
 
 .btn {
-    height: 50px;
-    border-radius: 25px;
-    font-size: 18px;
-    background-color: #ffffff;
-    border: 1px solid grey;
+  height: 50px;
+  border-radius: 25px;
+  font-size: 18px;
+  background-color: #ffffff;
+  border: 1px solid grey;
 }
 
 .green {
-    color: #fff;
-    background-color: rgb(2, 197, 2); 
-    border: 0; 
+  color: #fff;
+  background-color: rgb(2, 197, 2);
+  border: 0;
 }
 
 .green:hover {
-    background-color: rgb(3, 145, 3);
+  background-color: rgb(3, 145, 3);
 }
 
 .blue {
-    color: #fff;
-    background-color: #1877f2; 
-    border: 0; 
+  color: #fff;
+  background-color: #1877f2;
+  border: 0;
 }
 
 .blue:hover {
-    background-color: #0458c7;
+  background-color: #0458c7;
 }
 
 .grille-buttons {
-    display: grid;
-    row-gap: 10px;
+  display: grid;
+  row-gap: 10px;
 }
