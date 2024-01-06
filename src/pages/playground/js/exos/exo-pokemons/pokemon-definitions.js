@@ -16,6 +16,12 @@
  */
 
 /**
+ * @typedef {object} PokemonMega
+ * @property {string} orbe nom du méga pokémon
+ * @property {Sprites} sprites images (regular, shiny, gmax)
+ */
+
+/**
  * @typedef {object} PokemonEvolution
  * @property {PokemonEvolutionItem[] | null} pre
  * @property {PokemonEvolutionItem[] | null} next
@@ -25,7 +31,7 @@
 /**
  * @typedef {object} PokemonType
  * @property {string} name
- * @property {string} image
+ * @property {string} image URL de l'image
  */
 
 /**
@@ -33,6 +39,12 @@
  * @property {string} regular le chemin d'accès vers l'image normal
  * @property {string | null} shiny le chemin d'accès vers son image 'timide'
  * @property {string | null} gmax le chemin d'accès vers son image 'gmax'
+ */
+
+/**
+ * @typedef {object} PokemonResistance
+ * @property {string} name nom de la resistance
+ * @property {number} multiplier
  */
 
 /**
@@ -44,4 +56,8 @@
  * @property {PokemonType[] | null} types les types (plante, poison, ...)
  * @property {Sprites} sprites les images
  * @property {PokemonEvolution | null} evolution
+ * @property {PokemonResistance[]} resistances
+ * @property {string} height
+ * @property {string} weight
+ * @property {number} catch_rate
  */
