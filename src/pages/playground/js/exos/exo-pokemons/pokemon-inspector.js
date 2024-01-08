@@ -76,4 +76,16 @@ export class PokemonInspector {
     }
     return gen
   }
+
+  /**
+   * renvoie la description du pokemon sous la forme :
+   * Taille = 0,7 m ; poids = 6,9 kg ; taux de capture = 45 % ; méga-évo = ?
+   * @param {Pokemon} pokemon
+   * @returns {string | undefined}
+   */
+  getDescription(pokemon) {
+    if (pokemon) {
+      return `Taille = ${pokemon.height} m ; Poids = ${pokemon.weight} kg ; taux de capture = ${pokemon.catch_rate} %`
+    }
+  }
 }

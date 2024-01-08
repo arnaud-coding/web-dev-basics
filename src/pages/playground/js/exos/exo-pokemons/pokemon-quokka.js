@@ -2,6 +2,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-unused-expressions */
 
+import { PokemonInspector } from "./pokemon-inspector";
+
 // #region
 
 /** @type {Pokemon} */
@@ -144,17 +146,3 @@ s = bulbi.resistances
       .sort((a, b) => a.name.length - b.name.length )
       .map(res => res.name).join(',')
 s
-
-/**
- * renvoie la description du pokemon
- * Taille = 0,7 m ; poids = 6,9 kg ; taux de capture = 45 % ; méga-évo = ?
- * @param {Pokemon} pokemon
- * @returns {string}
- */
-function getDescription(pokemon) {
-  // const mega = (pokemon.evolution?.mega) ? ` ; mega-evo = ${pokemon.evolution.mega.map()}` : ''
-  // return `Taille = ${pokemon.height} ; poids = ${pokemon.weight} ; taux de capture = ${pokemon.catch_rate} %${mega}`
-  return 'todo'
-}
- s = getDescription(bulbi)
- s
