@@ -312,7 +312,7 @@ function setGenerationsFilterElements(generations) {
 function showPokemonDetails(pokemonName) {
   const pokemon = inspector.getPokemonByName(pokemonName)
   if (pokemon) {
-    console.log(`show ${pokemon} details`)
+    console.log(`show ${pokemonName} details`)
     // montre la carte des détails
     const details = document.getElementById('pokemon-details')
     if (details instanceof HTMLElement) {
@@ -331,7 +331,7 @@ function showPokemonDetails(pokemonName) {
       }
 
       // affiche la description
-      // todo
+
 
       // affiche les stats
       // todo
