@@ -1,32 +1,20 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true
-  },
-  extends: ["standard", "prettier"],
+  env: { browser: true, es2021: true },
+  extends: ['eslint:recommended', 'prettier'],
+  plugins: ['prettier'],
   overrides: [
     {
       env: {
         node: true
       },
-      files: [".eslintrc.{js,cjs}"],
+      files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
-        sourceType: "script"
+        sourceType: 'script'
       }
     }
   ],
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module"
-  },
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   rules: {
-    "max-len": ["warn", {
-      code: 120,
-      comments: 160,
-      ignoreStrings: true,
-      ignoreTrailingComments: true,
-      ignoreUrls: true,
-      ignoreTemplateLiterals: true
-    }]
+    'prettier/prettier': 'error'
   }
-};
+}
