@@ -78,14 +78,17 @@ export class PokemonInspector {
   }
 
   /**
-   * renvoie la description du pokemon sous la forme :
+   * renvoie la description du pokemon donné
    * Taille = 0,7 m ; poids = 6,9 kg ; taux de capture = 45 % ; méga-évo = ?
    * @param {Pokemon} pokemon
-   * @returns {string | undefined}
+   * @returns {string}
    */
   getDescription(pokemon) {
-    if (pokemon) {
-      return `Taille = ${pokemon.height} m ; Poids = ${pokemon.weight} kg ; taux de capture = ${pokemon.catch_rate} %`
+    let mega = ''
+    if (pokemon.evolution?.mega) {
+      mega = ' ; méga-évo = ' + pokemon.evolution.mega.map((m) => m.orbe).join(',')
     }
+
+    return `Taille = ${pokemon.height} ; poids = ${pokemon.weight} ; taux de capture = ${pokemon.catch_rate} %${mega}`
   }
 }

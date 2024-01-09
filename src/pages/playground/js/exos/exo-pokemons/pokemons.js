@@ -331,7 +331,10 @@ function showPokemonDetails(pokemonName) {
       }
 
       // affiche la description
-
+      const desc = document.getElementById('pokemon-description')
+      if (desc instanceof HTMLLabelElement) {
+        desc.innerHTML = inspector.getDescription(pokemon)
+      }
 
       // affiche les stats
       // todo
