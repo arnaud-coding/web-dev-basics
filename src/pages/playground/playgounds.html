@@ -1,85 +1,87 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terrains de jeux</title>
-  </head>
 
-  <body>
-    <!-- barre de navigation générale -->
-    <a href="/src/restaurant/index.html">Retour au restaurant</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terrains de jeux</title>
+</head>
 
-    <!-- présentation de la page -->
-    <h1>Terrains de jeux</h1>
-    <p>
-      Point de départ vers les différents terrains de jeux qui permettent de s'entrainer librement.<br />Clic sur un
-      lien pour jouer...
-    </p>
+<body>
+  <!-- barre de navigation générale -->
+  <a href="/">Retour à la page d'accueil</a>
 
-    <!-- navigation vers les différents terrains -->
-    <p>Liste des terrains :</p>
+  <!-- présentation de la page -->
+  <h1>Terrains de jeux</h1>
+  <p>
+    Point de départ vers les différents terrains de jeux qui permettent de s'entrainer librement.<br />Clic sur un
+    lien pour jouer...
+  </p>
+
+  <!-- navigation vers les différents terrains -->
+  <p>Liste des terrains :</p>
+  <ul>
+    <!-- liste à puces de premier niveau (niveau "titre") : "HTML" -->
+    <li>HTML</li>
     <ul>
-      <!-- liste à puces de premier niveau (niveau "titre") : "HTML" -->
-      <li>HTML</li>
+      <!-- liste à puces second niveau (niveau détails pour différents élément HTML) -->
+      <li>
+        <a href="./html/html-tags.html">Tags</a><br />
+        <i> (pleins d'exemples sur les éléments les plus classiques: bouton, labels, input...)</i>
+      </li>
+      <li>
+        <a href="./html/input.html">Content - Input</a><br />
+        <i> tous les types de input (textes, cases à cocher, radio, number, date, ...) </i>
+      </li>
+    </ul>
+
+    <li>CSS</li>
+    <ul>
+      <!-- liste à puces second niveau (niveau détails pour différents élément CSS -->
+      <li><a href="./css/trailer.html">Trailer</a></li>
+      <li>
+        <a href="./css/intro.html">Introduction</a><br />
+        <i>pleins d'exemples simples: couleurs, bordures, marges, polices, ...</i>
+      </li>
+
+      <!-- Grid area -->
+      <li>Grid layout</li>
       <ul>
-        <!-- liste à puces second niveau (niveau détails pour différents élément HTML) -->
-        <li>
-          <a href="./html/html-tags.html">Tags</a><br />
-          <i> (pleins d'exemples sur les éléments les plus classiques: bouton, labels, input...)</i>
-        </li>
-        <li>
-          <a href="./html/input.html">Content - Input</a><br />
-          <i> tous les types de input (textes, cases à cocher, radio, number, date, ...) </i>
-        </li>
+        <li><a href="./css/grid/grid.html">Span - Classic syntax</a></li>
+        <li><a href="./css/grid/grid-easy-syntax.html">Span - Easy syntax</a></li>
+        <li><a href="./css/grid/grid-demo.html">Full page</a></li>
+        <li><a href="./css/grid/grid-login.html">Login</a></li>
+        <li><a href="./css/grid/grid-media-query.html">Media query</a></li>
       </ul>
 
-      <li>CSS</li>
+      <!-- Flexbox area -->
+      <li>Flexbox layout</li>
       <ul>
-        <!-- liste à puces second niveau (niveau détails pour différents élément CSS -->
-        <li><a href="./css/trailer.html">Trailer</a></li>
-        <li>
-          <a href="./css/intro.html">Introduction</a><br />
-          <i>pleins d'exemples simples: couleurs, bordures, marges, polices, ...</i>
-        </li>
-
-        <!-- Grid area -->
-        <li>Grid layout</li>
-        <ul>
-          <li><a href="./css/grid/grid.html">Span - Classic syntax</a></li>
-          <li><a href="./css/grid/grid-easy-syntax.html">Span - Easy syntax</a></li>
-          <li><a href="./css/grid/grid-demo.html">Full page</a></li>
-          <li><a href="./css/grid/grid-login.html">Login</a></li>
-          <li><a href="./css/grid/grid-media-query.html">Media query</a></li>
-        </ul>
-
-        <!-- Flexbox area -->
-        <li>Flexbox layout</li>
-        <ul>
-          <li><a href="./css/flexbox/flexbox.html">Layout - Flexbox</a></li>
-        </ul>
-
-        <!-- samples -->
-        <li>miscellaneous</li>
-        <ul>
-          <li><a href="./css/menu-bar-1/menu.html">Menu Bar #1</a></li>
-          <li><a href="./js/exos/exo-login/login-codehal.html">Login</a></li>
-        </ul>
+        <li><a href="./css/flexbox/flexbox.html">Layout - Flexbox</a></li>
       </ul>
 
-      <li>JavaScript (JS)</li>
+      <!-- samples -->
+      <li>miscellaneous</li>
       <ul>
-        <li><a href="./js/trailer.html">Trailer</a></li>
-        <li><a href="./js/exos/exo-dom/exo-dom.html">Exercice DOM</a></li>
-        <li><a href="./js/exos/exo-login/login.html">Exercice Login</a></li>
-        <li><a href="./js/exos/exo-api/exo-api.html">Exercice API</a></li>
-        <li>
-          <a href="./js/exos/exo-todo-list/todo-list.html">Exercice TODOS</a>
-        </li>
-        <li>
-          <a href="./js/exos/exo-pokemons/pokemons.html">Exercice Pokemons</a>
-        </li>
+        <li><a href="./css/menu-bar-1/menu.html">Menu Bar #1</a></li>
+        <li><a href="./css/login/login-codehal.html">Login</a></li>
       </ul>
     </ul>
-  </body>
+
+    <li>JavaScript (JS)</li>
+    <ul>
+      <li><a href="./js/trailer.html">Trailer</a></li>
+      <li><a href="./js/exos/exo-dom/exo-dom.html">Exercice DOM</a></li>
+      <li><a href="./js/exos/exo-login/login.html">Exercice Login</a></li>
+      <li><a href="./js/exos/exo-api/exo-api.html">Exercice API</a></li>
+      <li>
+        <a href="./js/exos/exo-todo-list/todo-list.html">Exercice TODOS</a>
+      </li>
+      <li>
+        <a href="./js/exos/exo-pokemons/pokemons.html">Exercice Pokemons</a>
+      </li>
+    </ul>
+  </ul>
+</body>
+
 </html>
