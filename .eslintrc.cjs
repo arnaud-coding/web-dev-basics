@@ -15,6 +15,17 @@ module.exports = {
   ],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   rules: {
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
+    'max-len': [
+      'warn',
+      {
+        code: 120,
+        comments: 160,
+        ignoreStrings: true,
+        ignoreTrailingComments: true,
+        ignoreUrls: true,
+        ignoreTemplateLiterals: true
+      }
+    ]
   }
 }
