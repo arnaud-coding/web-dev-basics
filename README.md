@@ -1,17 +1,21 @@
 # web-dev-basics
 
-But de cet projet: Apprendre les bases du développement d'un site web.
+**But de cet projet**: Apprendre les bases du développement d'un site web.
 Je me limite aux technologies de base: HTML/CSS/JS.
 
-## Web Technologies languages
+## Auto-apprentissage - Tutoriels en ligne
+
+[Cahier d'exercices en autonomie](./workbook.md)
+
+## Technologies et languages du Web
 
 * [HTML](docs/languages/HTML.md)
 * [CSS](docs/languages/CSS.md)
 * [JavaScript](docs/languages/JavaScript.md)
 
-## Tools
+## Outils
 
-### Visual Studio code (**VS Code**)
+### Visual Studio Code (**VS Code**)
 
 ### Git
 
