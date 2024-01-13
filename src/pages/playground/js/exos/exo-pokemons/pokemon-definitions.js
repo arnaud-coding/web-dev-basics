@@ -2,47 +2,53 @@
 // (on a crée manuellement ces types en observant le résultat d'un appel à l'API)
 
 /**
- * @typedef PokemonName
- * @type {object}
+ * @typedef {object} PokemonName
  * @property {string} fr
  * @property {string} en
  * @property {string} jp
  */
 
 /**
- * @typedef PokemonEvolutionItem
- * @type {object}
+ * @typedef {object} PokemonEvolutionItem
  * @property {number} pokedexId
  * @property {string} name
  * @property {string} condition
  */
 
 /**
- * @typedef PokemonEvolution
- * @type {object}
+ * @typedef {object} PokemonMega
+ * @property {string} orbe nom du méga pokémon
+ * @property {Sprites} sprites images (regular, shiny, gmax)
+ */
+
+/**
+ * @typedef {object} PokemonEvolution
  * @property {PokemonEvolutionItem[] | null} pre
  * @property {PokemonEvolutionItem[] | null} next
  * @property {object[] | null} mega
  */
 
 /**
- * @typedef PokemonType
- * @type {object}
+ * @typedef {object} PokemonType
  * @property {string} name
- * @property {string} image
+ * @property {string} image URL de l'image
  */
 
 /**
- * @typedef Sprites
- * @type {object}
+ * @typedef {object} Sprites
  * @property {string} regular le chemin d'accès vers l'image normal
  * @property {string | null} shiny le chemin d'accès vers son image 'timide'
  * @property {string | null} gmax le chemin d'accès vers son image 'gmax'
  */
 
 /**
- * @typedef Pokemon
- * @type {object}
+ * @typedef {object} PokemonResistance
+ * @property {string} name nom de la resistance
+ * @property {number} multiplier
+ */
+
+/**
+ * @typedef {object} Pokemon
  * @property {number} pokedexId l'identifiant
  * @property {number} generation la génération
  * @property {string} category la catégorie (graine, lézard, ...)
@@ -50,4 +56,8 @@
  * @property {PokemonType[] | null} types les types (plante, poison, ...)
  * @property {Sprites} sprites les images
  * @property {PokemonEvolution | null} evolution
+ * @property {PokemonResistance[]} resistances
+ * @property {string} height
+ * @property {string} weight
+ * @property {number} catch_rate
  */

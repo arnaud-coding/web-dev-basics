@@ -1,14 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>exemples élements html</title>
-    <link rel="stylesheet" href="html-tags.css">
-</head>
+    <link rel="stylesheet" href="html-tags.css" />
+  </head>
 
-<body>
+  <body>
     <a href="../playgounds.html">retour aux terrains de jeux</a>
 
     <!-- les titres -->
@@ -18,7 +17,7 @@
 
     <!-- les 4 plus célèbres... -->
     <label>ceci est un label (un texte que l'utilisateur ne peut modifier)</label>
-    <input type="text" placeholder="write here...">
+    <input type="text" placeholder="write here..." />
     <button>1er bouton</button>
     <button>2eme bouton</button>
 
@@ -30,109 +29,106 @@
     <a href="https://www.youtube.com/">youtube</a>
 
     <!-- une ligne de séparation... -->
-    <hr>
+    <hr />
 
     <!-- le fieldset pour encadrer des choses qui vont ensemble visuellement (ici, choix du monstre) -->
     <fieldset>
-        <!-- le titre du cadre -->
-        <legend>choisir un monstre</legend>
+      <!-- le titre du cadre -->
+      <legend>choisir un monstre</legend>
 
-        <!--"input" est un élement html qui sert à ce que l'utilisateur entre une donnée :
+      <!--"input" est un élement html qui sert à ce que l'utilisateur entre une donnée :
                 - type="radio" affiche le "input" comme un bouton radio (un cercle ou on peut cliquer).  
                 - "id" identifie le contrôle pour que le label puisse lui être associé.
                 - "name" permet de regrouper des boutons radios pour qu'on ne puisse en sélectionner UN SEUL.
    
                le "label" affiche le texte correspondant à son bouton radio. L'attribut "for" doit correspondre à l'attribut "id" du "input".
             -->
-        <input type="radio" id="kraken" name="monster" value="K" />
-        <label for="kraken">Kraken</label><br />
+      <input type="radio" id="kraken" name="monster" value="K" />
+      <label for="kraken">Kraken</label><br />
 
-        <input type="radio" id="sasquatch" name="monster" value="S" />
-        <label for="sasquatch">Sasquatch</label><br />
+      <input type="radio" id="sasquatch" name="monster" value="S" />
+      <label for="sasquatch">Sasquatch</label><br />
     </fieldset>
-
 
     <!-- les listes  -->
     <ol>
-        <li>ligne 1 de la liste numérotée</li>
-        <li>ligne 2... </li>
+      <li>ligne 1 de la liste numérotée</li>
+      <li>ligne 2...</li>
     </ol>
 
     <ul>
-        <li>ligne 1 de la liste à puces</li>
-        <li>ligne 2...</li>
-        <ul>
-            <li>une sous ligne (on appelle souvent cela une liste imbriquée)</li>
-            <li>une sous ligne</li>
-        </ul>
+      <li>ligne 1 de la liste à puces</li>
+      <li>ligne 2...</li>
+      <ul>
+        <li>une sous ligne (on appelle souvent cela une liste imbriquée)</li>
+        <li>une sous ligne</li>
+      </ul>
     </ul>
 
     <!-- Drop-down list : pour faire un choix entre plusieurs valeurs -->
     <label for="teams">choisissez une équipe</label>
     <select id="teams">
-        <option value="ol">Olympique Lyonnais</option>
-        <option value="psg">Paris Saint-Germain</option>
-        <option value="om">Olympique de Marseille</option>
+      <option value="ol">Olympique Lyonnais</option>
+      <option value="psg">Paris Saint-Germain</option>
+      <option value="om">Olympique de Marseille</option>
     </select>
 
     <p></p>
 
     <!-- tableau -->
     <table>
-        <!-- titre -->
-        <caption>
-            titre du tableau
-        </caption>
+      <!-- titre -->
+      <caption>
+        titre du tableau
+      </caption>
 
-        <!-- en-tete du tableau -->
-        <thead>
-            <!-- 1ere ligne de l'en-tête -->
-            <tr>
-                <!-- 1ere colonne de la 1ere ligne -->
-                <th>nom</th>
-                <th>prenom</th>
-                <th>genre</th>
-                <th>age</th>
-            </tr>
-        </thead>
+      <!-- en-tete du tableau -->
+      <thead>
+        <!-- 1ere ligne de l'en-tête -->
+        <tr>
+          <!-- 1ere colonne de la 1ere ligne -->
+          <th>nom</th>
+          <th>prenom</th>
+          <th>genre</th>
+          <th>age</th>
+        </tr>
+      </thead>
 
-        <!-- contenu du tableau -->
-        <tbody>
-            <!-- 1ere ligne du tableau -->
-            <tr>
-                <td>Berthollet</td>
-                <td>Arnaud</td>
-                <td>masculin</td>
-                <td>28</td>
-            </tr>
+      <!-- contenu du tableau -->
+      <tbody>
+        <!-- 1ere ligne du tableau -->
+        <tr>
+          <td>Berthollet</td>
+          <td>Arnaud</td>
+          <td>masculin</td>
+          <td>28</td>
+        </tr>
 
-            <!-- 2eme ligne du tableau -->
-            <tr>
-                <td>Berthollet</td>
-                <td>Thomas</td>
-                <td>masculin</td>
-                <td>29</td>
-            </tr>
+        <!-- 2eme ligne du tableau -->
+        <tr>
+          <td>Berthollet</td>
+          <td>Thomas</td>
+          <td>masculin</td>
+          <td>29</td>
+        </tr>
 
-            <!-- 3eme ligne du tableau -->
-            <tr>
-                <td>Berthollet</td>
-                <td>Agnès</td>
-                <td>féminin</td>
-                <td>57</td>
-            </tr>
+        <!-- 3eme ligne du tableau -->
+        <tr>
+          <td>Berthollet</td>
+          <td>Agnès</td>
+          <td>féminin</td>
+          <td>57</td>
+        </tr>
 
-            <!-- 4eme ligne du tableau -->
-            <tr>
-                <td>Berthollet</td>
-                <td>Loïc</td>
-                <td>masculin</td>
-                <td>57</td>
-            </tr>
-
-        </tbody>
-        <tfoot></tfoot>
+        <!-- 4eme ligne du tableau -->
+        <tr>
+          <td>Berthollet</td>
+          <td>Loïc</td>
+          <td>masculin</td>
+          <td>57</td>
+        </tr>
+      </tbody>
+      <tfoot></tfoot>
     </table>
-</body>
-
+  </body>
 </html>

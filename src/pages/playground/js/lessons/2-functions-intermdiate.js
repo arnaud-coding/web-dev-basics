@@ -1,4 +1,4 @@
-(() => {
+;(() => {
   // --------------------------------------------------------------------------------------------------------------
   // Exemple: Une fonction qui a plein de paramètres
   // --------------------------------------------------------------------------------------------------------------
@@ -7,11 +7,11 @@
 
   const limas = {
     number: 160,
-    street: "allée du coteau",
+    street: 'allée du coteau',
     zipCode: 69400,
-    city: "Limas",
-    country: "France"
-  };
+    city: 'Limas',
+    country: 'France'
+  }
 
   // ----------------------------------------
   // 1ere facon d'écrire une fonction qui attend PLEIN (> 3) de paramètres: cool à définir, chiant à appeler
@@ -28,12 +28,12 @@
    */
   function stringifyAdress(number, street, zipCode, city, country) {
     // expected return : 160 allée du coteau, 69400 LIMAS, France
-    return `${number} ${street}, ${zipCode} ${city.toUpperCase()}, ${country}`;
+    return `${number} ${street}, ${zipCode} ${city.toUpperCase()}, ${country}`
   }
 
   // appel de la fonction PENIBLE et "error prone" : on repéte le "limas." pour chaque appel
-  let deliveryAddress = stringifyAdress(limas.number, limas.street, limas.zipCode, limas.city, limas.country);
-  console.log(deliveryAddress);
+  let deliveryAddress = stringifyAdress(limas.number, limas.street, limas.zipCode, limas.city, limas.country)
+  console.log(deliveryAddress)
 
   // ----------------------------------------
   // 2eme facon d'écrire une fonction qui attend plein de paramètres: chiant à définir, cool à appeler
@@ -51,12 +51,12 @@
    * @returns l'adresse, en une seule ligne
    */
   function stringifyAdressObject(address) {
-    return `${address.number} ${address.street}, ${address.zipCode} ${address.city.toUpperCase()}, ${address.country}`;
+    return `${address.number} ${address.street}, ${address.zipCode} ${address.city.toUpperCase()}, ${address.country}`
   }
 
   // appel de la fonction plus cool : on passe directment l'objet
-  deliveryAddress = stringifyAdressObject(limas);
-  console.log(deliveryAddress);
+  deliveryAddress = stringifyAdressObject(limas)
+  console.log(deliveryAddress)
 
   // ----------------------------------------
   // 3eme facon d'écrire une fonction qui attend plein de paramètres: cool à définir, cool à utiliser, chiant à documenter
@@ -74,10 +74,10 @@
    * @returns l'adresse, en une seule ligne
    */
   function stringifyAdressDestructured({ number, street, zipCode, city, country }) {
-    return `${number} ${street}, ${zipCode} ${city.toUpperCase()}, ${country}`;
+    return `${number} ${street}, ${zipCode} ${city.toUpperCase()}, ${country}`
   }
-  deliveryAddress = stringifyAdressDestructured(limas);
-  console.log(deliveryAddress);
+  deliveryAddress = stringifyAdressDestructured(limas)
+  console.log(deliveryAddress)
 
   // #endregion
 
@@ -91,11 +91,11 @@
    * @param {function(string): string} fn fonction à appeler (la fonction attend 1 paramètre type "string" et retourne une string)
    */
   const useFunction = (value, fn) => {
-    console.log(`La fonction "useFunction" a été appelée avec "value" = ${value}`);
+    console.log(`La fonction "useFunction" a été appelée avec "value" = ${value}`)
     // appelle la fonction "fn" passée en paramètre en lui passant le paramètre passé "value"; stocke la valeur retournée dans "ret"
-    const ret = fn(value);
-    console.log(`La fonction "fn" a renvoyé : ${ret}`);
-  };
+    const ret = fn(value)
+    console.log(`La fonction "fn" a renvoyé : ${ret}`)
+  }
 
   /**
    * met en majuscules un texte donné
@@ -103,9 +103,9 @@
    * @returns {string} le texte donné mis en majuscules
    */
   const upper = (text) => {
-    console.log(`La fonction "upper" a été appelée avec bar = ${text}`);
-    return text.toUpperCase();
-  };
+    console.log(`La fonction "upper" a été appelée avec bar = ${text}`)
+    return text.toUpperCase()
+  }
 
   /**
    * met en minuscules un texte donné
@@ -113,19 +113,19 @@
    * @returns {string} le texte donné mis en minuscules
    */
   const lower = (text) => {
-    console.log(`La fonction "lower" a été appelée avec bar = ${text}`);
-    return text.toLowerCase();
-  };
+    console.log(`La fonction "lower" a été appelée avec bar = ${text}`)
+    return text.toLowerCase()
+  }
 
   // appels classiques où l'on passe une vraie fonction nommée (déclarée au préalable)
-  useFunction("Bar", upper);
-  useFunction("Bar", lower);
+  useFunction('Bar', upper)
+  useFunction('Bar', lower)
 
   // appels différents où l'on passe une fonction anonyme (la fonction est déclarée sur la même ligne)
   useFunction("   trop d'espaces...  ", (s) => {
-    return s.trim();
-  });
+    return s.trim()
+  })
 
   // cas particulier de fonction anonyme (ne contient qu'UNE SEULE ligne): on peut enlever "{}" et le "return" ===> TRES UTILISEE !!
-  useFunction("   trop d'espaces...  ", (s) => s.trim());
-})();
+  useFunction("   trop d'espaces...  ", (s) => s.trim())
+})()

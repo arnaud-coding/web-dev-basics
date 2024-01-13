@@ -1,4 +1,4 @@
-(() => {
+;(() => {
   /** =================================================================================================================
    *
    * Les promesses sont une facon plus simple d'écrire CERTAINES callbacks.
@@ -30,29 +30,29 @@
    */
   const returnPromiseSimple = (id) => {
     if (id > 0 && id <= 10) {
-      return Promise.resolve("toto : " + id);
+      return Promise.resolve('toto : ' + id)
     } else {
-      return Promise.reject(new Error("id doit etre compris entre 1 et 10"));
+      return Promise.reject(new Error('id doit etre compris entre 1 et 10'))
     }
-  };
+  }
 
   /**
    * 2eme partie de la démo : utiliser une promesse renvoyée par une fonction
    * @param {number} id identifiant de l'utilisateur recherché
    */
   const usePromiseSimple = (id) => {
-    const p = returnPromiseSimple(id); // "p" contient la promesse retournée par la fonction getUserName
+    const p = returnPromiseSimple(id) // "p" contient la promesse retournée par la fonction getUserName
     p.then((name) => {
       // ce code va etre exécuté uniquement quand la promesse sera résolue. ex.: quand la requete API sera terminée
-      console.log("la promesse a été résolue : elle renvoie 'name'=", name);
+      console.log("la promesse a été résolue : elle renvoie 'name'=", name)
     }).catch((reason) => {
       // ce code va etre exécuté uniquement si la promesse est rejetée, ex.: pas d'internet pour une requete API
-      console.error("la promesse a été rejetée : elle renvoie 'reason'=", reason);
-    });
-  };
+      console.error("la promesse a été rejetée : elle renvoie 'reason'=", reason)
+    })
+  }
 
-  usePromiseSimple(3);
-  usePromiseSimple(12);
+  usePromiseSimple(3)
+  usePromiseSimple(12)
 
   // =======================================================================================================
 
@@ -64,46 +64,46 @@
   const returnPromiseComplex = (id) => {
     const promise = new Promise((resolve, reject) => {
       if (id > 0 && id <= 10) {
-        return resolve("toto : " + id);
+        return resolve('toto : ' + id)
       } else {
-        return reject(new Error("id doit etre compris entre 1 et 10"));
+        return reject(new Error('id doit etre compris entre 1 et 10'))
       }
-    });
-    return promise;
-  };
+    })
+    return promise
+  }
 
   /**
    * 2eme partie de la démo : utiliser une promesse renvoyée par une fonction
    * @param {number} id identifiant de l'utilisateur recherché
    */
   const usePromiseComplex = (id) => {
-    const p = returnPromiseComplex(id); // "p" contient la promesse retournée par la fonction getUserName
+    const p = returnPromiseComplex(id) // "p" contient la promesse retournée par la fonction getUserName
     p.then((name) => {
       // ce code va etre exécuté uniquement quand la promesse sera résolue. ex.: quand la requete API sera terminée
-      console.log("la promesse a été résolue : elle renvoie 'name'=", name);
+      console.log("la promesse a été résolue : elle renvoie 'name'=", name)
     }).catch((reason) => {
       // ce code va etre exécuté uniquement si la promesse est rejetée, ex.: pas d'internet pour une requete API
-      console.error("la promesse a été rejetée : elle renvoie 'reason'=", reason);
-    });
-  };
+      console.error("la promesse a été rejetée : elle renvoie 'reason'=", reason)
+    })
+  }
 
-  usePromiseComplex(5);
-  usePromiseComplex(15);
+  usePromiseComplex(5)
+  usePromiseComplex(15)
 
   // =======================================================================================================
 
   // Exemple : "Promise Chaining Hell" (enfer de l'enchainement des promesses) = code illisible
   // ==> solution = async/await
 
-  const p1 = returnPromiseComplex(2);
+  const p1 = returnPromiseComplex(2)
   p1.then((p1value) => {
-    const p2 = returnPromiseComplex(3);
+    const p2 = returnPromiseComplex(3)
     p2.then((p2value) => {
-      console.log("p1, p2 :", p1value, p2value);
+      console.log('p1, p2 :', p1value, p2value)
     }).catch((reason) => {
-      console.error("p2 a été rejetée : elle renvoie 'reason'=", reason);
-    });
+      console.error("p2 a été rejetée : elle renvoie 'reason'=", reason)
+    })
   }).catch((reason) => {
-    console.error("p1 a été rejetée : elle renvoie 'reason'=", reason);
-  });
-})();
+    console.error("p1 a été rejetée : elle renvoie 'reason'=", reason)
+  })
+})()

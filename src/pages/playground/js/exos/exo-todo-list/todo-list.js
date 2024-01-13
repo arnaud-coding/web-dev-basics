@@ -67,27 +67,27 @@
 /** -------------------------------------------------------------------------------------------------------------------
  * Select HTML elements
  * ----------------------------------------------------------------------------------------------------------------- */
-const titleInput = document.getElementById("title");
-const dateInput = document.getElementById("exp-date");
-const descInput = document.getElementById("desc");
-const addButton = document.getElementById("btn-add");
-const hideListButton = document.getElementById("toggle-visibility");
-const todoList = document.getElementById("todo-list");
+const titleInput = document.getElementById('title')
+const dateInput = document.getElementById('exp-date')
+const descInput = document.getElementById('desc')
+const addButton = document.getElementById('btn-add')
+const hideListButton = document.getElementById('toggle-visibility')
+const todoList = document.getElementById('todo-list')
 
 /** -------------------------------------------------------------------------------------------------------------------
  * Add events listeners to HTML elements
  * ----------------------------------------------------------------------------------------------------------------- */
 if (addButton) {
-  addButton.addEventListener("click", addTodo);
+  addButton.addEventListener('click', addTodo)
 }
 if (titleInput) {
-  titleInput.addEventListener("input", setAddState);
+  titleInput.addEventListener('input', setAddState)
 }
 if (dateInput) {
-  dateInput.addEventListener("input", setAddState);
+  dateInput.addEventListener('input', setAddState)
 }
 if (hideListButton) {
-  hideListButton.addEventListener("click", toggleTodosVisibility);
+  hideListButton.addEventListener('click', toggleTodosVisibility)
 }
 
 /** -------------------------------------------------------------------------------------------------------------------
@@ -100,10 +100,10 @@ if (hideListButton) {
  */
 function getValue(element) {
   if (element instanceof HTMLInputElement) {
-    const value = element.value;
-    return value;
+    const value = element.value
+    return value
   }
-  return undefined;
+  return undefined
 }
 
 /**
@@ -112,7 +112,7 @@ function getValue(element) {
  */
 function clearValue(element) {
   if (element instanceof HTMLInputElement) {
-    element.value = "";
+    element.value = ''
   }
 }
 
@@ -123,15 +123,15 @@ function clearValue(element) {
 /** Toggle todos list visibility */
 function toggleTodosVisibility() {
   if (todoList && hideListButton) {
-    const hidden = todoList.hidden;
+    const hidden = todoList.hidden
     if (hidden) {
       // liste cachée : montrer liste et texte bouton = hide
-      todoList.hidden = false;
-      hideListButton.textContent = "Hide list";
+      todoList.hidden = false
+      hideListButton.textContent = 'Hide list'
     } else {
       // liste affichée : caher la liste et texte bouton = show
-      todoList.hidden = true;
-      hideListButton.textContent = "Show list";
+      todoList.hidden = true
+      hideListButton.textContent = 'Show list'
     }
   }
 }
@@ -143,15 +143,15 @@ function toggleTodosVisibility() {
 /** enabled/desabled the addButton depending on title and expiry date */
 function setAddState() {
   // get title and date
-  const title = getValue(titleInput);
-  const date = getValue(dateInput);
+  const title = getValue(titleInput)
+  const date = getValue(dateInput)
 
   // decide if activation or desactivation
-  const enable = Boolean(title) && Boolean(date);
+  const enable = Boolean(title) && Boolean(date)
 
   // change the button state
   if (addButton && addButton instanceof HTMLButtonElement) {
-    addButton.disabled = !enable;
+    addButton.disabled = !enable
   }
 }
 
@@ -162,13 +162,13 @@ function setAddState() {
 /** Add at body end a label containing a copyright */
 function addCopyright() {
   // create a <label> element (HTMLLabelElement)
-  const label = document.createElement("label");
+  const label = document.createElement('label')
   // add a text into the label
-  label.innerHTML = "Copyright (C) 2023 Arnaud SAS";
+  label.innerHTML = 'Copyright (C) 2023 Arnaud SAS'
   // add a class to the label
-  label.classList.add("copyright");
+  label.classList.add('copyright')
   // add the label at body end
-  document.getElementsByTagName("body")[0].appendChild(label);
+  document.getElementsByTagName('body')[0].appendChild(label)
 }
 
 /** -------------------------------------------------------------------------------------------------------------------
@@ -185,24 +185,24 @@ function addCopyright() {
  */
 function addTodo() {
   // get title, date and description
-  const title = getValue(titleInput);
-  const date = getValue(dateInput);
-  const desc = getValue(descInput);
+  const title = getValue(titleInput)
+  const date = getValue(dateInput)
+  const desc = getValue(descInput)
 
   // exit without creating the todo if title or date does not exist
   if (title === undefined || date === undefined) {
     // exit from the function
-    return;
+    return
   }
 
   // create the TODO object
-  const todo = { title, description: desc, expiryDate: date, done: false };
+  const todo = { title, description: desc, expiryDate: date, done: false }
 
   // add the TODO object to the todos list
-  addToList(todo);
+  addToList(todo)
 
   // clear the "add todo" form
-  clearForm();
+  clearForm()
 }
 
 // ---------------------------------------------------------
@@ -215,30 +215,30 @@ function addTodo() {
  */
 function addToList(todo) {
   // select the todo row template (modèle de <li> de todo pour le <ul>)
-  const template = document.getElementById("todo-row");
+  const template = document.getElementById('todo-row')
   if (template && template instanceof HTMLTemplateElement) {
     // ---------- copie le template de la ligne todo : cette copie sera l'élement à insérer dans la liste
-    const clone = template.content.cloneNode(true);
+    const clone = template.content.cloneNode(true)
 
     // ---------- écrire les valeurs du todo dans l'élement dupliqué
-    clone.querySelector(".todo-title").innerHTML = todo.title;
-    clone.querySelector(".todo-desc").innerHTML = todo.description;
-    const date = new Date(todo.expiryDate).toLocaleDateString(undefined, { dateStyle: "medium" });
-    clone.querySelector(".todo-exp-date").innerHTML = date;
+    clone.querySelector('.todo-title').innerHTML = todo.title
+    clone.querySelector('.todo-desc').innerHTML = todo.description
+    const date = new Date(todo.expiryDate).toLocaleDateString(undefined, { dateStyle: 'medium' })
+    clone.querySelector('.todo-exp-date').innerHTML = date
 
     // ---------- ajoute les gestionnaires d'évenements aux boutons delete et done
     //  - selectionne les boutons
     //  - ajoute une gestionnaire d'evenements au boutons
-    clone.querySelector(".btn-done").addEventListener("click", () => {
-      console.log("done clicked");
-    });
-    clone.querySelector(".btn-del").addEventListener("click", () => {
-      console.log("delete clicked", clone);
-      todoList?.remove(clone);
-    });
+    clone.querySelector('.btn-done').addEventListener('click', () => {
+      console.log('done clicked')
+    })
+    clone.querySelector('.btn-del').addEventListener('click', () => {
+      console.log('delete clicked', clone)
+      todoList?.remove(clone)
+    })
 
     // ---------- ajouter l'élement dupliqué dans la liste
-    todoList?.appendChild(clone);
+    todoList?.appendChild(clone)
   }
 }
 
@@ -246,18 +246,18 @@ function addToList(todo) {
  * clear the "add todo" form
  */
 function clearForm() {
-  clearValue(titleInput);
-  clearValue(dateInput);
-  clearValue(descInput);
-  setAddState();
+  clearValue(titleInput)
+  clearValue(dateInput)
+  clearValue(descInput)
+  setAddState()
 }
 
 // -----------------------------------
 
 // todo : set default value temporarily
-titleInput.value = "nono";
-dateInput.value = "2023-11-24";
+titleInput.value = 'nono'
+dateInput.value = '2023-11-24'
 // todo end
 
-addCopyright();
-setAddState();
+addCopyright()
+setAddState()

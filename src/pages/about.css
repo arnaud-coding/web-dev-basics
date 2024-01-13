@@ -1,16 +1,16 @@
 body {
-    text-align: center;
-    background-color: bisque;
+  text-align: center;
+  background-color: bisque;
 }
 
 /* modifie le style de TOUS les titres de niveau 1 */
 h1 {
-    color: blueviolet;
-    font-family: 'Segoe Script', Tahoma, Geneva, Verdana, sans-serif;
+  color: blueviolet;
+  font-family: 'Segoe Script', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* modifie le style de TOUS les paragraphes */
 p {
-    color: brown;
-    font-style: italic;
+  color: brown;
+  font-style: italic;
 }

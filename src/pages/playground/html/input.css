@@ -1,16 +1,16 @@
 h1 {
-    color: rgb(241, 170, 17);
-    margin-block-end: 1.5em;
+  color: rgb(241, 170, 17);
+  margin-block-end: 1.5em;
 }
 
 div {
-    /* background-color: bisque;  */
-    margin-top: 1rem;
+  /* background-color: bisque;  */
+  margin-top: 1rem;
 }
 
 input:invalid {
-    background-color: rgb(243, 225, 225);
-    color: rgb(65, 59, 9);
-    border: 1px solid red;
-    border-radius: 0.5em;
+  background-color: rgb(243, 225, 225);
+  color: rgb(65, 59, 9);
+  border: 1px solid red;
+  border-radius: 0.5em;
 }

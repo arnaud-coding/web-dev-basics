@@ -1,6 +1,6 @@
 {
-    "files": ["*.html", "*.js", "*.css"],
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "none"
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "printWidth": 120
 }

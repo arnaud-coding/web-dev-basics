@@ -1,7 +1,7 @@
-console.log("---------------------------------------- JS");
+console.log('---------------------------------------- JS')
 
-console.log("But: Découvrir les fonctions");
-console.log("---------------------------------------- JS");
+console.log('But: Découvrir les fonctions')
+console.log('---------------------------------------- JS')
 
 /* ====================================================================================================================
 Une fonction:
@@ -44,63 +44,63 @@ Une fonction:
 
 ==================================================================================================================== */
 
-console.log("... avant la définition de foo...");
+console.log('... avant la définition de foo...')
 
 // on DÉCLARE la fonction "foo" (elle n'est PAS exécutée). Ici, la fonction "foo" s'attend à recevoir 2 paramètres : "bar" et "baz"
 // - JavaScript ne vérifie pas que l'on passe les bons paramètres (c'est au dévelopeur de passer les bons paramètres quand il appelle la fonction)
 // - quand on l'appelera, on DEVRA lui passer 2 arguments que la fonction s'qttend à recevoir
 // - si un des arguments n'est pas passé lors de l'appel de la fonction, il sera égal à "undefined" dans la fonction
 function foo(bar, baz) {
-  console.log("'foo' appelée avec paramètres: bar= " + bar + ", baz= " + baz);
+  console.log("'foo' appelée avec paramètres: bar= " + bar + ', baz= ' + baz)
 }
 
-console.log("... après la définition MAIS avant les 2 appels de la fonction...");
+console.log('... après la définition MAIS avant les 2 appels de la fonction...')
 
 // on APPELLE la fonction 3 fois de suite avec des arguments différents
-foo(12, false);
-foo("toto", "le-blagueur");
-foo(["riri", "fifi", "loulou"]); // on passe seulement un paramètre de type tableau
+foo(12, false)
+foo('toto', 'le-blagueur')
+foo(['riri', 'fifi', 'loulou']) // on passe seulement un paramètre de type tableau
 
-console.log("... après les appels...\n");
+console.log('... après les appels...\n')
 
 // --------------------------------------------------------------------------------------------------------------------
 // DECLARE une fonction qui retourne la surface d'un cercle. Le paramètre de la fonction contient le rayon
 function getCircleArea(radius) {
-  return Math.PI * radius * radius; // surface = PI  x  R²
+  return Math.PI * radius * radius // surface = PI  x  R²
 }
 
 // on appelle la fonction en lui passant un rayon de 20, puis on stocke le retour dans une constante "area"
-const radius = 20;
-const area = getCircleArea(radius); // appel la fonction en lui passant le contenu de la variable "radius". Stocke le résultat dans 'area'
-const result = Math.round(area); // arrondi le résultat
+const radius = 20
+const area = getCircleArea(radius) // appel la fonction en lui passant le contenu de la variable "radius". Stocke le résultat dans 'area'
+const result = Math.round(area) // arrondi le résultat
 
 // ancienne manière de construire une chaine
-console.log("surface cercle de rayon " + radius + "cm = " + result + "cm²");
+console.log('surface cercle de rayon ' + radius + 'cm = ' + result + 'cm²')
 // manière plus simple de construire un texte avec des variables (string interpolation)
-console.log(`surface cercle de rayon ${radius}cm = ${result}cm²`);
+console.log(`surface cercle de rayon ${radius}cm = ${result}cm²`)
 
 // --------------------------------------------------------------------------------------------------------------------
 // On DECLARE une fonction qui additionne 2 paramètres.
 // - le second parmètre est optionnel, sa valeur par défaut est 1 :
 function addition(a, b = 1) {
-  return a + b;
+  return a + b
 }
-console.log("2+3=" + addition(2, 3)); // appelle la fonction en lui passant les 2 paramètres
-console.log("2+undefined=" + addition(2)); // appelle la fonction en lui passant le 1er paramètre (pour le 2nd, la valeur par défaut sera utilisé)
+console.log('2+3=' + addition(2, 3)) // appelle la fonction en lui passant les 2 paramètres
+console.log('2+undefined=' + addition(2)) // appelle la fonction en lui passant le 1er paramètre (pour le 2nd, la valeur par défaut sera utilisé)
 
 // --------------------------------------------------------------------------------------------------------------------
 // DECLARE une fonction appelé 'foo' et qui ne fait qu'écrire dans la console.
 // Note importante: Elle déclare un titre et un nombre variable d'arguments qui seront vu par la fonction comme un tableau
 function bar(title, ...params) {
-  console.log(`Fonction "bar" appelée avec title = "${title}" et params = [${params}]`);
-  console.log(`. params est-il un tableau: ${Array.isArray(params)}, ${params?.length} arguments`);
+  console.log(`Fonction "bar" appelée avec title = "${title}" et params = [${params}]`)
+  console.log(`. params est-il un tableau: ${Array.isArray(params)}, ${params?.length} arguments`)
 }
 // APPELLE la fonction en lui passant plusieurs arguments
-bar("params", 2, undefined, "bye", false, { name: "Yohan" });
-bar("array", [2, undefined, "bye", false, { name: "Yohan" }]);
-bar("string", "toto");
-bar("null", null);
-bar("undefined");
+bar('params', 2, undefined, 'bye', false, { name: 'Yohan' })
+bar('array', [2, undefined, 'bye', false, { name: 'Yohan' }])
+bar('string', 'toto')
+bar('null', null)
+bar('undefined')
 
 // ----------------------------------------------------------------------------------------------------------------------
 // Autre façon de déclarer une fonction (la plus utilisée!)
@@ -108,17 +108,17 @@ bar("undefined");
 
 // DECLARE une variable qui est égale à une fonction (version intermédiaire)
 const boo = function (firstname) {
-  console.log(`Hey ${firstname}, BOO!`);
-};
+  console.log(`Hey ${firstname}, BOO!`)
+}
 // APPELLE la fonction = on utilise le nom de la variable
-boo("arnaud");
+boo('arnaud')
 
 // DECLARE une variable qui est égale à une fonction (version finale : LA FORME LA PLUS UTILISEE) :
 const meow = (firstname) => {
-  console.log(`${firstname} says MEOW!`);
-};
+  console.log(`${firstname} says MEOW!`)
+}
 // APPELLE la fonction = on utilise le nom de la variable
-meow("lenny");
+meow('lenny')
 
 // --------------------------------------------------------------------------------------------------------------
 // Exemple: des fonctions simples
@@ -131,7 +131,7 @@ meow("lenny");
  * @returns somme de a et b
  */
 function add(a, b) {
-  return a + b;
+  return a + b
 }
 
 /**
@@ -141,7 +141,7 @@ function add(a, b) {
  * @returns b-a
  */
 function sub(a, b = 0) {
-  return a - b;
+  return a - b
 }
 
 /**
@@ -152,23 +152,23 @@ function sub(a, b = 0) {
  */
 function mean(a, b) {
   // une fonction qui appele une fonction : "inception" ?
-  const res = add(a, b) / 2;
-  return res;
+  const res = add(a, b) / 2
+  return res
 }
 
 // declare une variable "value" et lui assigne le retour de la fonction "mean" à qui on passe 12 et 8
-let value = mean(12, 8);
-console.log(`moyenne 12 et 8 = ${value}`);
+let value = mean(12, 8)
+console.log(`moyenne 12 et 8 = ${value}`)
 
-value = sub(4); // dans la fonction 'sub', le paramètre 'rien' sera remplacé par sa valeur par défaut (= 0)
-console.log(`soustraction de 4 et "rien" = ${value}`);
+value = sub(4) // dans la fonction 'sub', le paramètre 'rien' sera remplacé par sa valeur par défaut (= 0)
+console.log(`soustraction de 4 et "rien" = ${value}`)
 
 // assigne à "value" la moyenne de "a" et "b" où:
 //  - "a" = somme de 2+1
 //  - "b" = soustraction de 9-4
-value = mean(add(2, 1), sub(9, 4));
+value = mean(add(2, 1), sub(9, 4))
 
 // la même chose mais sur plusieurs lignes (moins pratique)
-const a = add(2, 1);
-const b = sub(9, 4);
-value = mean(a, b);
+const a = add(2, 1)
+const b = sub(9, 4)
+value = mean(a, b)

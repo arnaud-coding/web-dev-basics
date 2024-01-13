@@ -1,72 +1,72 @@
 body {
-    background-color: rgb(204, 238, 204);
-    margin: 20px;
+  background-color: rgb(204, 238, 204);
+  margin: 20px;
 }
 
 .card {
-    /* border: 1px solid brown; */
-    background-color: rgb(253, 253, 252);
-    padding: 6px;
-    border-radius: 10px;
+  /* border: 1px solid brown; */
+  background-color: rgb(253, 253, 252);
+  padding: 6px;
+  border-radius: 10px;
 }
 
 .grille {
-    /* border: 2px dashed grey; */
-    display: grid;
+  /* border: 2px dashed grey; */
+  display: grid;
 
-    grid-gap: 10px;
+  grid-gap: 10px;
 
-    /* définit 4 colonnes: 
+  /* définit 4 colonnes: 
        - la première à une taille de fixe de 130px
        - la deuxieme et la troisième reçoivent 5 fractions de l'espace disponible 
        - la dernière reçoit 2 fractions de l'espace disponible 
        - nombre total de fractions = 5+5+3=13 */
-    grid-template-columns: 130px 5fr 5fr 3fr;
+  grid-template-columns: 130px 5fr 5fr 3fr;
 
-    grid-template-rows: repeat(2, auto);
-    grid-auto-rows: minmax(200px, auto);
+  grid-template-rows: repeat(2, auto);
+  grid-auto-rows: minmax(200px, auto);
 }
 
 .search {
-    /* étendre la cellule sur 2 colonnes de large */
-    grid-column: span 2;
+  /* étendre la cellule sur 2 colonnes de large */
+  grid-column: span 2;
 
-    /* on transforme la cellule "search" en grille, (une grille dans une grille) */
-    display: grid;
-    grid-template-columns: 1fr 80px;
-    padding: 0;
-    border-radius: 20px;
+  /* on transforme la cellule "search" en grille, (une grille dans une grille) */
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  padding: 0;
+  border-radius: 20px;
 }
 
 .right-radius {
-    border-radius: 0 15px 15px 0;
+  border-radius: 0 15px 15px 0;
 }
 
 input {
-    border-radius: 15px 0 0 15px;
-    padding: 3px 8px;
+  border-radius: 15px 0 0 15px;
+  padding: 3px 8px;
 }
 
 .nav {
-    /* étendre la cellule sur 3 lignes de haut */
-    grid-row: span 3;
+  /* étendre la cellule sur 3 lignes de haut */
+  grid-row: span 3;
 
-    /* on transforme la cellule "nav" en grille, (une grille dans une grille) */
-    display: grid;
-    grid-gap: 10px;
-    grid-auto-rows: 50px;
+  /* on transforme la cellule "nav" en grille, (une grille dans une grille) */
+  display: grid;
+  grid-gap: 10px;
+  grid-auto-rows: 50px;
 }
 
 .suggestions {
-    grid-column: span 3;
+  grid-column: span 3;
 }
 
 .nav-button {
-    border: 0;
-    background-color: inherit;
+  border: 0;
+  background-color: inherit;
 }
 
 .nav-button:hover {
-    background-color: rgb(245, 244, 244);
-    border-radius: 8px;
+  background-color: rgb(245, 244, 244);
+  border-radius: 8px;
 }

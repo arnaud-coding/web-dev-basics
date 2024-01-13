@@ -1,13 +1,14 @@
 {
   "name": "web-dev-basics",
   "version": "1.0.0",
-  "description": "mon aprentissage",
+  "description": "Mon aprentissage du developpement Web - Vanilla JS",
   "type": "module",
   "scripts": {
     "dev": "vite serve src/",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier -w src/**/*"
+    "lint": "eslint . --ext js",
+    "format": "prettier --write ./src"
   },
   "repository": {
     "type": "git",
@@ -27,14 +28,14 @@
   },
   "homepage": "https://github.com/arnaud-coding/web-dev-basics#readme",
   "devDependencies": {
-    "@typescript-eslint/parser": "^6.16.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-n": "^16.5.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-promise": "^6.1.1",
     "prettier": "^3.1.1",
-    "vite": "^5.0.10"
+    "vite": "^5.0.11"
   }
 }

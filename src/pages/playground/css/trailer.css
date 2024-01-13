@@ -1,37 +1,37 @@
 /* modifie le style de toute la page (body) */
 body {
-    text-align: center;
-    background-color: bisque;
+  text-align: center;
+  background-color: bisque;
 }
 
 /* modifie le style de TOUS les titres de niveau 1 */
 h1 {
-    color: blueviolet;
-    font-family: 'Segoe Script', Tahoma, Geneva, Verdana, sans-serif;
+  color: blueviolet;
+  font-family: 'Segoe Script', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* modifie le style de TOUS les paragraphes */
 p {
-    color: brown;
-    font-style: italic;
+  color: brown;
+  font-style: italic;
 }
 
 /* modifie le style de l'élement html dont "id = description".
 Le caractère " # " représente le sélecteur de " id"
 L'identifiant doit être unique. */
 #description {
-    color: rgb(45, 94, 231);
+  color: rgb(45, 94, 231);
 }
 
 /* Sélecteur de id: Modifie le style du SEUL élement html dont "id = textes" */
 #textes {
-    background-color: antiquewhite;
+  background-color: antiquewhite;
 }
 
 /* Sélecteur de classe: Modifie le style de TOUS les élements html dont "class = texte-bords */
 .texte-bords {
-    font-weight: bold;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /* Sélecteur de classe: 
@@ -39,5 +39,5 @@ L'identifiant doit être unique. */
    - Permet d'appliquer TOUS les styles de 'texte-bords' + des nouveaux styles
      MAIS juste dans ce cas (div + class) */
 div.texte-bords {
-    color: chocolate;
+  color: chocolate;
 }

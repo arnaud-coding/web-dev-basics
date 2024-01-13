@@ -4,7 +4,6 @@ import './pokemon-definitions'
  * Inspecte les pokemon
  */
 export class PokemonInspector {
-
   /**
    * Instancie l'inspecteur avec un tableau de pokemons
    * @param {Pokemon[]} pokemons le tableau de pokemons à inspecter
@@ -18,14 +17,14 @@ export class PokemonInspector {
    * @param {number} id l'identifiant du pokemon qu'on cherche
    * @returns {Pokemon | undefined} le pokemon si trouvé, undefined sinon
    */
-  getPokemonById = (id) => this.pokemons.find(pokemon => pokemon.pokedexId === id);
+  getPokemonById = (id) => this.pokemons.find((pokemon) => pokemon.pokedexId === id)
 
   /**
    * cherche un pokemon dont on donne le nom francais
    * @param {string} name le nom francais du pokemon qu'on cherche
    * @returns {Pokemon | undefined} le pokemon si trouvé, undefined sinon
    */
-  getPokemonByName = (name) => this.pokemons.find(pokemon => pokemon.name.fr.toLowerCase() === name.toLowerCase())
+  getPokemonByName = (name) => this.pokemons.find((pokemon) => pokemon.name.fr.toLowerCase() === name.toLowerCase())
 
   /**
    * renvoie les évolutions sous la forme  "Herbizzare (16), Florizarre (32)"
@@ -33,23 +32,26 @@ export class PokemonInspector {
    * @returns {string} les évolutions
    */
   getEvolutionsDescription(evo) {
-
     if (evo === null) {
-      return ""
+      return ''
     }
 
-    return evo?.next?.map((item)=>{
-      let level
-      if (item.condition.startsWith("Niveau")) {
-        // on a condition = "Niveau 16", on veut extraire le lvl
-        level = item.condition.split(" ")[1]
-      } else {
-        // on a condition = "Pierre soleil", on veut la garder telle qu'elle
-        level = item.condition
-      }
-      const res = `${item.name} (${level})`
-      return res
-    }).join(", ") ?? ''
+    return (
+      evo?.next
+        ?.map((item) => {
+          let level
+          if (item.condition.startsWith('Niveau')) {
+            // on a condition = "Niveau 16", on veut extraire le lvl
+            level = item.condition.split(' ')[1]
+          } else {
+            // on a condition = "Pierre soleil", on veut la garder telle qu'elle
+            level = item.condition
+          }
+          const res = `${item.name} (${level})`
+          return res
+        })
+        .join(', ') ?? ''
+    )
   }
 
   /**
@@ -58,7 +60,7 @@ export class PokemonInspector {
    * @returns {string}
    */
   getTypesDescription(types) {
-    return types?.map((type) => type.name).join(", ") ?? ""
+    return types?.map((type) => type.name).join(', ') ?? ''
   }
 
   /**
@@ -73,5 +75,20 @@ export class PokemonInspector {
       }
     }
     return gen
+  }
+
+  /**
+   * renvoie la description du pokemon donné
+   * Taille = 0,7 m ; poids = 6,9 kg ; taux de capture = 45 % ; méga-évo = ?
+   * @param {Pokemon} pokemon
+   * @returns {string}
+   */
+  getDescription(pokemon) {
+    let mega = ''
+    if (pokemon.evolution?.mega) {
+      mega = ' ; méga-évo = ' + pokemon.evolution.mega.map((m) => m.orbe).join(',')
+    }
+
+    return `Taille = ${pokemon.height} ; poids = ${pokemon.weight} ; taux de capture = ${pokemon.catch_rate} %${mega}`
   }
 }
