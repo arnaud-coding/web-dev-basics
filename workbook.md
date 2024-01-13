@@ -34,7 +34,7 @@ The repeat exercices must be alternated with tutorials.
 
 En complément de la formation Grafikart sur JS.
 
-* [Apprendre NodeJS](https://www.youtube.com/watch?v=zRqfURp0fhA&list=PL4NbGBfr4aJk5ATFWA-8UkvL8LbHqpS-v&index=2&ab_channel=Louistiti) **TUTORIAL no.2**: 
+* [Apprendre NodeJS](https://www.youtube.com/watch?v=zRqfURp0fhA&list=PL4NbGBfr4aJk5ATFWA-8UkvL8LbHqpS-v&index=2&ab_channel=Louistiti) **TUTORIAL no.2**
   * [Process et Thread](https://www.youtube.com/watch?v=v4Dpes_0Qug&list=PL4NbGBfr4aJk5ATFWA-8UkvL8LbHqpS-v&index=3&ab_channel=Louistiti) **2.1**
   * [NodeJS, c'est quoi?](https://www.youtube.com/watch?v=97rRv9xy2iw&list=PL4NbGBfr4aJk5ATFWA-8UkvL8LbHqpS-v&index=4&ab_channel=Louistiti) **2.2**
   * [Le moteur V8](https://www.youtube.com/watch?v=1gBemgSzX_Q&list=PL4NbGBfr4aJk5ATFWA-8UkvL8LbHqpS-v&index=6&ab_channel=Louistiti) **2.3**
