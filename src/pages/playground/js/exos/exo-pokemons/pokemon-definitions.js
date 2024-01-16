@@ -48,6 +48,16 @@
  */
 
 /**
+ * @typedef {object} PokemonStats
+ * @property {number} hp
+ * @property {number} atk
+ * @property {number} def
+ * @property {number} spe_atk
+ * @property {number} spe_def
+ * @property {number} vit
+ */
+
+/**
  * @typedef {object} Pokemon
  * @property {number} pokedexId l'identifiant
  * @property {number} generation la génération
@@ -60,4 +70,5 @@
  * @property {string} height
  * @property {string} weight
  * @property {number} catch_rate
+ * @property {PokemonStats} stats
  */

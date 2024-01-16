@@ -91,4 +91,13 @@ export class PokemonInspector {
 
     return `Taille = ${pokemon.height} ; poids = ${pokemon.weight} ; taux de capture = ${pokemon.catch_rate} %${mega}`
   }
+
+  /**
+   * renvoie les stats du pokemon
+   * @param {Pokemon} pokemon
+   * @returns {string}
+   */
+  getStats(pokemon) {
+    return `Points de santé: ${pokemon.stats.hp} ; Attaque: ${pokemon.stats.atk} ; Défense: ${pokemon.stats.def} ; Vitesse: ${pokemon.stats.vit}`
+  }
 }

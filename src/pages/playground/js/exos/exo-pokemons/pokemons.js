@@ -337,7 +337,10 @@ function showPokemonDetails(pokemonName) {
       }
 
       // affiche les stats
-      // todo
+      const stats = document.getElementById('pokemon-stats')
+      if (stats instanceof HTMLLIElement) {
+        stats.innerHTML = inspector.getStats(pokemon)
+      }
 
       // affiche les talents
       // todo

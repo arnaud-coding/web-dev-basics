@@ -262,10 +262,11 @@ s
 
 /**
  * renvoie les stats du pokemon
- * Points de santé =
  * @param {Pokemon} pokemon
  * @returns {string}
  */
 function getStats(pokemon) {
-  return ''
+  return `Points de santé: ${pokemon.stats.hp} ; Attaque: ${pokemon.stats.atk} ; Défense: ${pokemon.stats.def} ; Vitesse: ${pokemon.stats.vit}`
 }
+s = getStats(gallame)
+s
