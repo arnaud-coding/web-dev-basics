@@ -257,3 +257,15 @@ function getDescription(pokemon) {
 }
 s = getDescription(gallame)
 s
+
+// --------------------------------------
+
+/**
+ * renvoie les stats du pokemon
+ * Points de santé =
+ * @param {Pokemon} pokemon
+ * @returns {string}
+ */
+function getStats(pokemon) {
+  return ''
+}
