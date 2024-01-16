@@ -343,7 +343,10 @@ function showPokemonDetails(pokemonName) {
       }
 
       // affiche les talents
-      // todo
+      const talents = document.getElementById('pokemon-talents')
+      if (talents instanceof HTMLLIElement) {
+        talents.innerHTML = inspector.getTalents(pokemon)
+      }
     }
   } else {
     console.warn(`failed to show ${pokemon} details`)

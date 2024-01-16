@@ -93,11 +93,22 @@ export class PokemonInspector {
   }
 
   /**
-   * renvoie les stats du pokemon
+   * renvoie les stats du pokemon donné
    * @param {Pokemon} pokemon
    * @returns {string}
    */
   getStats(pokemon) {
-    return `Points de santé: ${pokemon.stats.hp} ; Attaque: ${pokemon.stats.atk} ; Défense: ${pokemon.stats.def} ; Vitesse: ${pokemon.stats.vit}`
+    return `Santé: ${pokemon.stats.hp} ; Attaque: ${pokemon.stats.atk} ; Défense: ${pokemon.stats.def} ; Vitesse: ${pokemon.stats.vit}`
+  }
+
+  /**
+   * renvoie les talents d'un pokémon
+   * @param {Pokemon} pokemon
+   * @returns {string}
+   */
+  getTalents(pokemon) {
+    const res = pokemon.talents?.map((talent) => talent.name).join(', ')
+    res
+    return `Talents : ${res ?? 'aucun'}`
   }
 }

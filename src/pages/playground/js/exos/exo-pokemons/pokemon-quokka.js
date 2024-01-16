@@ -261,12 +261,27 @@ s
 // --------------------------------------
 
 /**
- * renvoie les stats du pokemon
+ * renvoie les stats d'un pokemon
  * @param {Pokemon} pokemon
  * @returns {string}
  */
 function getStats(pokemon) {
-  return `Points de santé: ${pokemon.stats.hp} ; Attaque: ${pokemon.stats.atk} ; Défense: ${pokemon.stats.def} ; Vitesse: ${pokemon.stats.vit}`
+  return `Santé: ${pokemon.stats.hp} ; Attaque: ${pokemon.stats.atk} ; Défense: ${pokemon.stats.def} ; Vitesse: ${pokemon.stats.vit}`
 }
 s = getStats(gallame)
+s
+
+// --------------------------------------
+
+/**
+ * renvoie les talents d'un pokémon
+ * @param {Pokemon} pokemon
+ * @returns {string}
+ */
+function getTalents(pokemon) {
+  const res = pokemon.talents?.map((talent) => talent.name).join(', ')
+  res
+  return `Talents : ${res ?? 'aucun'}`
+}
+s = getTalents(gallame)
 s

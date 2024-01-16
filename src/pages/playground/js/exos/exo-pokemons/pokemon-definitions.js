@@ -48,13 +48,19 @@
  */
 
 /**
- * @typedef {object} PokemonStats
+ * @typedef {object} PokemonStat
  * @property {number} hp
  * @property {number} atk
  * @property {number} def
  * @property {number} spe_atk
  * @property {number} spe_def
  * @property {number} vit
+ */
+
+/**
+ * @typedef {object} PokemonTalent
+ * @property {string} name
+ * @property {boolean} tc
  */
 
 /**
@@ -70,5 +76,6 @@
  * @property {string} height
  * @property {string} weight
  * @property {number} catch_rate
- * @property {PokemonStats} stats
+ * @property {PokemonStat} stats
+ * @property {PokemonTalent[] | null} talents
  */
