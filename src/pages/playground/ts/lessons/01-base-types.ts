@@ -17,11 +17,22 @@
     // déclaration utile d'objet (intellisense suggérera les prorpiétés de "p")
     name: string
     birthday: Date
+    email?: string // propriété facultative (grâce au '?')
   }
   let fn: (arg: string) => number
 
-  //  Une fois qu'une variable est déclarée d'un certain type, on ne peut plus en changer. (ex: age = '' est interdit).
-  //  VScode nous proposera alors avec "l'intellisense" (suggestions) les méthodes associées au type défini.
+  // NB : Une fois qu'une variable est déclarée d'un certain type, on ne peut plus en changer. (ex: age = '' est interdit).
+  //      VScode nous proposera alors avec "l'intellisense" (suggestions) les méthodes associées au type défini.
+
+  // d = 12  impossible
+  d = new Date()
+  d
+  b = true
+  o = {}
+  fn = (s: string) => s.length
+  fn
+  n = fn('lolo')
+  n
 
   // ----------------------------------------------------------------------------
   // Compositions de types primitifs
@@ -30,6 +41,12 @@
   let client: string | string[]
   let videoState: 'play' | 'pause' | 'stop' // ainsi, la valeur de la variable ne pourra etre qu'une seule des trois valeurs
   let prime: 3 | 5 | 7 | 11
+
+  ns = 'Bob'
+  ns = 12
+  client = ['riri', 'fifi', 'loulou']
+  videoState = 'play'
+  prime = 7
 
   // ----------------------------------------------------------------------------
   // Exemples d'utilisation
@@ -52,7 +69,7 @@
   // MAUVAIS exemple de fonction avec déclaration explicite du type de l' argument p
   //    bon : on  a une vérification de type
   //    mauvais : la déclaration du type est dupliquée (donc gros risque de modidifier une des déclarations et pas l'autre)
-  //    solution : utiliser les types personnalisés (créer ses propres types)
+  //    solution : utiliser les types personnalisés (créer ses propres types >> cf 02-custom-types.ts)
   function getPersonNameBad(p: { name: string; birthday: Date }): string {
     return p.name
   }
@@ -60,15 +77,18 @@
   s = getPersonNameBad(p)
   s
 
-  function getNameBetter(o: { name: string }): string {
+  // Exemple d'une fonction qui attend de recevoir un objet qui doit avoir AU MOINS une propriété 'name' (et n'importe quelle autre).
+  //    - avantage : fonction pouvant etre REUTILISEE pour n'importe quel objet ayant une propriété 'name'.
+  function getNameBetter(o: { name: string; [key: string]: any }): string {
     return o.name
   }
-  s = getNameBetter(p)
+  s = getNameBetter(p) // exemple avec paramètre de type personne
   s
-  s = getNameBetter({ name: '208', brand: 'Peugeot', year: 2019 })
+  s = getNameBetter({ name: '208', brand: 'Peugeot', year: 2019 }) // exemple avec paramètre de type voiture
   s
 
-  // exemple de fonction qui attend une fonction aved déclaration explicite du type de la fonction
+  // Exemple de fonction qui attend une fonction aved déclaration explicite du type de la fonction
+  // ici, 'format' est la fonction qu'on doit passer
   function sendMail(address: string, format: (message: string) => string) {
     const body = format('SALUT LES GENS')
     body
