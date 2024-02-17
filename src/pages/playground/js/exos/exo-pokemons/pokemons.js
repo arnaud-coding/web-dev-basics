@@ -1,34 +1,11 @@
 /**
  * ================================================================================================
- * Exo 1 : Afficher la description détaillée de la <card>
- *         - syntaxe: Taille = 0,7 m ; poids = 6,9 kg ; taux de capture = 45 % ; méga-évo = ? (que s'il y en une)
+ * Exo :
  * -------------------------------------------------------------------------------------
  * Plan :
- *   - construire la description quand on sélectionne un pokemon
- *      - mettre la fonction qui construit la description dans le pokemon inspector
- *        (Attention! : ne pas afficher méga-évo quand il n'y en a pas)
- *   - afficher la description :
- *      - sélectionner l'élement html cible
- *      - mettre la description dans l'élement cible
- * ================================================================================================
- *
- * ================================================================================================
- * Exo 2 : Afficher les stats et les talents
- * -------------------------------------------------------------------------------------
- * Plan :
- *   - créer les élements html correspondants (aller voir w3-schools pour trouver un bon style)
- *     https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_responsive_third&stacked=h
- *   - sélectionner l'élement html cible (un <ul>) pour les stats :
- *   - pour chaque stat :
- *      - créer un <li>
- *      - mettre la stat dans la <li> sous la forme : "Points de vie : 45"
- *      - ajouter la <li> dans le <ul>
- *
- *   - sélectionner l'élement html cible (un <ul>) pour les talents :
- *   - pour chaque talent :
- *      - créer un <li>
- *      - mettre le talent dans la <li>
- *      - ajouter la <li> dans le <ul>
+ *    -
+ *    -
+ *    -
  * ================================================================================================
  */
 
@@ -46,10 +23,10 @@ const TABLE_COL_TYPES = 3
 /** Pokemon table: column index for the evolutions */
 const TABLE_COL_EVOLUTIONS = 4
 
-/** Charge le tableau de pokemons en mémoire */
+// Charge les pokemons
 const pokemons = await fetchPokemons()
 
-/** l'inspecteur pour manipuler les pokemons */
+// l'inspecteur pour manipuler les pokemons
 const inspector = new PokemonInspector(pokemons)
 
 // remplit la boite de sélection du filtre génération
@@ -58,6 +35,8 @@ setGenerationsFilterElements(inspector.getGenerationsNumber())
 // Crée le tableau des pokemons
 const tableBodyElement = document.getElementById('pokemon-tbody')
 createPokemonTable()
+
+//#region filters
 
 // ----------------------------------------------------------------------------
 // ajout gestionnaires d'évènement pour tous les filtres
@@ -99,10 +78,10 @@ let selectedRow = null
 
 // gestionnaire d'évènement pour la sélection
 if (tableBodyElement instanceof HTMLTableSectionElement) {
-  // sélectionne le premier pokémon au chargement de la page
-  setTimeout(() => {
-    showPokemonDetails('Bulbizarre')
-  }, 500)
+  // // sélectionne le premier pokémon au chargement de la page
+  // setTimeout(() => {
+  //   showPokemonDetails('Bulbizarre')
+  // }, 500)
 
   tableBodyElement.addEventListener('click', (event) => {
     // récupère la cellule (nom, catégorie, types...) sur laquelle le client a cliqué
@@ -135,6 +114,20 @@ if (close instanceof HTMLElement) {
       details.hidden = true
     }
   })
+}
+
+//#endregion
+
+// cache loading indicator
+const loading = document.getElementById('loading')
+if (loading instanceof HTMLElement) {
+  loading.hidden = true
+}
+
+// show 'main'
+const main = document.getElementById('main')
+if (main instanceof HTMLElement) {
+  main.hidden = false
 }
 
 // ----------------------------------------------------------------------------
