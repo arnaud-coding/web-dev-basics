@@ -55,6 +55,18 @@ export class PokemonInspector {
   }
 
   /**
+   * renvoie les évolutions sous la forme  "Herbizzare (16), Florizarre (32)"
+   * @param {PokemonEvolution | null} evo
+   * @returns {number} le nombre de megas
+   */
+  getMegasNumbers(evo) {
+    if (evo === null || evo.mega === null) {
+      return 0
+    }
+    return evo.mega.length
+  }
+
+  /**
    * renvoies les types sous la forme "plante, poison", ou ""
    * @param {PokemonType[] | null} types
    * @returns {string}

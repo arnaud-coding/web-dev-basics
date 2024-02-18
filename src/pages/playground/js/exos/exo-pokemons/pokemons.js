@@ -1,6 +1,6 @@
 /**
  * ================================================================================================
- * Exo :
+ * Exo 1 :
  * -------------------------------------------------------------------------------------
  * Plan :
  *    -
@@ -12,21 +12,18 @@
 import { fetchPokemons } from './pokemon-api'
 import { PokemonInspector } from './pokemon-inspector'
 
-/** Pokemon table: column index for the name */
+/** Pokemon table: columns index  */
 const TABLE_COL_NAME = 0
-/** Pokemon table: column index for the category */
 const TABLE_COL_CATEGORY = 1
-/** Pokemon table: column index for the generation */
 const TABLE_COL_GENERATION = 2
-/** Pokemon table: column index for the types */
 const TABLE_COL_TYPES = 3
-/** Pokemon table: column index for the evolutions */
 const TABLE_COL_EVOLUTIONS = 4
+const TABLE_COL_MEGA = 5
 
 // Charge les pokemons
 const pokemons = await fetchPokemons()
 
-// l'inspecteur pour manipuler les pokemons
+// Crée l'inspecteur pour manipuler les pokemons
 const inspector = new PokemonInspector(pokemons)
 
 // remplit la boite de sélection du filtre génération
@@ -36,11 +33,7 @@ setGenerationsFilterElements(inspector.getGenerationsNumber())
 const tableBodyElement = document.getElementById('pokemon-tbody')
 createPokemonTable()
 
-//#region filters
-
-// ----------------------------------------------------------------------------
-// ajout gestionnaires d'évènement pour tous les filtres
-// ----------------------------------------------------------------------------
+//#region : Ajout gestionnaires d'évènement pour tous les filtres, sélection ligne pokémon et fermeture détails
 
 // gestionnaire d'évènement pour filtre sur les noms
 let nameFilter = ''
@@ -69,6 +62,16 @@ const typesFilterElement = document.getElementById('types-filter')
 if (typesFilterElement instanceof HTMLInputElement) {
   typesFilterElement.addEventListener('input', () => {
     typesFilter = typesFilterElement.value.toUpperCase()
+    filterPokemons()
+  })
+}
+
+//gestionnaire d'évenement pour filtre par méga
+let megasFilter = false
+const megasFilterElement = document.getElementById('megas-filter')
+if (megasFilterElement instanceof HTMLInputElement) {
+  megasFilterElement.addEventListener('change', () => {
+    megasFilter = megasFilterElement.checked
     filterPokemons()
   })
 }
@@ -199,17 +202,33 @@ function cloneTemplate(templateId) {
 function setPokemonRow(pokemon, row) {
   const cells = row.getElementsByTagName('td')
   if (cells instanceof HTMLCollection && cells.length > 1) {
-    const setCellValue = (cellIndex, value) => {
+    // déclare une fonction privée dans la fonction courante : affiche un texte dans la cellule
+    const setCellTextValue = (cellIndex, value) => {
       const cell = cells[cellIndex]
       if (cell instanceof HTMLTableCellElement) {
         cell.innerText = value
       }
     }
-    setCellValue(TABLE_COL_NAME, pokemon.name.fr)
-    setCellValue(TABLE_COL_CATEGORY, pokemon.category)
-    setCellValue(TABLE_COL_GENERATION, pokemon.generation)
-    setCellValue(TABLE_COL_TYPES, inspector.getTypesDescription(pokemon.types))
-    setCellValue(TABLE_COL_EVOLUTIONS, inspector.getEvolutionsDescription(pokemon.evolution))
+
+    // déclare une fonction privée dans la fonction courante : affiche dans un nombre dans la cellule si != 0, sinon affiche rien
+    const setCellNonZeroValue = (cellIndex, value) => {
+      const cell = cells[cellIndex]
+      if (cell instanceof HTMLTableCellElement) {
+        if (value > 0) {
+          cell.innerText = value
+        } else {
+          cell.innerText = ''
+        }
+      }
+    }
+
+    // remplit toute les colonnes pour la ligne courante
+    setCellTextValue(TABLE_COL_NAME, pokemon.name.fr)
+    setCellTextValue(TABLE_COL_CATEGORY, pokemon.category)
+    setCellTextValue(TABLE_COL_GENERATION, pokemon.generation)
+    setCellTextValue(TABLE_COL_TYPES, inspector.getTypesDescription(pokemon.types))
+    setCellTextValue(TABLE_COL_EVOLUTIONS, inspector.getEvolutionsDescription(pokemon.evolution))
+    setCellNonZeroValue(TABLE_COL_MEGA, inspector.getMegasNumbers(pokemon.evolution))
   }
 }
 
@@ -228,21 +247,20 @@ function addRowTemplate(row) {
  */
 function filterPokemons() {
   /**
-   * algoritme :
-   *  - parcourir chaque ligne du tableau
-   *  - pour chaque ligne :
-   *    - récupérer le nom du pokemon depuis son <td>
-   *    - vérifier si le nom contient le filtre
-   *    - montrer/cacher la ligne
+   * algorithme :
+   *    - parcourir chaque ligne du tableau
+   *    - pour chaque ligne :
+   *        - récupérer le nom du pokemon depuis son <td>
+   *        - vérifier si le nom contient le filtre
+   *        - montrer/cacher la ligne
    */
 
   // ---------- parcours chaque ligne du tableau
   const rows = tableBodyElement?.getElementsByTagName('tr') // récupère toutes les lignes du tableau
+  // si des lignes existent...
   if (rows instanceof HTMLCollection && rows.length > 1) {
-    // si des lignes existent...
+    // parcours toutes les lignes une à une...
     for (const row of rows) {
-      // parcours toutes les lignes une à une...
-
       // ----- récupère toutes les cellules de la ligne courante
       const cells = row.getElementsByTagName('td')
       if (cells instanceof HTMLCollection && cells.length > 1) {
@@ -267,8 +285,18 @@ function filterPokemons() {
           matchTypesFilter = types.toUpperCase().includes(typesFilter)
         }
 
+        // -----vérifier si mega correspond au filtre de mégas
+        let matchMegaFilter = true
+        if (megasFilter) {
+          const megas = cells[TABLE_COL_MEGA].textContent
+          if (typeof megas === 'string') {
+            matchMegaFilter = megas !== ''
+          }
+        }
+
         // montrer/cacher la ligne courante
-        row.style.display = matchNameFilter && matchGenerationFilter && matchTypesFilter ? '' : 'none'
+        row.style.display =
+          matchNameFilter && matchGenerationFilter && matchTypesFilter && matchMegaFilter ? '' : 'none'
       }
     }
   }
