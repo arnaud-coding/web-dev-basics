@@ -72,6 +72,11 @@ export class PokemonInspector {
    * @returns {string}
    */
   getTypesDescription(types) {
+    // if (types === null) {
+    //   return ''
+    // }
+    // const typeNames = types.map((t) => t.name) // transforme la tableau de types en un tableau de chaines
+    // return typeNames.join(', ')
     return types?.map((type) => type.name).join(', ') ?? ''
   }
 
@@ -121,6 +126,6 @@ export class PokemonInspector {
   getTalents(pokemon) {
     const res = pokemon.talents?.map((talent) => talent.name).join(', ')
     res
-    return `Talents : ${res ?? 'aucun'}`
+    return `Talents: ${res ?? 'aucun'}`
   }
 }

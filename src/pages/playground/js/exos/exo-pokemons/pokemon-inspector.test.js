@@ -58,6 +58,8 @@ const bulbi = {
   forme: null
 }
 
+const inspector = new PokemonInspector([])
+
 describe('pokemon-inspector', () => {
   describe('getDescription', () => {
     test('with mega', () => {
@@ -82,7 +84,6 @@ describe('pokemon-inspector', () => {
         weight: '100,0 kg',
         catch_rate: 45
       }
-      const inspector = new PokemonInspector([])
       const expected = 'Taille = 2,0 m ; poids = 100,0 kg ; taux de capture = 45 % ; méga-évo = Florizarrite'
 
       // @ts-ignore
@@ -92,7 +93,6 @@ describe('pokemon-inspector', () => {
     })
 
     test('without mega', () => {
-      const inspector = new PokemonInspector([])
       const expected = 'Taille = 0,7 m ; poids = 6,9 kg ; taux de capture = 45 %'
 
       const actual = inspector.getDescription(bulbi)
@@ -101,7 +101,53 @@ describe('pokemon-inspector', () => {
     })
   })
 
-  test.skip('getStats with bulbi')
-  test.skip('getTalents with bulbi')
-  test.skip('getEvolutionsDescription with bulbi')
+  test('getStats with bulbi', () => {
+    const expected = 'Santé: 45 ; Attaque: 49 ; Défense: 49 ; Vitesse: 45'
+
+    const actual = inspector.getStats(bulbi)
+
+    expect(actual).toBe(expected)
+  })
+
+  test('getTalents with bulbi', () => {
+    const expected = 'Talents: Engrais, Chlorophylle'
+
+    const actual = inspector.getTalents(bulbi)
+
+    expect(actual).toBe(expected)
+  })
+
+  test('getEvolutionsDescription with bulbi', () => {
+    const expected = 'Herbizarre (16), Florizarre (32)'
+
+    const actual = inspector.getEvolutionsDescription(bulbi.evolution)
+
+    expect(actual).toBe(expected)
+  })
+
+  describe('getTypesDescription', () => {
+    test('with 2 types', () => {
+      const expected = 'Plante, Poison'
+
+      const actual = inspector.getTypesDescription(bulbi.types)
+
+      expect(actual).toBe(expected)
+    })
+
+    test('with empty types array', () => {
+      const expected = ''
+
+      const actual = inspector.getTypesDescription([])
+
+      expect(actual).toBe(expected)
+    })
+
+    test('with null types array', () => {
+      const expected = ''
+
+      const actual = inspector.getTypesDescription(null)
+
+      expect(actual).toBe(expected)
+    })
+  })
 })
