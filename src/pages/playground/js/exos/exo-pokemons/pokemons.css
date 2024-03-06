@@ -23,3 +23,11 @@
     transform: rotate(360deg);
   }
 }
+
+.sticky-div {
+  position: sticky;
+  background-color: #ffffff;
+  z-index: 1;
+  top: 5px;
+  padding: 10px 0px;
+}
