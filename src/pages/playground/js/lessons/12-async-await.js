@@ -15,7 +15,7 @@
    *
    */
   const getDelayedsquare = async (value, delay) => {
-    const promise = new Promise((resolve, reject) => {
+    const promise = new Promise((resolve) => {
       setTimeout(() => {
         resolve(value * value)
       }, delay)

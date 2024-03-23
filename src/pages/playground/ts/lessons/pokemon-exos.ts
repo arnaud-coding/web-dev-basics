@@ -205,16 +205,4 @@ import { Pokemon } from './pokemon-types.ts'
   // taille moyenne des pokémons
   n = n / pokemons.length
   console.log('; ~ n:', n.toFixed(2) + ' m')
-
-  // const z = pokemons
-  //   .map((pokemon) => ({
-  //     id: pokemon.pokedexId,
-  //     height: getHeightM(pokemon.height)
-  //   }))
-  //   .filter((o) => !Number.isNaN(o.height))
-  //   .reduce((prev, cur) => (prev.height > cur.height ? prev : cur))
-
-  // console.log('; ~ z:', z)
-
-  return
 })()

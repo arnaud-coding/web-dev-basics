@@ -1,7 +1,5 @@
 // IIFE pour isoler les noms de variables
-;(() => {
-  /* eslint-disable n/no-callback-literal */
-
+;(async () => {
   // https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous
 
   // https://developer.mozilla.org/en-US/docs/Glossary/Callback_function
@@ -16,7 +14,7 @@
     * ------------------------------------------------------------------------------------------------------
     * la fonction foo est dite synchrone car elle ne rend pas la main avant d'etre terminée
     * (la fonction qui appelle "foo" est bloquée jusqu'à ce que foo soit terminée)
-    * 
+    *
     * IMPORTANT: On ne doit jamais bloquer longtemps un navaigateur !
     *            -> si une fonction dure logntemps, on doit l'appeler de manière ASYNCHRONE (appel non bloquant)
    --------------------------------------------------------------------------------------------------------------- */
@@ -70,16 +68,32 @@
   /** ------------------------------------------------------------------------------------------------------
     * appel asynchrone : Promises                                         (less old fashion but still used)
     * ----------------------------------------------------------------------------------------------------
-    * - 
-    * - 
    ------------------------------------------------------------------------------------------------------- */
+  /**
+   * computes a greeting message for a given name
+   * @param {string} name the name to greet
+   * @returns {Promise<string>} the greeting promise
+   */
+  const moo = (name) => {
+    // return Promise.resolve(`Hello ${name}, how are you?`)
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(`Hello ${name}, how are you?`)
+      }, 2000)
+    })
+  }
+
+  const ps = moo('arnaud')
+  ps.then((s) => console.log('s:', s))
 
   /** ------------------------------------------------------------------------------------------------------
     * appel asynchrone : async/await                                                        (new fashion -> useful)
     * ----------------------------------------------------------------------------------------------------
-    * - 
-    * - 
+    * cf fichier "12-async-await.js"
    ------------------------------------------------------------------------------------------------------- */
+
+  const s = await moo('Thomas')
+  console.log('s:', s)
 
   console.log("that's all folks!")
 })()

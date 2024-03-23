@@ -1,7 +1,5 @@
 // IIFE pour isoler les noms de variables
 ;(() => {
-  /* eslint-disable n/no-callback-literal */
-
   /** ------------------------------------------------------------------------------------------------------
    * utilisation d'un "callback" (une fonction qui sera rappelée) :
    * ----------------------------------------------------------------------------------------------------
@@ -12,7 +10,7 @@
   /**
    * Cette fonction utilise une fonction callback
    * @param {number} n le parametre qu'on attend
-   * @param {function(number):void} cb la fonction callback qu'on va rappeler dans cette fonction
+   * @param {function(number): void} cb la fonction callback qu'on va rappeler dans cette fonction
    */
   const foo = (n, cb) => {
     console.log('foo called with n=', n)
