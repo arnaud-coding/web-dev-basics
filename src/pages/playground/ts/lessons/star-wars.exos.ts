@@ -7,7 +7,7 @@ const speciesUrl = baseUrl + 'species/'
 const starshipsUrl = baseUrl + 'starships/'
 const vehiclesUrl = baseUrl + 'vehicles/'
 
-// type for planets API
+// type for API items: represents planets / films / people / species / starships / vehicles
 type SWApiItems<T> = {
   // total number of planets in the API
   count: number
@@ -18,9 +18,6 @@ type SWApiItems<T> = {
   // planets for current page
   results: T[]
 }
-
-// type generic
-type SWApi<T> = SWApiItems<T>
 
 // type for planet API
 type ApiPlanet = {
@@ -37,31 +34,87 @@ type ApiPlanet = {
   residents: string[]
   surface_water: string
   terrain: string
-  url: string
 }
 
 type ApiFilms = {
+  // array of person adresses
+  characters: string[]
   title: string
+  director: string
+  episode_id: 4
+  opening_crawl: string
+  // array of planet adresses
+  planets: string[]
+  producer: string
+  // array of species adresses
+  species: string[]
+  // array of starships adresses
+  starships: string[]
+  // array of vehicles adresses
+  vehicles: string[]
 }
 
 type ApiPerson = {
   name: string
+  birth_year: string
+  eye_color: string
+  // array of films adresses
+  films: string[]
+  gender: string
+  hair_color: string
+  height: string
+  homeworld: string
+  mass: string
+  skin_color: string
+  // array of species adresses
+  species: string[]
+  // array of starships adresses
+  starships: string[]
+  // array of vehicles adresses
   vehicles: string[]
 }
 
 type ApiSpecie = {
   name: string
+  average_height: string
+  average_lifespan: string
+  classification: string
+  designation: string
+  eye_colors: string
+  films: string[]
+  hair_colors: string
+  homeworld: string
+  language: string
+  skin_colors: string
 }
 
-type ApiStarship = {
+type ApiMotor = {
+  cargo_capacity: string
+  consumables: string
+  cost_in_credits: string
+  crew: string
+  films: string[]
+  length: string
+  manufacturer: string
+  model: string
+  passengers: string
+  pilots: string[]
+}
+
+type ApiStarship = ApiMotor & {
   name: string
+  MGLT: string
+  hyperdrive_rating: string
+  starship_class: string
 }
 
-type ApiVehicle = {
+type ApiVehicle = ApiMotor & {
   name: string
+  max_atmosphering_speed: string
+  vehicle_class: string
 }
 
-async function fetchSWItems<T>(pageUrl: string): Promise<SWApi<T>> {
+async function fetchSWItems<T>(pageUrl: string): Promise<SWApiItems<T>> {
   const respnse = await fetch(pageUrl)
   const planets = await respnse.json()
   return planets
@@ -124,6 +177,7 @@ const vehicles = await fetchAllItems<ApiVehicle>(vehiclesUrl)
 const luke = people.find((person) => person.name.startsWith('Luke'))
 console.log('luke:', luke)
 
+// essai pour convertir des liens url en lien vers des object
 const lukeVehicles = luke?.vehicles.map((vehicle) => {
   const section = vehicle.split('/')
   const s = section.at(-2)
@@ -134,3 +188,12 @@ const lukeVehicles = luke?.vehicles.map((vehicle) => {
   return vehicles[index]
 })
 console.log('lukeVehicles ~ lukeVehicles:', lukeVehicles)
+
+const x = people
+  .filter((person) => person.species.length > 1)
+  .map((person) => {
+    const species = person.species.length
+    return `${person.name} (${species})`
+  })
+  .join(', ')
+console.log('x:', x)
