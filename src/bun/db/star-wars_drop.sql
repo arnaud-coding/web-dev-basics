@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS `People`;
+DROP TABLE IF EXISTS `Films`;
+DROP TABLE IF EXISTS `people_films`;
