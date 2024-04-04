@@ -116,8 +116,8 @@ type ApiVehicle = ApiMotor & {
 
 async function fetchSWItems<T>(pageUrl: string): Promise<SWApiItems<T>> {
   const respnse = await fetch(pageUrl)
-  const planets = await respnse.json()
-  return planets
+  const items = await respnse.json()
+  return items
 }
 
 async function fetchAllItems<T>(url: string): Promise<T[]> {
@@ -158,24 +158,34 @@ async function fetchAllItems<T>(url: string): Promise<T[]> {
 
 const planets = await fetchAllItems<ApiPlanet>(planetsUrl)
 // console.log('planets:', planets.map((planet) => planet.name).join())
+console.log(`Fetched ${planets.length} planets`)
 
 const films = await fetchAllItems<ApiFilms>(filmsUrl)
 // console.log('films:', films.map((film) => film.title).join())
+console.log(`Fetched ${films.length} films`)
 
 const people = await fetchAllItems<ApiPerson>(peopleUrl)
 // console.log('people:', people.map((person) => person.name).join())
+console.log(`Fetched ${people.length} people`)
 
 const species = await fetchAllItems<ApiSpecie>(speciesUrl)
 // console.log('species:', species.map((specie) => specie.name).join())
+console.log(`Fetched ${species.length} species`)
 
 const starships = await fetchAllItems<ApiStarship>(starshipsUrl)
 // console.log('starships:', starships.map((starship) => starship.name).join())
+console.log(`Fetched ${starships.length} starships`)
 
 const vehicles = await fetchAllItems<ApiVehicle>(vehiclesUrl)
 // console.log('vehicles:', vehicles.map((vehicle) => vehicle.name).join())
+console.log(`Fetched ${vehicles.length} vehicles`)
+
+console.log("That's all folks!")
+
+// DEBUG AREA
 
 const luke = people.find((person) => person.name.startsWith('Luke'))
-console.log('luke:', luke)
+console.log('\nluke:', luke)
 
 // essai pour convertir des liens url en lien vers des object
 const lukeVehicles = luke?.vehicles.map((vehicle) => {

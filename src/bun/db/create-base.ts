@@ -1,4 +1,5 @@
 import { Database } from "bun:sqlite";
+import { PersonDB, FilmDB} from './types.ts'
 
 /**
  * Créer et remplir une base de données :
@@ -58,6 +59,7 @@ import { Database } from "bun:sqlite";
     // exécute la requête lue sr la base
     db.run(queryContent);
   };
+  console.info("\nThis script creates the star-wars database, based on data collected on xxx API.\n");
 
   // ouverture de la base si elle existe, sinon création d'une base vide
   console.log("Creating database...");
@@ -71,47 +73,14 @@ import { Database } from "bun:sqlite";
   console.log("Creating tables...");
   await execSqlFile("star-wars_create.sql");
 
-  // remplit les données
-  console.log("insert data");
-  // const insertLuke = db.transaction(() => {
-  //   db.prepare('INSERT INTO People (name, mass, height) VALUES ("Luke", 68, 177)')
-  //     .run()
-  //   db.prepare('INSERT INTO Films (title, director, opening_crawl, release_date, episode_id) VALUES ("A new hope", "Georges Lucas", "once upon...", "1980-01-01", 4)')
-  //     .run()
-  //   db.prepare('INSERT INTO Films (title, director, opening_crawl, release_date, episode_id) VALUES ("The empire strikes back", "Georges Lucas", "once upon...", "1983-00-01", 5)')
-  //     .run()
-
-  //   db.prepare('INSERT INTO people_films (person_id, film_id) VALUES (1, 1)')
-  //     .run()
-  //   db.prepare('INSERT INTO people_films (person_id, film_id) VALUES (1, 2)')
-  //     .run()
-  // })
-
-  // insertLuke()
-
-  type PersonDB = {
-    $name: string;
-    $mass: number;
-    $height: number;
-  };
-
-  type FilmDB = {
-    $title: string;
-    $episode_id: number;
-    $director: string;
-    $opening: string;
-    $date: string;
-  };
-
-  type RelationDB = {
-    $left_id: number;
-    $right_id: number;
-  };
+  debugger;
 
   // Map : tous les liens entre "un index personnage dans tableau JS" (Map key) et "un id personnage dans la base" (Map value)
   const peopleMap = new Map<number, number>();
   const filmsMap = new Map<number, number>();
-
+  
+  //#region DB queries & transactions
+  
   //  requête : insére un personnage dans sa table
   const insertPersonQuery = db.prepare(
     "INSERT INTO People (name, mass, height) VALUES ($name, $mass, $height) RETURNING id;"
@@ -156,7 +125,7 @@ import { Database } from "bun:sqlite";
   // transaction : insère tous les personnages dans la table
   const insertPeopleFilmsTransaction = db.transaction((people: PersonDB[]) => {
     let index = 0;
-    for (const person of people) {
+    for (const _ of people) {
       // récupère l'id dans la base du personnage courant
       const personId = peopleMap.get(index);
       if (personId === undefined) {
@@ -165,19 +134,20 @@ import { Database } from "bun:sqlite";
 
       // récupère les id de films dans la base pour le personnage courant
       // todo
-      const filmsId: number[] = [];
+      const filmsId: number[] = [1,2];
 
       // insère un film et récupère son id (créé par la base)
       for (const filmId of filmsId) {
-        const response = insertPersonFilmQuery.get({
-          $left_id: personId,
-          $right_id: filmId,
-        });
+        insertPersonFilmQuery.get({$left_id: personId,$right_id: filmId});
       }
 
       index++;
     }
   });
+
+  //#endregion
+
+  console.log("Inserting people...");
 
   // tmp : faux tableaux de personnages et de films (plus tard, ils viendront de l'API)
   const people: PersonDB[] = [
@@ -186,6 +156,7 @@ import { Database } from "bun:sqlite";
   ];
   insertPeopleTransaction(people);
 
+  console.log("Inserting films...");
   const films: FilmDB[] = [
     {
       $title: "A new hope",
@@ -204,14 +175,20 @@ import { Database } from "bun:sqlite";
   ];
   insertFilmsTransaction(films);
 
+  console.log("Inserting people-films relations...");
   insertPeopleFilmsTransaction(people);
-
-  console.log(peopleMap);
+  
+  console.log("\nDebuging the map of people... (map people array indexes to people table id");
   for (let index = 0; index < people.length; index++) {
     const person = people[index];
-    console.log("person:", index, person.$name, peopleMap.get(index));
+    console.log(person.$name, "-> People array index:", index , ", table id:", peopleMap.get(index));
+  }
+  console.log("\nDebuging the map of films... (map films array indexes to films table id");
+  for (let index = 0; index < films.length; index++) {
+    const film = films[index];
+    console.log(film.$title, "-> Films array index:", index, ", table id: ", filmsMap.get(index));
   }
 
   db.close();
-  console.log("Database created");
+  console.log("\nDatabase created and filled");
 })();
