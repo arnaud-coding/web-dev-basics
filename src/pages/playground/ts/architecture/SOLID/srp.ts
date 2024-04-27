@@ -25,6 +25,12 @@
  *    - cohésion (informatique) : https://fr.wikipedia.org/wiki/Coh%C3%A9sion_(informatique)
  */
 
+const textAreas = document.getElementsByTagName('textarea')
+if (textAreas.length > 0) {
+  const textArea = textAreas[0]
+  textArea.value = 'Single Responsability Principle\n\nThis is the "S" in "SOLID" principles'
+}
+
 // ----------------------------------------------------------------------------
 // Bad practice
 // ----------------------------------------------------------------------------
@@ -92,3 +98,48 @@ const access = new WorkItemDataAccess()
 const item = access.getById(0)
 item.name = 'updated name'
 access.save(item)
+
+// ---------------------------------------------------------------------------------
+// autre exemple
+// ---------------------------------------------------------------------------------
+
+class Report {
+  content: string = 'empty'
+  title: string = 'default'
+}
+// --------------------------------------------------
+// bad way
+// --------------------------------------------------
+
+class ReportWorker {
+  build(): Report {
+    console.log('bad build report...')
+    return new Report()
+  }
+  print(report: Report) {
+    console.log('bad print report:', report)
+  }
+}
+
+const worker = new ReportWorker()
+let report = worker.build()
+worker.print(report)
+
+// --------------------------------------------------
+// good way
+// --------------------------------------------------
+
+class ReportBuilder {
+  static build(): Report {
+    console.log('good build report...')
+    return new Report()
+  }
+}
+class ReportPrinter {
+  static print(report: Report) {
+    console.log('good print report:', report)
+  }
+}
+
+report = ReportBuilder.build()
+ReportPrinter.print(report)
