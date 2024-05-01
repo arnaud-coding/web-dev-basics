@@ -9,14 +9,14 @@
  * Conséquences:
  *    - Dans une fonction, tester le type de l'objet (if this instanceof ...),
  *      c'est ouvrir à la modification à chaque ajout de nouvelle classe => mauvais (cf BadAnimal)
- *    - Utiliser une énumération n'est valable que si on n'est sur qu'elle ne bougera pas.
+ *    - Utiliser une énumération n'est valable que si on n'est sûr qu'elle ne bougera pas.
  *    - Utiliser une union de type n'est valable que si on n'est sur qu'elle ne bougera pas.
  */
 
 const textAreas = document.getElementsByTagName('textarea')
 if (textAreas.length > 0) {
   const textArea = textAreas[0]
-  textArea.value = 'Open/Closed Principle\n\nThis is the "O" in "SOLID" principles'
+  textArea.value = 'OCP - Open/Closed Principle\n\nThis is the "O" in "SOLID" principles'
 }
 
 //#region bad usage of instanceof
