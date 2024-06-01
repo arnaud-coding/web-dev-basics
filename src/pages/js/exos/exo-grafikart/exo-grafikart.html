@@ -294,7 +294,7 @@
         console.log('Hello')
         r(2)
       })
-      p.then(() => console.log('then'))
+      p.then((n) => console.log('then', n))
       waitSync(2000)
       console.log('les gens')
     </script>
