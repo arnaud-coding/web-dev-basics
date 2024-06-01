@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exo - Grafikart</title>
+
+    <script>
+      // -------------------------
+      // Patiquons les class
+      // -------------------------
+      /*
+      class Rectangle {
+        constructor(width, height) {
+          this.width = width
+          this.height = height
+        }
+
+        get perimeter() {
+          return (this.width + this.height) * 2
+        }
+
+        get isValid() {
+          return this.width > 0 && this.height > 0
+        }
+
+        isBiggerThan(shape) {
+          return this.perimeter > shape.perimeter
+        }
+      }
+
+      class Square extends Rectangle {
+        constructor(width) {
+          super(width, width)
+        }
+      }
+
+      const r = new Rectangle(10, 20)
+      console.log(r.perimeter)
+      console.log(r.isValid)
+      const r2 = new Rectangle(-10, 20)
+      console.log(r2.isValid)
+      const c = new Square(10)
+      console.log(c.perimeter)
+      console.log(c.isBiggerThan(r))
+      */
+
+      //----------------------------
+
+      /*
+      class Book {
+        #page = 1
+
+        constructor(title, pages) {
+          this.title = title
+          this.pages = pages
+        }
+
+        get page() {
+          return this.#page
+        }
+
+        nextPage() {
+          if (this.#page < this.pages) {
+            this.#page++
+          }
+        }
+
+        close() {
+          this.#page = 1
+        }
+      }
+
+      class Library {
+        #books = []
+
+        addBook(book) {
+          this.#books.push(book)
+        }
+
+        addBooks(books) {
+          books.forEach(this.addBook, this)
+        }
+
+        findBooksByLetter(letter) {
+          return this.#books.filter((book) => book.title[0].toLowerCase() === letter.toLowerCase())
+        }
+      }
+
+      const b = new Book('Seigneur des anneaux', 200)
+      console.log(b.page)
+      b.nextPage()
+      console.log(b.page)
+      b.close()
+      console.log(b.page)
+
+      const l = new Library()
+      l.addBook(b)
+      l.addBooks([new Book('Ready player one', 100), new Book('Oui-oui', 10), new Book('Sillage', 50)])
+      console.log(l.findBooksByLetter('S'))
+      console.log(l.findBooksByLetter('Z'))
+      console.log(l.findBooksByLetter('O'))
+      console.log(l.findBooksByLetter('R'))
+      */
+
+      // -------------------------
+      // Les erreurs
+      // -------------------------
+
+      /*
+      class Rectangle {
+        constructor(width, height) {
+          if (width <= 0 || height <= 0) {
+            throw new Error("la longueur et la largeur d'un rectangle ne peuvent pas être < 0")
+          }
+          this.width = width
+          this.height = height
+        }
+
+        get perimeter() {
+          return (this.width + this.height) * 2
+        }
+
+        get isValid() {
+          return this.width > 0 && this.height > 0
+        }
+
+        isBiggerThan(shape) {
+          return this.perimeter > shape.perimeter
+        }
+      }
+
+      class Square extends Rectangle {
+        constructor(width) {
+          super(width, width)
+        }
+      }
+
+      class PromptError extends Error {}
+
+      function promptRectangle() {
+        const width = parseInt(prompt('Largeur'), 10)
+        const height = parseInt(prompt('Longueur'), 10)
+        const r = new Rectangle(width, height)
+        return r
+      }
+
+      try {
+        promptRectangle()
+      } catch (e) {
+        if (e instanceof PromptError) {
+          console.log('PromptError')
+        } else {
+          console.log('erreur classique')
+        }
+      }
+      */
+
+      // ----------------------
+      // Les fonction usuelles
+      // ----------------------
+
+      /*
+      const notes = [12, 17, 18, 9, 7]
+      console.log(notes[2])
+      console.log(notes.at(-1))
+
+      const goodNotes = notes.filter((note) => note >= 10)
+      console.log('goodNotes:', goodNotes)
+      const badNotes = notes.filter((note) => note <= 10)
+      console.log('badNotes:', badNotes)
+
+      // --------------------------------
+
+      const animals = [
+        { weight: 1, name: 'pigeon', category: 'oviparous', travel: 'flying', parents: 2 },
+        { weight: 0.1, name: 'snail', category: 'oviparous', travel: 'crawling', parents: 1 },
+        { weight: 150, name: 'dolphin', category: 'mammal', travel: 'swimming', parents: 2 },
+        { weight: 2, name: 'bat', category: 'mammal', travel: 'flying', parents: 2 }
+      ]
+
+      console.log(
+        'alphabet',
+        animals.sort((a, b) => {
+          if (a.name < b.name) {
+            console.log('a < b:', a.name, b.name)
+            return -1
+          }
+          if (a.name > b.name) {
+            console.log('a > b:', a.name, b.name)
+            return 1
+          }
+          console.log('a = b:', a.name, b.name)
+          return 0
+        })
+      )
+      console.log(
+        'weight',
+        animals.sort((a, b) => a.weight - b.weight)
+      )
+
+      const flying_animals = animals.filter((animal) => animal.travel === 'flying')
+      console.log('flying_animals:', flying_animals.map((animal) => animal.name).join(', '))
+      */
+
+      // ----------------------
+      // Les timers
+      // ----------------------
+      //#region
+
+      // utiles pour éxéctuer le code en dessous sans "bloquer" le javascript
+      // faire attention à éviter "l'enfer des callbacks"
+
+      /*
+      wait = (duration) => {
+        const t = Date.now()
+        while (Date.now() - t < duration) {}
+      }
+
+      console.log('Bonjour')
+      //wait(1000)
+      setTimeout(() => {
+        console.log('les gens')
+      }, 2000)
+      console.log('Au revoir')
+
+      const t = setInterval(() => {
+        console.log('setInterval() called after 1sec')
+      }, 1000)
+      console.log(t)
+      */
+
+      // ---------------------------------
+      // exercices :
+
+      /*
+      let i = 0
+      const t = setInterval(() => {
+        i++
+        console.log('bonjour')
+        if (i >= 5) {
+          clearInterval(t)
+        }
+      }, 1000)
+      */
+
+      /*
+      function decompte(n) {
+        console.log(n)
+        if (n === 0) {
+          return
+        }
+        setTimeout(() => {
+          decompte(n - 1)
+        }, 1000)
+      }
+      decompte(3)
+      */
+
+      //#endregion
+
+      // ------------------------------
+      // Promises
+      // ------------------------------
+
+      function waitSync(duration) {
+        const t = Date.now()
+        while (Date.now() - t < duration) {}
+      }
+
+      function wait(duration) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(duration)
+          }, duration)
+        })
+      }
+
+      function waitAndFail(duration) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            reject(duration)
+          }, duration)
+        })
+      }
+
+      async function main() {
+        const duration = await wait(2000)
+        console.log(`Duration: ${duration}`)
+        return 5
+      }
+
+      const p = new Promise((r) => {
+        console.log('Hello')
+        r(2)
+      })
+      p.then(() => console.log('then'))
+      waitSync(2000)
+      console.log('les gens')
+    </script>
+  </head>
+  <body></body>
+</html>
