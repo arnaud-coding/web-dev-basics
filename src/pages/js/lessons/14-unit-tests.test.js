@@ -13,7 +13,7 @@ import { expect, test, vi } from 'vitest'
  * @param {number | string} b 2nd operand
  * @returns {number | string} sum
  */
-let sum = (a, b) => {
+const sum = (a, b) => {
   // @ts-ignore
   return a + b
 }
@@ -24,7 +24,7 @@ let sum = (a, b) => {
  * @param {number} n number to compute
  * @returns {number} the computation result
  */
-let useCallback = (cb, n) => {
+const useCallback = (cb, n) => {
   return cb(n)
 }
 

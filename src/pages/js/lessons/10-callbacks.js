@@ -25,15 +25,15 @@
     console.log("named function 'callback' called, x=", x)
   }
 
-  // appelle la fonction "foo" en lui passant le callback (ici, une fontion nommée "callback")
+  // 1st exemple: appelle la fonction "foo" en lui passant le callback (ici, une fontion nommée "callback")
   console.log('calling foo, callback: named function')
   foo(1, callback)
 
-  // appelle la fonction "foo" en lui passant le callback (ici, une fontion anonyme d'une seule ligne)
+  // 2nd exemple: appelle la fonction "foo" en lui passant le callback (ici, une fontion anonyme d'une seule ligne)
   console.log('calling foo, callback: singleline anonymous function')
   foo(2, (x) => console.log('anonymous singleline callback called, x=', x))
 
-  // appelle la fonction "boo" en lui passant le callback (ici, une fontion anonyme de plusieurs lignes possibles) LA FORME LA PLUS COURANTE
+  // 3rd exemple: appelle la fonction "foo" en lui passant le callback (ici, une fontion anonyme de plusieurs lignes possibles) LA FORME LA PLUS COURANTE
   console.log('calling foo, callback: multiline anonymous function')
   foo(3, (x) => {
     console.log('anonymous multiline callback called, x=', x)
