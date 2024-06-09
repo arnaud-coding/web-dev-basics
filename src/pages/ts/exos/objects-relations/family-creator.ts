@@ -47,24 +47,22 @@ export class FamilyCreator {
 
     // ----- add relationships
     switch (relationship) {
-      case 'brother':
-        this.addBrotherRelationships(newMember, existingMember)
+      case 'sibling':
+        this.addSiblingRelationships(newMember, existingMember)
         break
 
-      case 'daughter':
-        this.addDaughterRelationships(newMember, existingMember)
+      case 'child':
+        throw new Error('not implemented')
         break
 
-      // case 'father':
-      //   break
-      // case 'mother':
-      //   break
-      // case 'sister':
-      //   break
-      // case 'son':
-      //   break
-      // case 'spouse':
-      //   break
+      case 'parent':
+        throw new Error('not implemented')
+        break
+
+      case 'spouse':
+        throw new Error('not implemented')
+        break
+
       default:
         throw new FamilyCreatorError('try to add an unknown relationship', newMember, relationship)
     }
@@ -72,7 +70,7 @@ export class FamilyCreator {
 
   /**
    * find all members that have a given relationship with an existing member
-   * ex.: Search all brothers of a given member, search father of a given member, ...
+   * ex.: Search all siblings of a given member, search parent of a given member, ...
    * @param existingMember the existing member which to search the relationships
    * @param relationship the relationship to find
    * @returns the find members, that may include the existing member
@@ -80,11 +78,11 @@ export class FamilyCreator {
   private findMembersByRelationship(existingMember: Person, relationship: Relationship): Person[] {
     return this.family.filter((member) => {
       // check if the source member must be added to the list of found relations=ships
-      if (relationship === 'brother' || relationship === 'sister' || relationship === 'spouse') {
+      if (relationship === 'sibling' || relationship === 'spouse') {
         if (member === existingMember) return true
       }
 
-      // return true if the current member is a brother of the given existing brother
+      // return true if the current member is a sibling of the given existing sibling
       return member.relations.some(
         (relation) => relation.relationship === relationship && relation.person === existingMember
       )
@@ -92,42 +90,37 @@ export class FamilyCreator {
   }
 
   /**
-   * add all the relationships between a new brother and one of the existing member(s)
-   * @param newBrother the brother to add
-   * @param existingBrother the existing brother which to add the new brother
+   * add all the relationships between a new sibling and one of the existing member(s)
+   * @param newSibling the sibling to add
+   * @param existingSibling the existing sibling which to add the new sibling
    */
-  private addBrotherRelationships(newBrother: Person, existingBrother: Person) {
-    // add relations between new and existing brothers
-    newBrother.relations.push({ relationship: 'brother', person: existingBrother })
-    existingBrother.relations.push({ relationship: 'brother', person: newBrother })
+  private addSiblingRelationships(newSibling: Person, existingSibling: Person) {
+    // add relations between new and existing siblings
+    newSibling.relations.push({ relationship: 'sibling', person: existingSibling })
+    existingSibling.relations.push({ relationship: 'sibling', person: newSibling })
 
-    // retrieve all existing brothers of the existing brother
-    const foundBrothers = this.findMembersByRelationship(existingBrother, 'brother')
+    // retrieve all existing siblings of the existing sibling
+    const foundSiblings = this.findMembersByRelationship(existingSibling, 'sibling')
 
-    // add relationships between all brothers
-    for (const brother of foundBrothers) {
-      if (brother === newBrother || brother === existingBrother) {
+    // add relationships between all siblings
+    for (const sibling of foundSiblings) {
+      if (sibling === newSibling || sibling === existingSibling) {
         continue
       }
 
-      //add new brother to all existing brothers
-      brother.relations.push({ relationship: 'brother', person: newBrother })
+      //add new sibling to all existing siblings
+      sibling.relations.push({ relationship: 'sibling', person: newSibling })
 
-      // add existing brothers to new brother
-      newBrother.relations.push({ relationship: 'brother', person: brother })
+      // add existing siblings to new sibling
+      newSibling.relations.push({ relationship: 'sibling', person: sibling })
     }
 
-    // todo sisters
-    // find mother and father
+    // find parents
     //todo
-    // add son to parents
+    // add child to parents
     //todo
-    // add parent to added brother
+    // add parent to added sibling
     //todo
-  }
-
-  private addDaughterRelationships(newDaughter: Person, existingDaughter: Person) {
-    throw new Error('Method addDaughterRelationships not implemented.')
   }
 
   display(): string[] {

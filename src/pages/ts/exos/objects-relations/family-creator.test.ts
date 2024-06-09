@@ -3,44 +3,57 @@ import { FamilyCreator, FamilyCreatorError } from './family-creator.ts'
 import { Person, Physical } from './family.model.ts'
 import { createHeight, createWeight } from './family-helpers.ts'
 
-// import { FamilyCreator } from './family-creator.ts'
-describe.only('FamilyCreator', () => {
-  //#region internal test data
+//#region internal test data
+let john: Person
+let jack: Person
+let jim: Person
+let jenny: Person
+function createMembers() {
   const birthdate = new Date(1980, 0, 1)
   const physicals = new Physical(createHeight(1.7), createWeight(51), 'blue')
-  const john: Person = {
+
+  john = {
     firstname: 'John',
     lastname: 'Doe',
+    gender: 'male',
     birthdate,
     physicals,
     relations: []
   }
-  const jack: Person = {
+  jack = {
     firstname: 'Jack',
     lastname: 'Doe',
+    gender: 'male',
     birthdate,
     physicals,
     relations: []
   }
-  const jim: Person = {
+  jim = {
     firstname: 'Jim',
     lastname: 'Doe',
+    gender: 'male',
     birthdate,
     physicals,
     relations: []
   }
-  const james: Person = {
-    firstname: 'James',
+  jenny = {
+    firstname: 'Jenny',
     lastname: 'Doe',
+    gender: 'female',
     birthdate,
     physicals,
     relations: []
   }
-  //#endregion
+}
+//#endregion
+
+// import { FamilyCreator } from './family-creator.ts'
+describe.only('FamilyCreator', () => {
   let sut: FamilyCreator
   let family: Person[]
 
   beforeEach(() => {
+    createMembers()
     sut = new FamilyCreator(john)
     family = sut.family
   })
@@ -56,72 +69,70 @@ describe.only('FamilyCreator', () => {
     expect(family).toContain(john)
   })
 
-  describe('addBrother', () => {
-    const expectBrotherRelation = (brother1: Person, brother2: Person) => {
+  describe('addSibling', () => {
+    const expectSiblingRelation = (sibling1: Person, sibling2: Person) => {
       expect(
-        brother1.relations.filter((brother) => {
-          return brother.relationship === 'brother' && brother.person === brother2
+        sibling1.relations.filter((sibling) => {
+          return sibling.relationship === 'sibling' && sibling.person === sibling2
         }).length
       ).toBe(1)
 
       expect(
-        brother2.relations.filter((brother) => {
-          return brother.relationship === 'brother' && brother.person === brother1
+        sibling2.relations.filter((sibling) => {
+          return sibling.relationship === 'sibling' && sibling.person === sibling1
         }).length
       ).toBe(1)
     }
 
     test('it succeed to add jack', () => {
-      sut.addMember(jack, 'brother', john)
+      sut.addMember(jack, 'sibling', john)
 
       expect(family.length).toBe(2)
       expect(family).toContain(jack)
 
-      expectBrotherRelation(jim, jack)
+      expectSiblingRelation(john, jack)
     })
 
     test('it succeed to add jack and jim', () => {
-      sut.addMember(jack, 'brother', john)
-      sut.addMember(jim, 'brother', john)
+      sut.addMember(jack, 'sibling', john)
+      sut.addMember(jim, 'sibling', john)
 
       expect(family.length).toBe(3)
       expect(family).toContain(jim)
 
-      expectBrotherRelation(jim, jack)
-      expectBrotherRelation(jim, john)
-      expectBrotherRelation(john, jack)
+      expectSiblingRelation(jim, jack)
+      expectSiblingRelation(jim, john)
+      expectSiblingRelation(john, jack)
     })
 
-    test('it succeed to add jack, jim and james', () => {
-      sut.addMember(jack, 'brother', john)
-      sut.addMember(jim, 'brother', jack)
-      sut.addMember(james, 'brother', jim)
+    test('it succeed to add jack, jim and jenny', () => {
+      sut.addMember(jack, 'sibling', john)
+      sut.addMember(jim, 'sibling', jack)
+      sut.addMember(jenny, 'sibling', jim)
 
       expect(family.length).toBe(4)
-      expect(family).toContain(james)
+      expect(family).toContain(jenny)
 
-      expectBrotherRelation(jim, jack)
-      expectBrotherRelation(jim, john)
-      expectBrotherRelation(jim, james)
+      expectSiblingRelation(jim, jack)
+      expectSiblingRelation(jim, john)
+      expectSiblingRelation(jim, jenny)
 
-      expectBrotherRelation(john, jack)
-      expectBrotherRelation(john, james)
+      expectSiblingRelation(john, jack)
+      expectSiblingRelation(john, jenny)
 
-      expectBrotherRelation(jack, james)
+      expectSiblingRelation(jack, jenny)
     })
 
     test('it throws with already existing member', () => {
       expect(() => {
-        sut.addMember(john, 'brother', john)
+        sut.addMember(john, 'sibling', john)
       }).toThrow(FamilyCreatorError)
     })
 
     test('it throws with unknown existing member', () => {
       expect(() => {
-        sut.addMember(jack, 'brother', jack)
+        sut.addMember(jack, 'sibling', jack)
       }).toThrow(FamilyCreatorError)
     })
   })
 })
-
-describe.skip('addSister', () => {})

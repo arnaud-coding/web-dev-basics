@@ -2,7 +2,7 @@
  * Family type model
  **/
 
-export type Relationship = 'spouse' | 'father' | 'mother' | 'son' | 'daughter' | 'brother' | 'sister'
+export type Relationship = 'spouse' | 'parent' | 'child' | 'sibling'
 type EyeColor = 'brown' | 'amber' | 'hazel' | 'green' | 'blue'
 export type WeightUnit = 'kg' | 'lb' | 'oz'
 export type LengthtUnit = 'm' | 'in' | 'ft' | 'yd'
@@ -17,7 +17,10 @@ export type Person = {
   thumbnail?: Buffer
   physicals: Physical
   relations: Relation[]
+  gender: Gender
 }
+
+export type Gender = 'male' | 'female'
 
 export type Relation = {
   relationship: Relationship
