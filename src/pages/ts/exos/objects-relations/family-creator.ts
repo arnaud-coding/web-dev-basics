@@ -1,3 +1,4 @@
+import { P } from 'vitest/dist/reporters-yx5ZTtEV.js'
 import { Person, Relationship } from './family.model.ts'
 
 export class FamilyCreatorError extends Error {
@@ -56,7 +57,7 @@ export class FamilyCreator {
         break
 
       case 'parent':
-        throw new Error('not implemented')
+        this.addParentRelationships(newMember, existingMember)
         break
 
       case 'spouse':
@@ -95,7 +96,7 @@ export class FamilyCreator {
    * @param existingSibling the existing sibling which to add the new sibling
    */
   private addSiblingRelationships(newSibling: Person, existingSibling: Person) {
-    // add relations between new and existing siblings
+    // ---------- add relations between new and existing siblings
     newSibling.relations.push({ relationship: 'sibling', person: existingSibling })
     existingSibling.relations.push({ relationship: 'sibling', person: newSibling })
 
@@ -115,12 +116,52 @@ export class FamilyCreator {
       newSibling.relations.push({ relationship: 'sibling', person: sibling })
     }
 
-    // find parents
-    //todo
+    // ---------- find parents
+    // 1.) find one sibling
+    const otherSibling = foundSiblings.find((sibling) => sibling !== newSibling)
+
+    // 2.) ----- copy otherSibling parent relationships
+    if (otherSibling !== undefined) {
+      // 2.1) find otherSibling parent relationships
+      const relations = otherSibling.relations.filter((relation) => relation.relationship === 'child')
+      // 2.2) copy
+      for (const relation of relations) {
+        newSibling.relations.push({ relationship: 'child', person: relation.person })
+        relation.person.relations.push({ relationship: 'parent', person: newSibling })
+      }
+    }
+
     // add child to parents
     //todo
     // add parent to added sibling
     //todo
+  }
+
+  /**
+   * add all the relationships between a new parent and one of the existing children
+   * @param parent the new parent
+   * @param child the existing child
+   */
+  private addParentRelationships(parent: Person, child: Person) {
+    // add relations between new parent and existing child
+    parent.relations.push({ relationship: 'parent', person: child })
+    child.relations.push({ relationship: 'child', person: parent })
+
+    // retrieve all existing siblings of the existing child
+    const foundSiblings = this.findMembersByRelationship(child, 'sibling')
+
+    // add relationships between new parent and existing children
+    for (const sibling of foundSiblings) {
+      if (sibling === child) {
+        continue
+      }
+
+      //add new sibling to all existing siblings
+      sibling.relations.push({ relationship: 'child', person: parent })
+
+      // add existing siblings to new sibling
+      parent.relations.push({ relationship: 'parent', person: sibling })
+    }
   }
 
   display(): string[] {

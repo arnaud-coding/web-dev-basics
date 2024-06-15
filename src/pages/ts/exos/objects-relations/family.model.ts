@@ -3,10 +3,11 @@
  **/
 
 export type Relationship = 'spouse' | 'parent' | 'child' | 'sibling'
-type EyeColor = 'brown' | 'amber' | 'hazel' | 'green' | 'blue'
 export type WeightUnit = 'kg' | 'lb' | 'oz'
 export type LengthtUnit = 'm' | 'in' | 'ft' | 'yd'
-type UnitConstraint = LengthtUnit | WeightUnit
+export type Gender = 'male' | 'female'
+export type EyeColor = 'brown' | 'amber' | 'hazel' | 'green' | 'blue'
+export type UnitConstraint = LengthtUnit | WeightUnit
 
 export type Person = {
   // get fullName() {}
@@ -19,8 +20,6 @@ export type Person = {
   relations: Relation[]
   gender: Gender
 }
-
-export type Gender = 'male' | 'female'
 
 export type Relation = {
   relationship: Relationship
