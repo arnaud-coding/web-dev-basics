@@ -1,5 +1,4 @@
-import { P } from 'vitest/dist/reporters-yx5ZTtEV.js'
-import { Person, Relationship } from './family.model.ts'
+import { Person, Relationship } from './family-tree.model.ts'
 
 export class FamilyCreatorError extends Error {
   constructor(
