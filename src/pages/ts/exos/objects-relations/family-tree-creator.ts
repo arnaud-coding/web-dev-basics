@@ -42,15 +42,8 @@ export class FamilyTreeCreator {
       throw new FamilyTreeCreatorError('try to add relationship to an unknown member', existingMember)
     }
 
-    // ----- add member
-    this.familyTree.push(newMember)
-
     // ----- add relationships
     switch (relationship) {
-      case 'sibling':
-        this.addSiblingRelationships(newMember, existingMember)
-        break
-
       case 'child':
         throw new Error('not implemented')
         break
@@ -62,74 +55,9 @@ export class FamilyTreeCreator {
       default:
         throw new FamilyTreeCreatorError('try to add an unknown relationship', newMember, relationship)
     }
-  }
 
-  /**
-   * find all members that have a given relationship with an existing member
-   * ex.: Search all siblings of a given member, search parent of a given member, ...
-   * @param existingMember the existing member which to search the relationships
-   * @param relationship the relationship to find
-   * @returns the find members, that may include the existing member
-   */
-  private findMembersByRelationship(existingMember: Person, relationship: Relationship): Person[] {
-    return this.familyTree.filter((member) => {
-      // check if the source member must be added to the list of found relations=ships
-      if (relationship === 'sibling') {
-        if (member === existingMember) return true
-      }
-
-      // return true if the current member is a sibling of the given existing sibling
-      return member.relations.some(
-        (relation) => relation.relationship === relationship && relation.person === existingMember
-      )
-    })
-  }
-
-  /**
-   * add all the relationships between a new sibling and one of the existing member(s)
-   * @param newSibling the sibling to add
-   * @param existingSibling the existing sibling which to add the new sibling
-   */
-  private addSiblingRelationships(newSibling: Person, existingSibling: Person) {
-    // ---------- add relations between new and existing siblings
-    newSibling.relations.push({ relationship: 'sibling', person: existingSibling })
-    existingSibling.relations.push({ relationship: 'sibling', person: newSibling })
-
-    // retrieve all existing siblings of the existing sibling
-    const foundSiblings = this.findMembersByRelationship(existingSibling, 'sibling')
-
-    // add relationships between all siblings
-    for (const sibling of foundSiblings) {
-      if (sibling === newSibling || sibling === existingSibling) {
-        continue
-      }
-
-      //add new sibling to all existing siblings
-      sibling.relations.push({ relationship: 'sibling', person: newSibling })
-
-      // add existing siblings to new sibling
-      newSibling.relations.push({ relationship: 'sibling', person: sibling })
-    }
-
-    // ---------- find parents
-    // 1.) find one sibling
-    const otherSibling = foundSiblings.find((sibling) => sibling !== newSibling)
-
-    // 2.) ----- copy otherSibling parent relationships
-    if (otherSibling !== undefined) {
-      // 2.1) find otherSibling parent relationships
-      const relations = otherSibling.relations.filter((relation) => relation.relationship === 'child')
-      // 2.2) copy
-      for (const relation of relations) {
-        newSibling.relations.push({ relationship: 'child', person: relation.person })
-        relation.person.relations.push({ relationship: 'parent', person: newSibling })
-      }
-    }
-
-    // add child to parents
-    //todo
-    // add parent to added sibling
-    //todo
+    // ----- add member
+    this.familyTree.push(newMember)
   }
 
   /**
@@ -138,25 +66,17 @@ export class FamilyTreeCreator {
    * @param child the existing child
    */
   private addParentRelationships(parent: Person, child: Person) {
+    // check that another parent of same gender does not already exist
+    const existing = child.relations.find(
+      (relation) => relation.relationship === 'child' && relation.person.gender === parent.gender
+    )
+    if (existing) {
+      throw new FamilyTreeCreatorError('try to add a second parent of same gender', parent)
+    }
+
     // add relations between new parent and existing child
     parent.relations.push({ relationship: 'parent', person: child })
     child.relations.push({ relationship: 'child', person: parent })
-
-    // retrieve all existing siblings of the existing child
-    const foundSiblings = this.findMembersByRelationship(child, 'sibling')
-
-    // add relationships between new parent and existing children
-    for (const sibling of foundSiblings) {
-      if (sibling === child) {
-        continue
-      }
-
-      //add new sibling to all existing siblings
-      sibling.relations.push({ relationship: 'child', person: parent })
-
-      // add existing siblings to new sibling
-      parent.relations.push({ relationship: 'parent', person: sibling })
-    }
   }
 
   display(): string[] {
