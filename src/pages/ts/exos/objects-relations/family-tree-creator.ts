@@ -59,10 +59,6 @@ export class FamilyTreeCreator {
         this.addParentRelationships(newMember, existingMember)
         break
 
-      case 'spouse':
-        throw new Error('not implemented')
-        break
-
       default:
         throw new FamilyTreeCreatorError('try to add an unknown relationship', newMember, relationship)
     }
@@ -78,7 +74,7 @@ export class FamilyTreeCreator {
   private findMembersByRelationship(existingMember: Person, relationship: Relationship): Person[] {
     return this.familyTree.filter((member) => {
       // check if the source member must be added to the list of found relations=ships
-      if (relationship === 'sibling' || relationship === 'spouse') {
+      if (relationship === 'sibling') {
         if (member === existingMember) return true
       }
 

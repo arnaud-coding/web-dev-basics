@@ -6,7 +6,7 @@ import { ValueUnit } from './units-helpers.ts'
 import { LengthtUnit } from './units-helpers.ts'
 import { WeightUnit } from './units-helpers.ts'
 
-export type Relationship = 'spouse' | 'parent' | 'child' | 'sibling'
+export type Relationship = 'parent' | 'child' | 'sibling'
 export type Gender = 'male' | 'female'
 export type EyeColor = 'brown' | 'amber' | 'hazel' | 'green' | 'blue'
 
