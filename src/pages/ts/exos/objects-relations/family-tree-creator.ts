@@ -26,7 +26,7 @@ export class FamilyTreeCreator {
   /**
    * add a new member in the family
    * @param newMember the member to add
-   * @param relationship the relationship with an other member of the family
+   * @param relationship the relationship between new member and existing member
    * @param existingMember the other member which to add the relation
    */
   addMember(newMember: Person, relationship: Relationship, existingMember: Person) {
@@ -45,11 +45,11 @@ export class FamilyTreeCreator {
     // ----- add relationships
     switch (relationship) {
       case 'child':
-        throw new Error('not implemented')
+        this.addParentRelationship(existingMember, newMember)
         break
 
       case 'parent':
-        this.addParentRelationships(newMember, existingMember)
+        this.addParentRelationship(newMember, existingMember)
         break
 
       default:
@@ -61,11 +61,24 @@ export class FamilyTreeCreator {
   }
 
   /**
+   * add a relation from source to target
+   * @param source source of the relation
+   * @param relationship relation between source and target
+   * @param target target of the relation
+   */
+  addRelationship(source: Person, relationship: Relationship, target: Person) {
+    source.relations.push({ relationship, person: target })
+
+    const inverse: Relationship = relationship === 'child' ? 'parent' : 'child'
+    target.relations.push({ relationship: inverse, person: source })
+  }
+
+  /**
    * add all the relationships between a new parent and one of the existing children
    * @param parent the new parent
    * @param child the existing child
    */
-  private addParentRelationships(parent: Person, child: Person) {
+  private addParentRelationship(parent: Person, child: Person) {
     // check that another parent of same gender does not already exist
     const existing = child.relations.find(
       (relation) => relation.relationship === 'child' && relation.person.gender === parent.gender
