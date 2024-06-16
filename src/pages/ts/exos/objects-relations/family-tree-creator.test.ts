@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, test } from 'vitest'
-import { FamilyCreator, FamilyCreatorError } from './family-tree-creator.ts'
+import { FamilyTreeCreator, FamilyTreeCreatorError } from './family-tree-creator.ts'
 import { Person, Physical } from './family-tree.model.ts'
 import { createHeight, createWeight } from './units-helpers.ts'
 
@@ -66,32 +66,32 @@ function createMembers() {
 //#endregion
 
 // import { FamilyCreator } from './family-creator.ts'
-describe('FamilyCreator', () => {
-  let sut: FamilyCreator
-  let family: Person[]
+describe('FamilyTreeCreator', () => {
+  let sut: FamilyTreeCreator
+  let tree: Person[]
 
   beforeEach(() => {
     createMembers()
-    sut = new FamilyCreator(john)
-    family = sut.family
+    sut = new FamilyTreeCreator(john)
+    tree = sut.familyTree
   })
 
-  test('FamilyCreator creates a family', () => {
+  test('it creates a family tree', () => {
     // Assert
-    expect(family.length).toBe(1)
-    expect(family).toContain(john)
+    expect(tree.length).toBe(1)
+    expect(tree).toContain(john)
   })
 
   test('it throws when adding an already existing member', () => {
     expect(() => {
       sut.addMember(john, 'sibling', john)
-    }).toThrow(FamilyCreatorError)
+    }).toThrow(FamilyTreeCreatorError)
   })
 
   test('it throws when adding a relation to an unknown member', () => {
     expect(() => {
       sut.addMember(jack, 'sibling', jack)
-    }).toThrow(FamilyCreatorError)
+    }).toThrow(FamilyTreeCreatorError)
   })
 
   describe('add sibling', () => {
@@ -112,8 +112,8 @@ describe('FamilyCreator', () => {
     test('it succeed to add jack', () => {
       sut.addMember(jack, 'sibling', john)
 
-      expect(family.length).toBe(2)
-      expect(family).toContain(jack)
+      expect(tree.length).toBe(2)
+      expect(tree).toContain(jack)
 
       expectSiblingRelation(john, jack)
     })
@@ -122,8 +122,8 @@ describe('FamilyCreator', () => {
       sut.addMember(jack, 'sibling', john)
       sut.addMember(jim, 'sibling', john)
 
-      expect(family.length).toBe(3)
-      expect(family).toContain(jim)
+      expect(tree.length).toBe(3)
+      expect(tree).toContain(jim)
 
       expectSiblingRelation(jim, jack)
       expectSiblingRelation(jim, john)
@@ -135,8 +135,8 @@ describe('FamilyCreator', () => {
       sut.addMember(jim, 'sibling', jack)
       sut.addMember(jenny, 'sibling', jim)
 
-      expect(family.length).toBe(4)
-      expect(family).toContain(jenny)
+      expect(tree.length).toBe(4)
+      expect(tree).toContain(jenny)
 
       expectSiblingRelation(jim, jack)
       expectSiblingRelation(jim, john)
@@ -165,8 +165,8 @@ describe('FamilyCreator', () => {
     test('it succeed to add Henry the father', () => {
       sut.addMember(henry, 'parent', john)
 
-      expect(family.length).toBe(2)
-      expect(family).toContain(henry)
+      expect(tree.length).toBe(2)
+      expect(tree).toContain(henry)
 
       expectParentRelation(henry, john)
     })
@@ -175,7 +175,7 @@ describe('FamilyCreator', () => {
       sut.addMember(jenny, 'sibling', john)
       sut.addMember(henry, 'parent', john)
 
-      expect(family.length).toBe(3)
+      expect(tree.length).toBe(3)
 
       expectParentRelation(henry, john, 'Henry to John')
       expectParentRelation(henry, jenny, 'Henry to Jenny')
@@ -185,7 +185,7 @@ describe('FamilyCreator', () => {
       sut.addMember(henry, 'parent', john)
       sut.addMember(jenny, 'sibling', john)
 
-      expect(family.length).toBe(3)
+      expect(tree.length).toBe(3)
 
       expectParentRelation(henry, john, 'Henry to John')
       expectParentRelation(henry, jenny, 'Henry to Jenny')
@@ -196,7 +196,7 @@ describe('FamilyCreator', () => {
       sut.addMember(mary, 'parent', john)
       sut.addMember(jenny, 'sibling', john)
 
-      expect(family.length).toBe(4)
+      expect(tree.length).toBe(4)
 
       expectParentRelation(mary, john, 'Henry to John')
       expectParentRelation(mary, jenny, 'Henry to Jenny')

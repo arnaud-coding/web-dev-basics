@@ -1,6 +1,6 @@
 import { Person, Relationship } from './family-tree.model.ts'
 
-export class FamilyCreatorError extends Error {
+export class FamilyTreeCreatorError extends Error {
   constructor(
     message: string,
     public member: Person,
@@ -13,14 +13,14 @@ export class FamilyCreatorError extends Error {
 }
 
 /** utility object : manipulates a family (add members...) */
-export class FamilyCreator {
-  private _family: Person[]
+export class FamilyTreeCreator {
+  private _tree: Person[]
   constructor(firstMember: Person) {
-    this._family = [firstMember]
+    this._tree = [firstMember]
   }
 
-  public get family(): Person[] {
-    return this._family
+  public get familyTree(): Person[] {
+    return this._tree
   }
 
   /**
@@ -31,19 +31,19 @@ export class FamilyCreator {
    */
   addMember(newMember: Person, relationship: Relationship, existingMember: Person) {
     // ----- check that the new member does NOT already exist in the family
-    const newMemberExist = this.family.some((member) => member === newMember)
+    const newMemberExist = this.familyTree.some((member) => member === newMember)
     if (newMemberExist) {
-      throw new FamilyCreatorError('try to add an existing member', newMember)
+      throw new FamilyTreeCreatorError('try to add an existing member', newMember)
     }
 
     // ----- check that relation is already in the family
-    const relationExist = this.family.some((member) => member === existingMember)
+    const relationExist = this.familyTree.some((member) => member === existingMember)
     if (!relationExist) {
-      throw new FamilyCreatorError('try to add relationship to an unknown member', existingMember)
+      throw new FamilyTreeCreatorError('try to add relationship to an unknown member', existingMember)
     }
 
     // ----- add member
-    this.family.push(newMember)
+    this.familyTree.push(newMember)
 
     // ----- add relationships
     switch (relationship) {
@@ -64,7 +64,7 @@ export class FamilyCreator {
         break
 
       default:
-        throw new FamilyCreatorError('try to add an unknown relationship', newMember, relationship)
+        throw new FamilyTreeCreatorError('try to add an unknown relationship', newMember, relationship)
     }
   }
 
@@ -76,7 +76,7 @@ export class FamilyCreator {
    * @returns the find members, that may include the existing member
    */
   private findMembersByRelationship(existingMember: Person, relationship: Relationship): Person[] {
-    return this.family.filter((member) => {
+    return this.familyTree.filter((member) => {
       // check if the source member must be added to the list of found relations=ships
       if (relationship === 'sibling' || relationship === 'spouse') {
         if (member === existingMember) return true
@@ -165,7 +165,7 @@ export class FamilyCreator {
 
   display(): string[] {
     const res: string[] = []
-    for (const member of this.family) {
+    for (const member of this.familyTree) {
       res.push(`${member.firstname} ${member.lastname} ${member.relations.length}`)
     }
     return res
