@@ -49,32 +49,3 @@ export class Physical {
     public eyeColor: EyeColor
   ) {}
 }
-
-// todo 2: transforme comme ci-dessous pour pouvoir écrire : john.addChild('joe')
-
-class Member {
-  public dob?: Date
-  constructor(public firstname: string) {}
-}
-
-class MemberCreator extends Member {
-  constructor(
-    public firstname: string,
-    private creator: FamilyCreator
-  ) {
-    super(firstname)
-  }
-  addChild(firstname: string) {
-    this.creator.addChild(firstname)
-  }
-}
-
-class FamilyCreator {
-  addChild(firstname: string) {
-    console.log(firstname)
-  }
-}
-
-const creator = new FamilyCreator()
-const john = new MemberCreator('John', creator)
-john.addChild('joe')
