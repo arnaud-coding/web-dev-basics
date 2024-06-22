@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, test } from 'vitest'
 import { FamilyTreeCreator, FamilyTreeCreatorError } from './family-tree-creator.ts'
-import { Person, Physical } from './family-tree.model.ts'
+import { Gender, Person, Physical } from './family-tree.model.ts'
 import { createHeight, createWeight } from './units-helpers.ts'
 
 //#region internal test data
@@ -11,58 +11,17 @@ let jenny: Person
 let henry: Person
 let mary: Person
 
-function createMembers() {
-  const birthdate = new Date(1980, 0, 1)
-  const physicals = new Physical(createHeight(1.7), createWeight(51), 'blue')
+const createMember = (firstname: string, lastname: string, gender: Gender): Person => {
+  return new Person(firstname, lastname, gender)
+}
 
-  john = {
-    firstname: 'John',
-    lastname: 'Doe',
-    gender: 'male',
-    birthdate,
-    physicals,
-    relations: []
-  }
-  jack = {
-    firstname: 'Jack',
-    lastname: 'Doe',
-    gender: 'male',
-    birthdate,
-    physicals,
-    relations: []
-  }
-  jim = {
-    firstname: 'Jim',
-    lastname: 'Doe',
-    gender: 'male',
-    birthdate,
-    physicals,
-    relations: []
-  }
-  jenny = {
-    firstname: 'Jenny',
-    lastname: 'Doe',
-    gender: 'female',
-    birthdate,
-    physicals,
-    relations: []
-  }
-  henry = {
-    firstname: 'Henry',
-    lastname: 'Doe',
-    gender: 'male',
-    birthdate,
-    physicals,
-    relations: []
-  }
-  mary = {
-    firstname: 'Mary',
-    lastname: 'Doe',
-    gender: 'female',
-    birthdate,
-    physicals,
-    relations: []
-  }
+function createMembers() {
+  john = createMember('John', 'Doe', 'male')
+  jack = createMember('Jack', 'Doe', 'male')
+  jim = createMember('Jim', 'Doe', 'male')
+  jenny = createMember('Jenny', 'Doe', 'female')
+  henry = createMember('Henry', 'Doe', 'male')
+  mary = createMember('Mary', 'Doe', 'female')
 }
 
 const expectParentRelation = (parent: Person, child: Person, message?: string) => {
