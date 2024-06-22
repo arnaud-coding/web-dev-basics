@@ -23,13 +23,21 @@ export class FamilyTreeCreator {
     return this._tree
   }
 
+  addParent(parent: Person, child: Person) {
+    this.addMember(parent, 'parent', child)
+  }
+
+  addChild(child: Person, parent: Person) {
+    this.addMember(child, 'child', parent)
+  }
+
   /**
    * add a new member in the family
    * @param newMember the member to add
    * @param relationship the relationship between new member and existing member
    * @param existingMember the other member which to add the relation
    */
-  addMember(newMember: Person, relationship: Relationship, existingMember: Person) {
+  private addMember(newMember: Person, relationship: Relationship, existingMember: Person) {
     // ----- check that the new member does NOT already exist in the family
     const newMemberExist = this.familyTree.some((member) => member === newMember)
     if (newMemberExist) {

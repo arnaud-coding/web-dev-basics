@@ -97,19 +97,19 @@ describe('FamilyTreeCreator', () => {
 
   test('it throws when adding an already existing member', () => {
     expect(() => {
-      sut.addMember(john, 'parent', john)
+      sut.addParent(john, john)
     }).toThrow(FamilyTreeCreatorError)
   })
 
   test('it throws when adding a relation to an unknown member', () => {
     expect(() => {
-      sut.addMember(jack, 'parent', jack)
+      sut.addParent(jack, jack)
     }).toThrow(FamilyTreeCreatorError)
   })
 
   describe(' it add parent', () => {
     test('it succeeds to add a father', () => {
-      sut.addMember(henry, 'parent', john)
+      sut.addParent(henry, john)
 
       expect(tree.length).toBe(2)
       expect(tree).toContain(henry)
@@ -118,7 +118,7 @@ describe('FamilyTreeCreator', () => {
     })
 
     test('it succeeds to add a mother', () => {
-      sut.addMember(mary, 'parent', john)
+      sut.addParent(mary, john)
 
       expect(tree.length).toBe(2)
 
@@ -126,8 +126,8 @@ describe('FamilyTreeCreator', () => {
     })
 
     test('it succeeds to add a father and a mother', () => {
-      sut.addMember(henry, 'parent', john)
-      sut.addMember(mary, 'parent', john)
+      sut.addParent(henry, john)
+      sut.addParent(mary, john)
 
       expect(tree.length).toBe(3)
 
@@ -136,20 +136,20 @@ describe('FamilyTreeCreator', () => {
     })
 
     test('it cannot add 2 fathers', () => {
-      sut.addMember(henry, 'parent', john)
+      sut.addParent(henry, john)
 
       expect(() => {
-        sut.addMember(jim, 'parent', john)
+        sut.addParent(jim, john)
       }).toThrow(FamilyTreeCreatorError)
 
       expect(tree.length).toBe(2)
     })
 
     test('it cannot add 2 mothers', () => {
-      sut.addMember(mary, 'parent', john)
+      sut.addParent(mary, john)
 
       expect(() => {
-        sut.addMember(jenny, 'parent', john)
+        sut.addParent(jenny, john)
       }).toThrow(FamilyTreeCreatorError)
     })
   })
@@ -169,7 +169,7 @@ describe('FamilyTreeCreator', () => {
 
     // jack is the john's child
     test('it succeeds to add a son', () => {
-      sut.addMember(jack, 'child', john)
+      sut.addChild(jack, john)
 
       expect(tree.length).toBe(2)
       expectChildRelation(jack, john)
@@ -177,8 +177,8 @@ describe('FamilyTreeCreator', () => {
 
     // jack and jenny are john's children
     test('it succeeds to add a son and a daughter', () => {
-      sut.addMember(jack, 'child', john)
-      sut.addMember(jenny, 'child', john)
+      sut.addChild(jack, john)
+      sut.addChild(jenny, john)
 
       expect(tree.length).toBe(3)
       expectChildRelation(jenny, john)
@@ -188,19 +188,19 @@ describe('FamilyTreeCreator', () => {
   describe('it add relation', () => {
     // john is henry's and mary's child
     test('it succeeds to add parents and child', () => {
-      sut.addMember(henry, 'parent', john)
-      sut.addMember(mary, 'parent', john)
+      sut.addParent(henry, john)
+      sut.addParent(mary, john)
 
-      sut.addMember(jim, 'child', henry)
+      sut.addChild(jim, henry)
 
       expectParentRelation(henry, jim, 'Henry to Jim')
     })
 
     // john and jim are henry's and mary's children
     test('it succeeds to add a relation to an existing parent', () => {
-      sut.addMember(henry, 'parent', john)
-      sut.addMember(mary, 'parent', john)
-      sut.addMember(jim, 'child', henry)
+      sut.addParent(henry, john)
+      sut.addParent(mary, john)
+      sut.addChild(jim, henry)
 
       sut.addRelationship(jim, 'child', mary)
 
@@ -210,10 +210,10 @@ describe('FamilyTreeCreator', () => {
     // john is henry's and mary's child
     // jim is henry's and jenny's child
     test('it succeeds to add a stepbrother', () => {
-      sut.addMember(henry, 'parent', john)
-      sut.addMember(mary, 'parent', john)
-      sut.addMember(jim, 'child', henry)
-      sut.addMember(jenny, 'parent', jim)
+      sut.addParent(henry, john)
+      sut.addParent(mary, john)
+      sut.addChild(jim, henry)
+      sut.addParent(jenny, jim)
 
       expectParentRelation(henry, john, 'henry to john')
       expectParentRelation(mary, john, 'mary to john')
