@@ -1,7 +1,6 @@
 import { beforeEach, describe, expect, test } from 'vitest'
 import { FamilyTreeCreator, FamilyTreeCreatorError } from './family-tree-creator.ts'
-import { Gender, Person, Physical } from './family-tree.model.ts'
-import { createHeight, createWeight } from './units-helpers.ts'
+import { Gender, Person } from './family-tree.model.ts'
 
 //#region internal test data
 let john: Person
