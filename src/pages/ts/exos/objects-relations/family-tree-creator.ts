@@ -18,6 +18,9 @@ export class FamilyTreeCreator {
   private family: Person[]
 
   constructor(familyName: string, firstMember: Person) {
+    if (firstMember === undefined) {
+      throw new FamilyTreeCreatorError('try to add an undefined member', firstMember)
+    }
     this._tree = new FamilyTree(familyName)
     this.family = this._tree.family
     this.family.push(firstMember)
@@ -42,6 +45,10 @@ export class FamilyTreeCreator {
    * @param existingMember the other member which to add the relation
    */
   private addMember(newMember: Person, relationship: Relationship, existingMember: Person) {
+    if (newMember === undefined) {
+      throw new FamilyTreeCreatorError('try to add an undefined member', newMember)
+    }
+
     // ----- check that the new member does NOT already exist in the family
     const newMemberExist = this.family.some((member) => member === newMember)
     if (newMemberExist) {

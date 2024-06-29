@@ -36,7 +36,6 @@ const expectParentRelation = (parent: Person, child: Person, message?: string) =
 }
 //#endregion
 
-// import { FamilyCreator } from './family-creator.ts'
 describe('FamilyTreeCreator', () => {
   let sut: FamilyTreeCreator
   let tree: Person[]
@@ -51,6 +50,18 @@ describe('FamilyTreeCreator', () => {
     // Assert
     expect(tree.length).toBe(1)
     expect(tree).toContain(john)
+  })
+
+  test('it throws when create a family with undefined first member', () => {
+    expect(() => {
+      new FamilyTreeCreator('Family-error', undefined as unknown as Person)
+    }).toThrow(FamilyTreeCreatorError)
+  })
+
+  test('it throws when adding an undefined member', () => {
+    expect(() => {
+      sut.addParent(undefined as unknown as Person, john)
+    }).toThrow(FamilyTreeCreatorError)
   })
 
   test('it throws when adding an already existing member', () => {
