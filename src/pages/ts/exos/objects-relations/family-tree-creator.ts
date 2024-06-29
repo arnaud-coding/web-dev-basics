@@ -1,4 +1,4 @@
-import { Person, Relationship } from './family-tree.model.ts'
+import { FamilyTree, Person, Relationship } from './family-tree.model.ts'
 
 export class FamilyTreeCreatorError extends Error {
   constructor(
@@ -14,12 +14,16 @@ export class FamilyTreeCreatorError extends Error {
 
 /** utility object : manipulates a family (add members...) */
 export class FamilyTreeCreator {
-  private _tree: Person[]
-  constructor(firstMember: Person) {
-    this._tree = [firstMember]
+  private _tree: FamilyTree
+  private family: Person[]
+
+  constructor(familyName: string, firstMember: Person) {
+    this._tree = new FamilyTree(familyName)
+    this.family = this._tree.family
+    this.family.push(firstMember)
   }
 
-  public get familyTree(): Person[] {
+  public get familyTree(): FamilyTree {
     return this._tree
   }
 
@@ -39,13 +43,13 @@ export class FamilyTreeCreator {
    */
   private addMember(newMember: Person, relationship: Relationship, existingMember: Person) {
     // ----- check that the new member does NOT already exist in the family
-    const newMemberExist = this.familyTree.some((member) => member === newMember)
+    const newMemberExist = this.family.some((member) => member === newMember)
     if (newMemberExist) {
       throw new FamilyTreeCreatorError('try to add an existing member', newMember)
     }
 
     // ----- check that relation is already in the family
-    const relationExist = this.familyTree.some((member) => member === existingMember)
+    const relationExist = this.family.some((member) => member === existingMember)
     if (!relationExist) {
       throw new FamilyTreeCreatorError('try to add relationship to an unknown member', existingMember)
     }
@@ -65,7 +69,7 @@ export class FamilyTreeCreator {
     }
 
     // ----- add member
-    this.familyTree.push(newMember)
+    this.family.push(newMember)
   }
 
   /**
@@ -102,7 +106,7 @@ export class FamilyTreeCreator {
 
   display(): string[] {
     const res: string[] = []
-    for (const member of this.familyTree) {
+    for (const member of this.family) {
       res.push(`${member.firstname} ${member.lastname} ${member.relations.length}`)
     }
     return res

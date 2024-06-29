@@ -43,8 +43,8 @@ describe('FamilyTreeCreator', () => {
 
   beforeEach(() => {
     createMembers()
-    sut = new FamilyTreeCreator(john)
-    tree = sut.familyTree
+    sut = new FamilyTreeCreator('testFamily', john)
+    tree = sut.familyTree.family
   })
 
   test('it creates a family tree', () => {

@@ -10,6 +10,22 @@ export type Relationship = 'parent' | 'child'
 export type Gender = 'male' | 'female'
 export type EyeColor = 'brown' | 'amber' | 'hazel' | 'green' | 'blue'
 
+/**
+ * hosts the family tree
+ */
+export class FamilyTree {
+  private _family: Person[] = []
+
+  /**
+   * @param name the family name
+   */
+  constructor(public name: string) {}
+
+  public get family(): Person[] {
+    return this._family
+  }
+}
+
 export class Person {
   public birthdate?: Date
   public deathdate?: Date
