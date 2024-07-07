@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Family-tree viewer</title>
+    <link rel="stylesheet" href="./family-tree-viewer.css" />
+    <script type="module" src="./family-tree-viewer.ts" defer></script>
+  </head>
+  <body>
+    <md-outlined-text-field type="textarea" label="my label" placeholder="something"></md-outlined-text-field>
+
+    <md-list>
+      <md-list-item>first item</md-list-item>
+      <md-list-item
+        >second item
+        <div slot="supporting-text">support</div>
+      </md-list-item>
+    </md-list>
+
+    <md-filled-button>Next</md-filled-button>
+  </body>
+</html>

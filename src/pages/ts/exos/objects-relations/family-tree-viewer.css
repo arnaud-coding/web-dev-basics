@@ -1,0 +1,11 @@
+body {
+  background-color: blanchedalmond;
+}
+
+md-list {
+  border-radius: 18px;
+  outline: 1px solid var(--md-sys-color-outline);
+  max-width: 250px;
+  overflow: hidden;
+  width: 100%;
+}
