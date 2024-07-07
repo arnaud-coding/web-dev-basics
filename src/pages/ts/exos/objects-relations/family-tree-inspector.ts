@@ -1,4 +1,4 @@
-import { FamilyTree, Person, Relationship } from './family-tree.model.ts'
+import { Person, Relationship } from './family-tree.model.ts'
 
 export type FamilyRelationShip = Relationship | 'sibling' | 'uncle-aunt' | 'nephew-niece' | 'cousin' | 'grandParent'
 
@@ -48,7 +48,6 @@ export class FamilyTreeInspector {
     const res: Person[] = []
     // find uncles-aunts
     const uncles = this.findUnclesAunts(person)
-    console.log(uncles.map((p) => p.firstname))
 
     // for each uncles-aunts, find children
     for (const uncle of uncles) {

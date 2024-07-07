@@ -1,101 +1,26 @@
 import { beforeEach, describe, expect, test } from 'vitest'
-import { FamilyTree, Gender, Person, Relation } from './family-tree.model.ts'
+import { Person, Relation } from './family-tree.model.ts'
 import { FamilyTreeInspector } from './family-tree-inspector.ts'
-import { FamilyTreeCreator } from './family-tree-creator.ts'
-
-//#region internal test data
-let arnaud: Person
-let thomas: Person
-let loic: Person
-let agnes: Person
-let jo: Person
-let annick: Person
-let millette: Person
-let pierrot: Person
-let philippe: Person
-let nathalie: Person
-let xavier: Person
-let corinne: Person
-let herve: Person
-let agnesMeunier: Person
-let romain: Person
-let elodie: Person
-let eloise: Person
-let anthony: Person
-let clement: Person
-let julien: Person
-let chloe: Person
-let annah: Person
-const createMember = (firstname: string, lastname: string, gender: Gender): Person => {
-  return new Person(firstname, lastname, gender)
-}
-
-function createMembers() {
-  arnaud = createMember('Arnaud', 'Berthollet', 'male')
-  thomas = createMember('Thomas', 'Berthollet', 'male')
-  loic = createMember('Loïc', 'Berthollet', 'male')
-  agnes = createMember('Agnès', 'Berthollet', 'female')
-  jo = createMember('Georges', 'Berthollet', 'male')
-  millette = createMember('Marie-Claude', 'Laurent', 'female')
-  annick = createMember('Annick', 'Berthollet', 'female')
-  pierrot = createMember('Pierre', 'Laurent', 'male')
-  philippe = createMember('Philippe', 'Berthollet', 'male')
-  xavier = createMember('Xavier', 'Laurent', 'male')
-  herve = createMember('Hervé', 'Laurent', 'male')
-  romain = createMember('Romain', 'Berthollet', 'male')
-  anthony = createMember('Anthony', 'Berthollet', 'male')
-  clement = createMember('Clément', 'Laurent', 'male')
-  julien = createMember('Julien', 'Laurent', 'male')
-  chloe = createMember('Chloe', 'Laurent', 'female')
-  annah = createMember('Annah', 'Laurent', 'female')
-  nathalie = createMember('Nathalie', '?', 'female')
-  corinne = createMember('Corinne', 'Souzy', 'female')
-  agnesMeunier = createMember('Agnès', 'Meunier', 'female')
-  elodie = createMember('Elodie', '?', 'female')
-  eloise = createMember('Eloïse', 'Berthollet', 'female')
-}
-
-function createBertholletTree(): FamilyTree {
-  createMembers()
-  const creator = new FamilyTreeCreator('Berthollet', arnaud)
-  creator.addParent(loic, arnaud)
-  creator.addParent(agnes, arnaud)
-  creator.addChild(thomas, loic)
-  creator.addRelationship(thomas, 'child', agnes)
-
-  creator.addParent(jo, loic)
-  creator.addParent(annick, loic)
-  creator.addChild(philippe, jo)
-  creator.addRelationship(philippe, 'child', annick)
-
-  creator.addParent(pierrot, agnes)
-  creator.addParent(millette, agnes)
-  creator.addChild(herve, pierrot)
-  creator.addRelationship(herve, 'child', millette)
-  creator.addChild(xavier, pierrot)
-  creator.addRelationship(xavier, 'child', millette)
-
-  creator.addChild(romain, philippe)
-  creator.addRelationship(romain, 'child', nathalie)
-  creator.addChild(anthony, philippe)
-  creator.addRelationship(anthony, 'child', nathalie)
-
-  creator.addChild(clement, herve)
-  creator.addRelationship(clement, 'child', agnesMeunier)
-  creator.addChild(julien, herve)
-  creator.addRelationship(julien, 'child', agnesMeunier)
-
-  creator.addChild(chloe, xavier)
-  creator.addRelationship(chloe, 'child', corinne)
-  creator.addChild(annah, xavier)
-  creator.addRelationship(annah, 'child', corinne)
-
-  creator.addChild(eloise, romain)
-  creator.addRelationship(eloise, 'child', elodie)
-
-  return creator.familyTree
-}
-//#endregion
+import {
+  createBertholletTree,
+  pierrot,
+  arnaud,
+  thomas,
+  agnes,
+  loic,
+  herve,
+  xavier,
+  philippe,
+  romain,
+  anthony,
+  clement,
+  julien,
+  chloe,
+  annah,
+  annick,
+  jo,
+  millette
+} from './families/family-sample-1.ts'
 
 describe('Family-tree-inspector', () => {
   let sut: FamilyTreeInspector
