@@ -61,7 +61,7 @@ export type Relation = {
 export class Physical {
   constructor(
     public height: ValueUnit<LengthtUnit>,
-    public weight: ValueUnit<WeightUnit>,
-    public eyeColor: EyeColor
+    public weight?: ValueUnit<WeightUnit>,
+    public eyeColor?: EyeColor
   ) {}
 }

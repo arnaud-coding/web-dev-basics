@@ -5,19 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Family-tree viewer</title>
     <link rel="stylesheet" href="./family-tree-viewer.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <style>
+      md-icon {
+        --md-icon-font: 'Material Symbols Rounded';
+      }
+    </style>
     <script type="module" src="./family-tree-viewer.ts" defer></script>
   </head>
   <body>
     <md-outlined-text-field type="textarea" label="my label" placeholder="something"></md-outlined-text-field>
 
+    <!-- liste des membres de la famille -->
     <md-list>
-      <md-list-item>first item</md-list-item>
-      <md-list-item
-        >second item
-        <div slot="supporting-text">support</div>
-      </md-list-item>
+      <md-icon>patient_list</md-icon>
+      <!-- todo : set the value from the family -->
+      Arnaud's family
     </md-list>
 
-    <md-filled-button>Next</md-filled-button>
+    <!-- modèle de list-item d'un membre -->
+    <template id="member-list-item-template">
+      <md-list-item>
+        name
+        <md-icon slot="start">Male</md-icon>
+        <div slot="supporting-text">description</div>
+      </md-list-item>
+    </template>
   </body>
 </html>

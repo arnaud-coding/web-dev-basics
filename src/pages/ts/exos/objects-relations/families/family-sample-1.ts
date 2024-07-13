@@ -1,5 +1,6 @@
 import { FamilyTreeCreator } from '../family-tree-creator.ts'
-import { Person, Gender, FamilyTree } from '../family-tree.model.ts'
+import { Person, Gender, FamilyTree, Physical } from '../family-tree.model.ts'
+import { LengthtUnit, ValueUnit } from '../units-helpers.ts'
 
 export let arnaud: Person
 export let thomas: Person
@@ -32,22 +33,33 @@ export let antoinette: Person
 export let eugenie: Person
 export let claude: Person
 
-const createMember = (firstname: string, lastname: string, gender: Gender): Person => {
-  return new Person(firstname, lastname, gender)
+const createMember = (
+  firstname: string,
+  lastname: string,
+  gender: Gender,
+  birthdate?: Date,
+  height?: ValueUnit<LengthtUnit>
+): Person => {
+  const member = new Person(firstname, lastname, gender)
+  member.birthdate = birthdate
+  if (height !== undefined) {
+    member.physicals = new Physical(height)
+  }
+  return member
 }
 
 function createMembers() {
-  arnaud = createMember('Arnaud', 'Berthollet', 'male')
-  thomas = createMember('Thomas', 'Berthollet', 'male')
-  loic = createMember('Loïc', 'Berthollet', 'male')
-  agnes = createMember('Agnès', 'Laurent', 'female')
-  jo = createMember('Georges', 'Berthollet', 'male')
-  millette = createMember('Marie-Claude', 'Tholin', 'female')
-  annick = createMember('Annick', 'Raynaud', 'female')
-  pierrot = createMember('Pierre', 'Laurent', 'male')
-  philippe = createMember('Philippe', 'Berthollet', 'male')
-  xavier = createMember('Xavier', 'Laurent', 'male')
-  herve = createMember('Hervé', 'Laurent', 'male')
+  arnaud = createMember('Arnaud', 'Berthollet', 'male', new Date('1995-08-22T05:30'), new ValueUnit(1.72, 'm'))
+  thomas = createMember('Thomas', 'Berthollet', 'male', new Date('1994-09-25'))
+  loic = createMember('Loïc', 'Berthollet', 'male', new Date('1967-03-17'), new ValueUnit(1.78, 'm'))
+  agnes = createMember('Agnès', 'Laurent', 'female', new Date('1967-02-27'), new ValueUnit(1.65, 'm'))
+  jo = createMember('Georges', 'Berthollet', 'male', new Date('1947-10-04'))
+  millette = createMember('Marie-Claude', 'Tholin', 'female', new Date('1945-11-26'))
+  annick = createMember('Annick', 'Raynaud', 'female', new Date('1947-06-17'))
+  pierrot = createMember('Pierre', 'Laurent', 'male', new Date('1940-01-27'))
+  philippe = createMember('Philippe', 'Berthollet', 'male', new Date('1968-12-02'))
+  xavier = createMember('Xavier', 'Laurent', 'male', new Date('1970-02-24'))
+  herve = createMember('Hervé', 'Laurent', 'male', new Date('1966-02-13'))
   romain = createMember('Romain', 'Berthollet', 'male')
   anthony = createMember('Anthony', 'Berthollet', 'male')
   clement = createMember('Clément', 'Laurent', 'male')
@@ -66,13 +78,13 @@ function createMembers() {
   jean = createMember('Jean', 'Raynaud', 'male')
   antoine = createMember('Antoine', 'Tholin', 'male')
   antoinette = createMember('Antoinette', 'Vially', 'female')
-  eugenie = createMember('Eugénie', 'Noyel', 'female')
+  eugenie = createMember('Eugénie', 'Noyel', 'female', new Date('1914-09-25'))
   claude = createMember('Claude', 'Laurent', 'male')
 }
 
 export function createBertholletTree(): FamilyTree {
   createMembers()
-  const creator = new FamilyTreeCreator('Berthollet', arnaud)
+  const creator = new FamilyTreeCreator('Arnaud Berthollet', arnaud)
   creator.addParent(loic, arnaud)
   creator.addParent(agnes, arnaud)
   creator.addChild(thomas, loic)
