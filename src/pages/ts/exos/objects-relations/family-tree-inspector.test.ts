@@ -109,7 +109,7 @@ describe('Family-tree-inspector', () => {
   })
 
   test('it finds 0 grand-parent', () => {
-    const actual = sut.findPeopleByRelationship(loic, 'grandParent')
+    const actual = sut.findPeopleByRelationship(jo, 'grandParent')
     expect(actual.length).toBe(0)
   })
 
