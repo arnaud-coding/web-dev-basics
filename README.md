@@ -19,6 +19,49 @@ Je me limite aux technologies de base: HTML/CSS/JS.
 
 ### Git
 
+## Exécuter du code hors projet npm (ou Vite)
+
+**limitations : ne marche pas avec un projet npm**
+
+### exécuter du code HTML
+
+#### Chrome
+
+- drag and drop depuis l'explorateur de fichiers vers un onglet chrome
+- menu contextuel "ouvrir avec" Chrome
+
+#### VS code
+
+- extension "Live Server" : menu contextuel depuis le fichier HTML (ou "Go Live" sur VS code)
+
+#### online
+
+- Stackblitz
+
+### exécuter du code JS
+
+#### Chrome
+
+- directement dans la console des outils de développement
+
+#### Node / Bun
+
+- lancer directement le fichier JS avec 'node' depuis un terminal : node test.js
+- lancer directement le fichier JS/TS avec 'bun' depuis un terminal : bun test.js
+
+#### Visual Studio
+
+- extension "Quokka" (limitation : pas de "import" dans la version gratuite)
+- Menu 'Run/start debugging'
+- activity bar : icone Run and Debug(ctrl+shift+D )
+- créer un **projet** Node pour projets vanilla JS, Backend (Express, NestJS, Koa, ...), Frontend (React, Angular ...) : node create ..., npm run ...
+- créer un **projet** Vite pour projets Frontend (Vanilla TS, React, Angular ...) : npm create vite@latest,
+- créer un **projet** Bun (projet vanilla TS, React, Angular ...) : bun create ..., bun run ...
+
+#### online
+
+- Stackblitz
+
 ### Markdown (md)
 
 langage pour décrire des pages d'aide dans VScode et dans Github.
