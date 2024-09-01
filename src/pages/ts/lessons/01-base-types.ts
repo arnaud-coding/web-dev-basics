@@ -3,6 +3,12 @@
 
 //* Use Quokka to see the run-time behavior
 
+const textAreas = document.getElementsByTagName('textarea')
+if (textAreas.length > 0) {
+  const textArea = textAreas[0]
+  textArea.value = 'This lesson is about Types basics'
+}
+
 ;(() => {
   // ----------------------------------------------------------------------------
   // Types primitifs : types fournis par JS (number, string, date, ...)

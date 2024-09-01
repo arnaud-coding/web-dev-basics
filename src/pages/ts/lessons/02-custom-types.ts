@@ -1,4 +1,10 @@
 ;(() => {
+  const textAreas = document.getElementsByTagName('textarea')
+  if (textAreas.length > 0) {
+    const textArea = textAreas[0]
+    textArea.value = 'This lesson is about custom Types'
+  }
+
   // ----------------------------------------------------------------------------
   // Types peronnalisés ( = 'custom types' | 'types utlilisateurs' )
   // ----------------------------------------------------------------------------

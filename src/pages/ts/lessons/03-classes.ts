@@ -3,7 +3,7 @@
 const textAreas = document.getElementsByTagName('textarea')
 if (textAreas.length > 0) {
   const textArea = textAreas[0]
-  textArea.value = 'Class'
+  textArea.value = 'This lesson is about Classes'
 }
 
 // Une classe est un modéle pour créer des objets.
