@@ -1,0 +1,11 @@
+body {
+  background-color: rgb(245, 239, 230);
+  margin: 3px;
+}
+nav {
+  margin-bottom: 6px;
+}
+
+#reminder {
+  color: darkolivegreen;
+}
