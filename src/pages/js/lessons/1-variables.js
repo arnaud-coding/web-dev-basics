@@ -1,6 +1,6 @@
 /* Cette page de code est faite pour apprendre le JavaScript.
     - Elle ne tourne pas dans un navigareur par souci de simplicité
-    - On peut la faire tourner soit: 
+    - On peut la faire tourner soit:
         - Dans VScode via le menu "run"
         - Dans un terminal en utilisant node js. Commandes:
             - "aller dans le dossier ou est le fichier js": cd ./src/pages/playground/js
@@ -14,10 +14,10 @@ console.log('---------------------------------------- JS')
 console.log('But: Découvrir les variables')
 console.log('---------------------------------------- JS')
 
-/* ==================================================================================================================== 
+/* ====================================================================================================================
 Une variable:
     - contient une ou plusieurs valeurs.
-    - n'existe uniquement dans la portée/le bloc ou elle est définie. 
+    - n'existe uniquement dans la portée/le bloc ou elle est définie.
     - est d'un type: (JavaScript = language à typage FAIBLE ==> le type de la variable peut changer quand on la réassigne)
         - Type "chaine de caractère" (string) : "", "a", "arnaud", "quelle belle journée"
         - Type "booléen" (bool) : true, false
@@ -91,6 +91,7 @@ x = { firstname: 'Arnaud', weight: 55, birthday: new Date(1995, 8, 25) } // Ce f
 console.log(typeof x, x)
 
 // calcul de l'age de toto (réutilise la variable 'toto' définie plus haut dans cette page)
+// @ts-ignore
 age = new Date().getFullYear() - x.birthday.getFullYear()
 // affiche une phrase qui donne le poids et l'age de toto.
 console.log(x.firstname + ' pèse ' + x.weight + ' kg, il a ' + age + ' ans.')
