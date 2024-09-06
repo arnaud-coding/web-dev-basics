@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TS playground</title>
+    <link rel="stylesheet" href="typicode.css" />
+    <script type="module" src="typicode.ts" defer></script>
+  </head>
+  <body>
+    <!-- barre de navigation générale -->
+    <nav>
+      <a href="/">Home</a>
+    </nav>
+
+    <label id="reminder">This is an empty space to play with TS/HTML/CSS</label>
+
+    <!-- the HTML playground -->
+    <div id="playground">
+      <!-- add HTML tags here...  -->
+      <br />
+      <button id="btn-down">-</button>
+      user <label id="user-id">0</label>
+      <button id="btn-up">+</button>
+
+      <!-- User name -->
+      <div class="user-name">
+        <label id="user-name"></label>
+      </div>
+
+      <!-- User details -->
+      <div class="user-details">
+        <label>Address:</label>
+        <label id="user-address">address</label>
+      </div>
+
+      <div class="user-details">
+        <label>Company:</label>
+        <label id="user-company">Company</label>
+      </div>
+
+      <div class="user-details">
+        <label>Posts:</label>
+        <ul id="user-posts"></ul>
+      </div>
+
+      <div class="user-details">
+        <label>Comments:</label>
+        <ul id="post-comments"></ul>
+      </div>
+    </div>
+  </body>
+</html>

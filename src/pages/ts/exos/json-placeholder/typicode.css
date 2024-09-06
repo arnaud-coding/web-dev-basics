@@ -1,0 +1,52 @@
+body {
+  background-color: rgb(233, 230, 227);
+  margin: 3px;
+}
+nav {
+  margin-bottom: 6px;
+}
+
+#reminder {
+  color: darkolivegreen;
+}
+
+.user-details {
+  color: rgb(22, 12, 160);
+  margin-left: 8px;
+  margin-bottom: 4px;
+}
+
+.user-details:first-of-type {
+  margin-top: 40px;
+}
+
+#user-posts {
+  color: rgb(138, 26, 26);
+  margin-top: 2px;
+}
+
+#post-comments {
+  color: rgb(143, 122, 6);
+  margin-top: 2px;
+}
+
+#user-name {
+  font-size: 1.5rem;
+  color: rgb(7, 105, 7);
+}
+
+.user-name {
+  margin-top: 14px;
+  margin-bottom: 10px;
+}
+
+.user-post-hover:hover {
+  /* font-size: 1.1rem; */
+  background-color: rgb(219, 211, 202);
+}
+
+.user-post-select {
+  /* font-size: 1.1rem; */
+  font-weight: bold;
+  color: crimson;
+}
