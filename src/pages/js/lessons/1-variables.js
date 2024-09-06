@@ -3,7 +3,7 @@
     - On peut la faire tourner soit:
         - Dans VScode via le menu "run"
         - Dans un terminal en utilisant node js. Commandes:
-            - "aller dans le dossier ou est le fichier js": cd ./src/pages/playground/js
+            - "aller dans le dossier ou est le fichier js": cd ./src/pages/js/lessons/
             - "lancer node en lui indiquant quel fichier js exécuter": node 1-variables.js
 
 Note: L'ordinateur et sa console ne savent pas exécuter un fichier JS. Pour cela, ils utilisent "node".
@@ -75,18 +75,22 @@ let x = true // La variable "x" est de type booléen, sa valeur est 'vraie'.
 console.log(typeof x, x) // affiche dans la console le type de la variable "x", puis la valeur de "x"
 
 // réassigne la valeur de la variable x en changeant aussi son type: valeur= date de maintenant; type= Date
+// @ts-ignore
 x = new Date()
 console.log(typeof x, x)
 
 // réassigne la valeur de la variable x en changeant aussi son type: valeur= surface cercle rayon 4cm (s = PI x R²), type= number
+// @ts-ignore
 x = Math.PI * 4 * 4
 console.log(typeof x, x)
 
 // réassigne la valeur de la variable x en changeant aussi son type: valeur= tableau de 7 éléments de types différents (le dernier est lui-même un tableau)
+// @ts-ignore
 x = ['arnaud', 'thomas', 'loïc', 'agnès', 12, false, [1, 2, 3]]
 console.log(typeof x, x)
 
 // réassigne la valeur de la variable x en changeant aussi son type: valeur= un objet avec des propriétés "firstname" et "birthday"
+// @ts-ignore
 x = { firstname: 'Arnaud', weight: 55, birthday: new Date(1995, 8, 25) } // Ce firstname n'est pas celui défini plus haut, car ici, il est dans le bloc de code de "x"
 console.log(typeof x, x)
 
@@ -94,7 +98,9 @@ console.log(typeof x, x)
 // @ts-ignore
 age = new Date().getFullYear() - x.birthday.getFullYear()
 // affiche une phrase qui donne le poids et l'age de toto.
+// @ts-ignore
 console.log(x.firstname + ' pèse ' + x.weight + ' kg, il a ' + age + ' ans.')
 // même phrase, mais avec une technique différente (string interpolation)
+// @ts-ignore
 console.log(`${x.firstname} pèse ${x.weight} kg, il a ${age} ans.`)
 // --------------------------------------------------------------------------------------------------------------------

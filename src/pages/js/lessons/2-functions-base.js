@@ -158,7 +158,7 @@ function mean(a, b) {
 
 // declare une variable "value" et lui assigne le retour de la fonction "mean" à qui on passe 12 et 8
 let value = mean(12, 8)
-console.log(`moyenne 12 et 8 = ${value}`)
+console.log(`moyenne entre 12 et 8 = ${value}`)
 
 value = sub(4) // dans la fonction 'sub', le paramètre 'rien' sera remplacé par sa valeur par défaut (= 0)
 console.log(`soustraction de 4 et "rien" = ${value}`)
@@ -167,6 +167,7 @@ console.log(`soustraction de 4 et "rien" = ${value}`)
 //  - "a" = somme de 2+1
 //  - "b" = soustraction de 9-4
 value = mean(add(2, 1), sub(9, 4))
+console.log(`moyenne entre (2+1) et (9-4) = ${value}`)
 
 // la même chose mais sur plusieurs lignes (moins pratique)
 const a = add(2, 1)
